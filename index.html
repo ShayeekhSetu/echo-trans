@@ -370,6 +370,34 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{border:1px solid #c9d3de;background:#fff;border-radius:16px;padding:5px 11px;font-size:13px;cursor:pointer;color:#234}
 .chip.on{background:#0b5c8a;border-color:#0b5c8a;color:#fff}
+/* RWMA page */
+.pg .rwtop{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;margin-top:6px}
+.pg .rwbe{text-align:center}
+.pg .rwside{flex:1;display:flex;flex-direction:column;align-items:center}
+.pg .rwcap{font-size:10.17px;color:#333;text-align:center}
+.pg .rwleg{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;font-size:10.17px;margin-top:4px}
+.pg .rwl{display:inline-flex;align-items:center;gap:4px}
+.pg .rwviews{display:flex;justify-content:space-around;align-items:flex-end;gap:6px;margin:10px 0 8px;padding-top:6px;border-top:1px solid #ddd}
+.pg .rwv{text-align:center}
+.pg .rwt{width:100%;margin-top:4px}
+.pg .rwt td,.pg .rwt th{font-size:10.7px}
+.pg .rwi{font-size:11.24px;margin-top:4px;line-height:1.35}
+.pg .rwn{font-size:9.63px;color:#555;margin-top:5px;font-style:italic}
+.pg.bw .rwn{color:#000}
+.pg .rwt{border-collapse:collapse}
+.pg .rwt th,.pg .rwt td{border:1px solid #bbb;padding:2px 5px;text-align:left}
+.pg .rwt th{background:#e8eef6}
+.pg.bw .rwt th{background:none}
+.pg .rwtop{gap:8px}
+.pg .rwside{flex:0 0 auto}
+.pg .rwsl{flex:1;min-width:170px;font-size:10.17px;line-height:1.3;border-left:1px solid #ddd;padding-left:8px}
+.pg .rwsr{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.pg .rwsr .n{display:inline-block;width:15px;text-align:right}
+.pg .rwsr.ab{font-weight:700}
+.pg .rwsr i{font-weight:400;font-style:normal;color:#444}
+.pg.bw .rwsr i{color:#000}
+.pg .rwviews{align-items:flex-end}
+.pg .rwt{width:calc(100% - 2px)}
 
 </style>
 </head>
@@ -673,7 +701,7 @@ function newReport(){
     desc:{pos:DESC.pos[0],av:DESC.av[0],va:DESC.va[0],ven:DESC.ven[0]},
     proc:PROC_DEFAULT, situs:'Solitus', ht:'',wt:'',bp:'',hr:'',rhythm:'Sinus rhythm',iq:'Good',
     m:{}, v, f, wm:Array(17).fill(0), vd:newVD(), cg:newCG(), efBand:'', ageN:'', ageU:'Years', final:false, tpl:'', wmTxt:'', rvwm:RVWM[0],
-    ddAuto:true, autoC:true, comments:'', autoI:true, impression:'', advice:'', note:'', layout:'auto', blanks:false};
+    ddAuto:true, autoC:true, comments:'', autoI:true, impression:'', advice:'', note:'', layout:'auto', blanks:false, rwPage:true};
 }
 let rep = newReport();
 let settings = {clinic:'',addr:'',contact:'',logo:'',doc:DOC_DEFAULT,entered:'',performer:'',vunit:'m/s'};
@@ -1355,6 +1383,8 @@ function wmCard(){
    <div class="wmsum" id="wmSum">${esc(wmSummary())}</div>
    <label class="f" style="margin-top:6px">Extra note on LV wall motion (optional)<input type="text" data-ac data-g="wmTxt" value="${esc(rep.wmTxt)}" placeholder="e.g. paradoxical septal motion"></label>
    <label class="f" style="margin-top:6px">RV wall motion<select data-g="rvwm">${RVWM.map(o=>`<option${rep.rvwm===o?' selected':''}>${esc(o)}</option>`).join('')}</select></label>
+   <label class="chk" style="display:flex;gap:6px;font-size:14px;margin-top:10px"><input type="checkbox" data-g="rwPage"${rep.rwPage!==false?' checked':''}> Add RWMA diagram page</label>
+   <p class="hint" style="margin-top:2px">Bull's-eye, coronary territory, 4 echo views and summary — added as the last page automatically when any segment is abnormal (adults). Untick if this report does not need the diagram.</p>
   </div>`;
 }
 const frowHTML = x=>{ const F=rep.f[x.k]; return `<div class="frow${F.o!==x.o[0]?' abn':''}" data-fr="${x.k}"><b>${esc(x.n)}</b><div class="fc">${sel(`data-f="${x.k}.o"`,x.o,F.o)}
@@ -1548,7 +1578,7 @@ function onField(t){
     if(t.dataset.g==='autoC'||t.dataset.g==='autoI'){ syncAuto(); const ta=$(t.dataset.g==='autoC'?'#taC':'#taI'); ta.readOnly=v; ta.value=rep[t.dataset.g==='autoC'?'comments':'impression']; }
     if(['ht','wt','sex','ageN','ageU'].includes(t.dataset.g)){ const was=document.getElementById('pedBan'); const wasPed=was&&!was.hidden; if(wasPed!==isPed()){ syncAuto(); renderForm(); changed(); return; } refreshM(); }
     if(t.dataset.g==='wmTxt') refreshWM();
-    if(!['comments','impression','advice','note','autoC','autoI','blanks'].includes(t.dataset.g)) syncAuto();
+    if(!['comments','impression','advice','note','autoC','autoI','blanks','rwPage'].includes(t.dataset.g)) syncAuto();
   } else if(t.dataset.m){ rep.m[t.dataset.m]=v; if(PAIR[t.dataset.m] && String(v).trim()) rep.m[PAIR[t.dataset.m]]=''; t.classList.remove('acv'); document.querySelectorAll(`[data-m="${t.dataset.m}"]`).forEach(e=>{ if(e!==t) e.value=v; }); refreshM(); syncAuto(); const po=$('#pasOut'); if(po) po.textContent=pasTxt(); }
   else if(t.dataset.d){ rep.desc[t.dataset.d]=v; const row=document.querySelector(`[data-dr="${t.dataset.d}"]`); row.classList.toggle('abn',v!==DESC[t.dataset.d][0]); syncAuto(); }
   else if(t.dataset.cg){ const [k,f]=t.dataset.cg.split('.'); rep.cg[k][f]=v; const hn=t.closest('.det').querySelector('.hint'); if(hn) hn.textContent=cgLine(k); syncAuto(); }
@@ -1771,9 +1801,150 @@ function pageInnerH(){ const m=marg(); return 1123-m.t-m.b; }
 function pageHTML(inner,i,n,scale){ const m=marg(); return `<div class="pg${BW()?' bw':''}" style="padding:${m.t.toFixed(1)}px ${m.r.toFixed(1)}px ${m.b.toFixed(1)}px ${m.l.toFixed(1)}px">${rep.final?'':'<div class="wmk">DRAFT</div>'}<div class="pgc"${scale&&scale<1?` style="transform:scale(${scale});transform-origin:0 0;width:${(100/scale).toFixed(3)}%"`:''}>${inner}</div>${n>1?`<div class="pn" style="right:${m.r.toFixed(1)}px;bottom:${(6*MM2PX).toFixed(1)}px">Page ${i+1} of ${n}</div>`:''}</div>`; }
 function measure(inner){ const m=$('#measure'); m.innerHTML=pageHTML(inner,0,1); return m.querySelector('.pgc').offsetHeight; }
 function buildPages(){
-  const a=buildPages1('roomy'); if(a.pages.length<=2) return a;
-  const b=buildPages1('roomy tight'); return b.pages.length<a.pages.length?b:a;
+  const a=buildPages1('roomy'); if(a.core<=2) return a;
+  const b=buildPages1('roomy tight'); return b.core<a.core?b:a;
 }
+/* ================= RWMA PAGE (only when RWMA present) ================= */
+// territory per segment (shared segments have two possible arteries)
+const TERR2 = {1:['LAD'],2:['LAD'],3:['RCA'],4:['RCA'],5:['RCA','LCx'],6:['LAD','LCx'],7:['LAD'],8:['LAD'],9:['RCA','LAD'],10:['RCA'],
+  11:['RCA','LCx'],12:['LAD','LCx'],13:['LAD'],14:['LAD'],15:['RCA','LAD'],16:['LAD','LCx'],17:['LAD']};
+const TCOL = {LAD:'#9fc0ff', RCA:'#ffc4c4', LCx:'#c6eb8f'};
+const TCOL_D = {LAD:'#1f4fa8', RCA:'#c0392b', LCx:'#4a8a12'};
+function rwPt(cx,cy,r,a){ const t=a*Math.PI/180; return [cx+r*Math.cos(t), cy-r*Math.sin(t)]; }
+function rwSector(cx,cy,r1,r2,a1,a2){ const L=(a2-a1)>180?1:0; const [x1,y1]=rwPt(cx,cy,r2,a1),[x2,y2]=rwPt(cx,cy,r2,a2),[x3,y3]=rwPt(cx,cy,r1,a2),[x4,y4]=rwPt(cx,cy,r1,a1);
+  return `M${x1.toFixed(1)},${y1.toFixed(1)} A${r2},${r2} 0 ${L} 0 ${x2.toFixed(1)},${y2.toFixed(1)} L${x3.toFixed(1)},${y3.toFixed(1)} A${r1},${r1} 0 ${L} 1 ${x4.toFixed(1)},${y4.toFixed(1)} Z`; }
+function rwSeg(n,cx,cy,R){ const s=SEG[n-1], ring=s[2], c=s[3];
+  if(ring==='x') return {d:`M${cx-R*0.25},${cy} a${R*0.25},${R*0.25} 0 1,0 ${R*0.5},0 a${R*0.25},${R*0.25} 0 1,0 ${-R*0.5},0`, lx:cx, ly:cy};
+  const [r1,r2,half]= ring==='a'?[R*0.25,R*0.5,45]: ring==='m'?[R*0.5,R*0.75,30]:[R*0.75,R,30];
+  const [lx,ly]=rwPt(cx,cy,(r1+r2)/2,c); return {d:rwSector(cx,cy,r1,r2,c-half,c+half), lx, ly}; }
+function rwLum(hex){ const v=parseInt(hex.slice(1),16); return ((v>>16)*0.3+((v>>8)&255)*0.59+(v&255)*0.11)/255; }
+function rwWmFill(n,pid){ const g=rep.wm[n-1]||0; if(!g) return {f:'#fff',tc:'#111'}; if(BW()) return {f:`url(#${pid}${g})`,tc:g===7?'#fff':'#111',halo:g<7};
+  return {f:WM[g].c, tc:rwLum(WM[g].c)<0.5?'#fff':'#111'}; }
+function rwDefs(pid){ return BW()?`<defs>${[1,2,3,4,5,6,7].map(i=>wmPat(pid,i)).join('')}</defs>`:''; }
+function rwTxt(x,y,t,size,col,halo,bold,rot){ return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${size}" text-anchor="middle" dominant-baseline="central" font-family="Arial" ${bold?'font-weight="700"':''} fill="${col}"${halo?' stroke="#fff" stroke-width="3" paint-order="stroke"':''}${rot?` transform="rotate(${rot} ${x.toFixed(1)} ${y.toFixed(1)})"`:''}>${t}</text>`; }
+// territory patterns (reference bull's-eye)
+function rwTerrDefs(){
+  const bw=BW(), P=[];
+  const base={LAD:bw?'<circle cx="3" cy="3" r="1.3" fill="#000"/>':'', RCA:bw?'<path d="M0 3H6" stroke="#000" stroke-width="1"/>':'', LCx:bw?'<path d="M3 0V6" stroke="#000" stroke-width="1"/>':''};
+  const solo=k=>bw?`<pattern id="tr_${k}" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/>${base[k]}</pattern>`:'';
+  ['LAD','RCA','LCx'].forEach(k=>P.push(solo(k)));
+  [['RCA','LAD'],['LAD','LCx'],['RCA','LCx']].forEach(([a,b])=>{
+    if(bw) P.push(`<pattern id="tr_${a}_${b}" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/>${base[a]}${base[b]}</pattern>`);
+    else P.push(`<pattern id="tr_${a}_${b}" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="10" fill="${TCOL[a]}"/><rect x="5" width="5" height="10" fill="${TCOL[b]}"/></pattern>`); });
+  return `<defs>${P.join('')}</defs>`; }
+function rwTerrFill(t){ if(t.length===1) return BW()?`url(#tr_${t[0]})`:TCOL[t[0]]; const k=['RCA_LAD','LAD_LCx','RCA_LCx'].find(x=>x.split('_').every(z=>t.includes(z))); return `url(#tr_${k})`; }
+function rwPatientBE(size){
+  const R=150, cx=185, cy=185, pid='rbe';
+  let s=`<svg viewBox="0 0 370 370" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${rwDefs(pid)}${rwTerrDefs()}`;
+  // territory ring outside (basal segments' territories)
+  SEG.filter(x=>x[2]==='b').forEach(x=>{ s+=`<path d="${rwSector(cx,cy,R+4,R+14,x[3]-30,x[3]+30)}" fill="${rwTerrFill(TERR2[x[0]])}" stroke="#666" stroke-width=".6"/>`; });
+  for(let n=1;n<=17;n++){ const g=rwSeg(n,cx,cy,R), f=rwWmFill(n,pid);
+    s+=`<path d="${g.d}" fill="${f.f}" stroke="#222" stroke-width="1.2"/>`;
+    s+=rwTxt(g.lx,g.ly-6,n,13,f.tc,f.halo,true)+rwTxt(g.lx,g.ly+8,TERR2[n].join('/'),8,f.tc,f.halo,false); }
+  // orientation labels
+  s+=rwTxt(cx,9,'ANTERIOR',11,'#333',false,true)+rwTxt(cx,361,'INFERIOR',11,'#333',false,true);
+  s+=rwTxt(10,cy,'SEPTAL',11,'#333',false,true,-90)+rwTxt(360,cy,'LATERAL',11,'#333',false,true,90);
+  return s+'</svg>'; }
+function rwRefBE(size){
+  const R=95, cx=100, cy=100;
+  let s=`<svg viewBox="0 0 200 200" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${rwTerrDefs()}`;
+  for(let n=1;n<=17;n++){ const g=rwSeg(n,cx,cy,R); s+=`<path d="${g.d}" fill="${rwTerrFill(TERR2[n])}" stroke="#444" stroke-width=".9"/>`+rwTxt(g.lx,g.ly,n,10,'#111',BW(),true); }
+  return s+'</svg>'; }
+function rwSummary(){
+  const ab=[]; rep.wm.forEach((g,i)=>{ if(g>0) ab.push(i+1); });
+  const T=['LAD','RCA','LCx'].map(k=>{ const all=Object.keys(TERR2).map(Number).filter(n=>TERR2[n].includes(k)); const hit=all.filter(n=>ab.includes(n));
+    const score=hit.reduce((a,n)=>a+1/TERR2[n].length,0); return {k,all,hit,score}; }).sort((a,b)=>b.score-a.score);
+  const top=T[0], sec=T[1];
+  let interp = !ab.length?'':(sec.score>=1.5 && sec.score>=0.6*top.score)?`Pattern suggests ${top.k} and ${sec.k} territories (possible multivessel involvement).`:`Pattern most consistent with ${top.k} territory.`;
+  const rows=['LAD','RCA','LCx'].map(k=>T.find(x=>x.k===k)).map(x=>`<tr><td><b style="color:${BW()?'#000':TCOL_D[x.k]}">${x.k}</b></td><td>${x.all.filter(n=>TERR2[n].length===1).join(', ')||'—'}</td><td>${x.all.filter(n=>TERR2[n].length>1).join(', ')}</td><td class="${x.hit.length?'a':''}">${x.hit.length?x.hit.join(', '):'—'}</td><td>${x.hit.length} / ${x.all.length}</td></tr>`).join('');
+  const list=ab.map(n=>`${n}. ${SEG[n-1][1]} — ${WM[rep.wm[n-1]].n.toLowerCase()} (${TERR2[n].join(' or ')})`).join('; ');
+  return `<table class="mt rwt"><tr><th>Territory</th><th>Exclusive segments</th><th>Shared segments</th><th>Abnormal</th><th>Involved</th></tr>${rows}</table>
+   <div class="rwi"><b>Interpretation:</b> ${esc(interp)} WMSI ${wmsi().toFixed(2)}.</div>
+   <div class="rwn">AHA 17-segment model. Segments 5, 6, 9, 11, 12, 15 and 16 have variable coronary supply (shown as shared). Territory is a guide only — correlate with ECG and coronary angiography.</div>`; }
+/* ---- realistic echo views (original drawings) ---- */
+function rwCurve(segs,N){ // segs: array of cubic [p0,p1,p2,p3]
+  const pts=[]; segs.forEach((c,si)=>{ for(let i=(si?1:0);i<=N;i++){ const t=i/N,u=1-t;
+    pts.push([u*u*u*c[0][0]+3*u*u*t*c[1][0]+3*u*t*t*c[2][0]+t*t*t*c[3][0], u*u*u*c[0][1]+3*u*u*t*c[1][1]+3*u*t*t*c[2][1]+t*t*t*c[3][1]]); } });
+  const L=[0]; for(let i=1;i<pts.length;i++) L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
+  const tot=L[L.length-1]; return pts.map((p,i)=>({x:p[0],y:p[1],s:L[i]/tot})); }
+function rwAt(C,t){ let k=1; while(k<C.length-1&&C[k].s<t) k++; const a=C[k-1],b=C[k],f=(t-a.s)/((b.s-a.s)||1); return {x:a.x+(b.x-a.x)*f,y:a.y+(b.y-a.y)*f}; }
+function rwBand(C,s0,s1,th){
+  const A=[],B=[],N=24;
+  for(let i=0;i<=N;i++){ const t=s0+(s1-s0)*i/N, p=rwAt(C,t), q=rwAt(C,Math.min(1,t+.004)), o=rwAt(C,Math.max(0,t-.004));
+    let dx=q.x-o.x, dy=q.y-o.y; const d=Math.hypot(dx,dy)||1; dx/=d; dy/=d; const w=th(t)/2;
+    A.push([p.x-dy*w,p.y+dx*w]); B.push([p.x+dy*w,p.y-dx*w]); }
+  const m=rwAt(C,(s0+s1)/2);
+  return {d:'M'+A.concat(B.reverse()).map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' L')+' Z', lx:m.x, ly:m.y}; }
+const RW_CUTS=[0,.16,.31,.43,.57,.69,.84,1];
+function rwLV(segs,order,pid,thick,pap){
+  const C=rwCurve(segs,80), th=s=>(thick-3*Math.exp(-Math.pow((s-0.5)/0.12,2)))*Math.sqrt(Math.max(0.04,Math.min(1,s/0.035,(1-s)/0.035))); let out='',lab='';
+  order.forEach((n,i)=>{ const b=rwBand(C,RW_CUTS[i],RW_CUTS[i+1],th), f=rwWmFill(n,pid);
+    out+=`<path d="${b.d}" fill="${f.f}" stroke="#333" stroke-width="1"/>`; lab+=rwTxt(b.lx,b.ly,n,10,f.tc,true,true); });
+  let pre='';
+  if(pap){ const i=order.indexOf(pap.n), sm=(RW_CUTS[i]+RW_CUTS[i+1])/2+(pap.ds||0), p=rwAt(C,sm), q=rwAt(C,sm+.004), o=rwAt(C,sm-.004);
+    let tx=q.x-o.x, ty=q.y-o.y; const d=Math.hypot(tx,ty); tx/=d; ty/=d; let nx=-ty, ny=tx;
+    const gx=C.reduce((a,c)=>a+c.x,0)/C.length, gy=C.reduce((a,c)=>a+c.y,0)/C.length; if((gx-p.x)*nx+(gy-p.y)*ny<0){ nx=-nx; ny=-ny; }
+    const w=th(sm)/2, bx=p.x+nx*(w+1), by=p.y+ny*(w+1), ang=Math.atan2(ty,tx)*180/Math.PI, f=rwWmFill(pap.n,pid), tipx=p.x+nx*(w+9), tipy=p.y+ny*(w+9);
+    pre+=`<ellipse cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" rx="12" ry="8.5" transform="rotate(${ang.toFixed(1)} ${bx.toFixed(1)} ${by.toFixed(1)})" fill="${f.f}" stroke="#333" stroke-width="1"/>`;
+    if(pap.to) pre+=`<path d="M${tipx.toFixed(1)},${tipy.toFixed(1)} L${pap.to[0]},${pap.to[1]} M${(tipx+tx*3).toFixed(1)},${(tipy+ty*3).toFixed(1)} L${pap.to[0]},${pap.to[1]}" stroke="#888" stroke-width=".6" fill="none"/>`; }
+  return pre+out+lab; }
+function rwLbl(x,y,t){ return `<text x="${x}" y="${y}" font-size="9" fill="#555" font-family="Arial" text-anchor="middle">${t}</text>`; }
+function rwDbl(d){ return `<path d="${d}" fill="#fff" stroke="#333" stroke-width="4.6" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>`; }
+function rwTaper(segs,th){ const b=rwBand(rwCurve(segs,60),0,1,s=>th*Math.sqrt(Math.max(0.3,Math.min(1,s/0.08,(1-s)/0.08)))); return `<path d="${b.d}" fill="#d5dae0" stroke="#333" stroke-width="1"/>`; }
+function rwLeaf(hx,hy,tx,ty,bend){ const dx=tx-hx,dy=ty-hy,L=Math.hypot(dx,dy),nx=-dy/L,ny=dx/L, mx=(hx+tx)/2+nx*bend, my=(hy+ty)/2+ny*bend, w=3.4;
+  const f=v=>v.toFixed(1); return `<path d="M${f(hx+nx*w/2)},${f(hy+ny*w/2)} Q${f(mx+nx*w*0.7)},${f(my+ny*w*0.7)} ${f(tx)},${f(ty)} Q${f(mx-nx*w*0.7)},${f(my-ny*w*0.7)} ${f(hx-nx*w/2)},${f(hy-ny*w/2)} Z" fill="#555" stroke="#333" stroke-width=".6" stroke-linejoin="round"/>`; }
+function rwView(kind){
+  const pid='rv'+kind; let g=''; const ML='stroke="#333" stroke-width="1.4" fill="none" stroke-linecap="round"';
+  if(kind==='PLAX'){ // apex left, base right
+    g+=rwTaper([[[58,30],[88,-4],[178,-8],[202,34]]],9)+rwLbl(130,18,'RV');
+    g+=rwDbl('M192,78 C218,80 234,104 226,126 C216,148 176,148 148,128')+rwLbl(196,114,'LA');
+    g+=rwDbl('M150,40 C164,30 182,26 192,38 L232,34')+rwDbl('M160,76 C170,88 186,88 194,74 L232,72')+rwLbl(212,56,'Ao');
+    g+=rwLeaf(164,38,182,56,-4)+rwLeaf(166,78,182,58,4);
+    g+=rwLeaf(160,76,128,104,-4)+rwLeaf(154,124,122,106,5);
+    g+=rwLV([[[154,42],[100,32],[30,34],[16,80]],[[16,80],[14,120],[100,134],[154,126]]],[2,8,14,17,16,11,5],pid,19)+rwLbl(80,84,'LV');
+    return {vb:'4 -10 230 154', cap:'PARASTERNAL LONG AXIS', svg:g}; }
+  if(kind==='PSAX'){ const cx=100,cy=76,R=48,Ri=R*0.62;
+    const ang=n=>SEG[n-1][3], mid=(a,b)=>{ let d=((b-a+540)%360)-180; return a+d/2; };
+    let lab=''; const a78=mid(ang(7),ang(8)), a910=mid(ang(9),ang(10)), P=(r,a)=>rwPt(cx,cy,r,a);
+    g+=rwTaper([[P(R-5,a78+6),P(R*2.35,ang(8)-6),P(R*2.35,ang(9)+6),P(R-5,a910-6)]],12)+rwLbl(cx-61,cy+3,'RV');
+    [7,8,9,10,11,12].forEach(n=>{ const s=SEG[n-1], f=rwWmFill(n,pid); const sh=n===12?((ang(12)-mid(ang(11),ang(12))+540)%360-180):n===10?((ang(10)-mid(ang(9),ang(10))+540)%360-180):0; const [lx,ly]=rwPt(cx,cy,R*0.82,s[3]+Math.sign(sh)*13);
+      g+=`<path d="${rwSector(cx,cy,Ri,R,s[3]-30,s[3]+30)}" fill="${f.f}" stroke="#333" stroke-width="1"/>`; lab+=rwTxt(lx,ly,n,10,f.tc,true,true); });
+    [[12,11],[10,9]].forEach(([n,nb])=>{ const b=mid(ang(n),ang(nb)), dd=((ang(n)-b+540)%360)-180, a=b+Math.sign(dd)*16;
+      const f=rwWmFill(n,pid), r=7.5, [px,py]=P(Ri,a);
+      g+=`<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r}" fill="${f.f}" stroke="#333" stroke-width="1"/>`; });
+    g+=lab+rwLbl(cx,cy+3,'LV');
+    return {vb:'18 14 140 126', cap:'PARASTERNAL SHORT AXIS (MID)', svg:g}; }
+  if(kind==='A4C'){ // apex top; RV left
+    g+=rwDbl('M28,160 C10,204 26,238 70,240 L148,240 C190,238 200,200 188,160')+rwDbl('M98,152 C94,190 92,214 94,240');
+    g+=rwLbl(58,214,'RA')+rwLbl(142,216,'LA');
+    g+=rwTaper([[[116,22],[62,34],[22,108],[30,162]]],11)+rwLbl(66,118,'RV');
+    g+=rwLeaf(30,160,52,126,-3)+rwLeaf(88,162,54,130,5)+rwLeaf(100,160,126,122,-3)+rwLeaf(184,160,154,118,5);
+    g+=rwLV([[[98,162],[90,92],[98,22],[138,16]],[[138,16],[176,22],[192,92],[184,162]]],[3,9,14,17,16,12,6],pid,19,{n:12,ds:.02,to:[156,121]})+rwLbl(142,100,'LV');
+    return {vb:'8 6 194 240', cap:'APICAL 4-CHAMBER', svg:g}; }
+  if(kind==='A2C'){
+    g+=rwDbl('M44,160 C24,214 58,242 92,242 C128,242 158,214 142,160')+rwLbl(92,218,'LA');
+    g+=rwLeaf(48,160,72,124,-3)+rwLeaf(138,160,116,128,3);
+    g+=rwLV([[[48,162],[36,92],[50,22],[92,16]],[[92,16],[132,22],[148,92],[138,162]]],[4,10,15,17,13,7,1],pid,19,{n:10,ds:-.02,to:[71,126]})+rwLbl(92,100,'LV');
+    return {vb:'20 6 144 242', cap:'APICAL 2-CHAMBER', svg:g}; }
+}
+function rwViewSVG(kind,h){ const v=rwView(kind), [,, w, hh]=v.vb.split(' ').map(Number); const W=Math.round(h*w/hh);
+  return `<div class="rwv"><svg viewBox="${v.vb}" width="${W}" height="${h}" xmlns="http://www.w3.org/2000/svg">${rwDefs('rv'+kind)}${v.svg}</svg><div class="rwcap">${v.cap}</div></div>`; }
+function rwSegList(){
+  return `<div class="rwsl"><div class="rwcap" style="text-align:left;margin-bottom:3px"><b>17 segments</b></div>${SEG.map(s=>{ const g=rep.wm[s[0]-1]||0, f=rwWmFill(s[0],'rsl');
+    return `<div class="rwsr${g?' ab':''}"><svg width="13" height="11">${g&&BW()?rwDefs('rsl'):''}<rect x=".5" y=".5" width="12" height="10" fill="${f.f}" stroke="#555"/></svg><span class="n">${s[0]}.</span> ${esc(s[1])}${g?` <i>— ${esc(WM[g].n)}</i>`:''}</div>`; }).join('')}</div>`; }
+function rwmaPageHTML(){
+  if(!wmAbn() || isPed() || rep.rwPage===false) return '';
+  const tl=['LAD','RCA','LCx'].map(k=>`<span class="rwl"><svg width="22" height="12">${rwTerrDefs()}<rect x=".5" y=".5" width="21" height="11" fill="${rwTerrFill([k])}" stroke="#444"/></svg>${k}</span>`).join('')
+    +`<span class="rwl"><svg width="22" height="12">${rwTerrDefs()}<rect x=".5" y=".5" width="21" height="11" fill="${rwTerrFill(['RCA','LAD'])}" stroke="#444"/></svg>Shared</span>`;
+  return `<div class="sh">REGIONAL WALL MOTION & CORONARY TERRITORY</div>
+   <div class="rwtop">
+    <div class="rwbe">${rwPatientBE(255)}<div class="rwcap">Patient's wall motion · outer ring = coronary territory</div></div>
+    <div class="rwside"><div class="rwcap" style="margin-bottom:3px"><b>Coronary territories</b></div>${rwRefBE(150)}<div class="rwleg">${tl}</div></div>
+    ${rwSegList()}
+   </div>
+   <div class="rwviews">${rwViewSVG('PLAX',134)}${rwViewSVG('PSAX',134)}${rwViewSVG('A4C',200)}${rwViewSVG('A2C',200)}</div>
+   ${rwSummary()}`; }
+
 function buildPages1(RC){
   calcAll();
   const inner=pageInnerH();
@@ -1791,9 +1962,10 @@ function buildPages1(RC){
   fBlocks.forEach(bk=>{ if(fits(cur+bk)) cur+=bk; else { newPage(); cur+=bk; } });
   if(abbr && fits(cur+abbr)) cur+=abbr;
   if(cur) pages.push(cur);
+  const core=pages.length; const rw=rwmaPageHTML(); if(rw) pages.push(contHead()+rw);
   $('#measure').innerHTML='';
-  const info=`${pages.length} page${pages.length>1?'s':''} — page 1: measurements, wall motion, valves, Doppler; findings & impression from page 2${pages.length>2?' (continued)':''}. No text is shrunk.`;
-  return {pages:pages.map((p,i,arr)=>pageHTML('<div class="'+RC+'">'+p+'</div>',i,arr.length,1)),info};
+  const info=`${core} page${core>1?"s":""} — page 1: measurements, wall motion, valves, Doppler; findings & impression from page 2${core>2?' (continued)':''}. No text is shrunk.`;
+  return {core, pages:pages.map((p,i,arr)=>pageHTML('<div class="'+RC+'">'+p+'</div>',i,arr.length,1)),info:info+(rw?' + RWMA diagram page':'')};
 }
 /* ================= PREVIEW ================= */
 let pvT=null;
