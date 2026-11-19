@@ -104,6 +104,40 @@ textarea{resize:vertical}
 
 /* ============ REPORT (A4 @96dpi = 794 x 1123) ============ */
 .pg,.pg *{-webkit-text-size-adjust:none;text-size-adjust:none}
+.pg .wmr2{align-items:flex-start}
+.pg .sh2{font-weight:700;font-size:12px;border-bottom:1px solid #8a97a3;margin-bottom:3px;padding-bottom:1px}
+.pg .rwwm{margin-bottom:6px}
+.pg .rwtop2{display:flex;gap:12px;align-items:flex-start;margin-top:4px}
+.pg .rwright.rwl1{flex:none;width:318px}
+.pg .rwright{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.pg .rwright2{align-items:center;justify-content:center;gap:16px;padding-top:20px}
+.pg .rwrow{display:flex;gap:10px;align-items:flex-start}
+.pg .rwref2{text-align:center;flex:none}
+.pg .rwref2 .rwleg{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 8px;max-width:170px;margin:3px auto 0}
+.pg .rwlegw{flex:1;min-width:0;font-size:10px}
+.pg .rwbig{flex:1;display:flex;flex-direction:column;align-items:center}
+.pg .rwbig .rwlegw{flex:none;width:100%;margin-top:4px}
+.pg .rwbig .lgd2{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 10px;width:100%}
+.pg .rwbig .lgd2 .lgi{display:flex;align-items:center;gap:4px;text-align:left}
+.pg .rwright2 .rwlegw{flex:none;width:250px}
+.pg .rwbot{align-items:flex-start;margin-top:6px}
+.pg .wmdd{width:270px;flex:none}
+.pg .vlt td:nth-child(3),.pg .vlt td:nth-child(4){white-space:nowrap}
+.pg .rwref{font-size:10.5px;font-style:italic;font-weight:400;color:#333}
+.pg .p1fill{display:flex;flex-direction:column;justify-content:space-between}
+.pg .p1fill .cols2{align-items:stretch}
+.pg .p1fill .cols2>div,.pg .p1fill .cols4060>div{display:flex;flex-direction:column;gap:calc(3px + var(--pp,0px))}
+.pg .p1fill .cols2>div>table,.pg .p1fill .cols4060>div>table,.pg .p1fill .cols4060>div>.sec{flex:1 1 auto;margin:0!important}
+.pg .p1fill .cols4060>div{justify-content:flex-start}
+.pg .p1fill .mtb td,.pg .p1fill .vlt td{padding-top:calc(1.6px + var(--pp,0px))!important;padding-bottom:calc(1.6px + var(--pp,0px))!important}
+.pg .p1fill .ptb td{padding-top:calc(1.8px + var(--pp,0px)*.5)!important;padding-bottom:calc(1.8px + var(--pp,0px)*.5)!important}
+.pg .cols4060{display:grid;grid-template-columns:40% 1fr;gap:10px;align-items:stretch}
+.pg .cols4060>div{display:flex;flex-direction:column;justify-content:space-between}
+.pg .cols4060>div>:last-child{margin-bottom:0!important}
+.pg .cols4060 .vlt{margin-top:0}
+.pg .cols4060>div>table,.pg .cols4060>div>.sec{margin-bottom:calc(6px + var(--pp,0px)*1.5)!important}
+.pg .cols4060 .sec{margin-top:0}
+.pto{position:absolute;left:0;right:0;text-align:center;font-size:11px;font-weight:700;font-style:italic;letter-spacing:.3px;color:#111}
 .pg{width:794px;height:1123px;padding:30px 36px 26px;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif;font-size:11.77px;line-height:1.3;overflow:hidden;position:relative}
 .pgc{width:100%}
 .pg .rh{display:flex;align-items:center;gap:14px;border-bottom:2.5px solid #0b5c8a;padding-bottom:6px;min-height:70px}
@@ -120,6 +154,7 @@ textarea{resize:vertical}
 .pg table{width:100%;border-collapse:collapse}
 .pg .pt td{padding:1.8px 6px;font-size:11.77px;vertical-align:top}
 .pg .ptb{border:1px solid #8a97a3;margin-bottom:4px}
+.pg .ptb td:last-child{white-space:nowrap;width:1%}
 .pg .pt .k{font-weight:700;white-space:nowrap;width:1%}
 .pg .ex{text-align:center;font-size:10.17px;font-style:italic;color:#444;margin:2px 0 3px}
 .pg .lh{font-weight:700;text-align:center;text-decoration:underline;font-size:12.84px;margin:4px 0 3px;letter-spacing:.4px}
@@ -242,7 +277,23 @@ textarea{resize:vertical}
 .det{border-top:1px dashed var(--abnb);margin-top:8px;padding-top:8px}
 .det .dt{font-weight:700;font-size:13px;color:#8a5a00;margin-bottom:6px}
 .det .wkt{background:#fff;border:1px solid var(--abnb);border-radius:6px;padding:1px 8px;margin-left:6px;color:var(--ink)}
-.wk{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.chkr{background:#fdecea;border:1px solid #f3b8b2;border-radius:8px;padding:6px 10px;margin-top:6px}.chkr ul,.chky ul{margin:4px 0 0 18px;padding:0}
+.chky{background:#fff8e1;border:1px solid #f1d98a;border-radius:8px;padding:6px 10px;margin-top:6px}
+.vxbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:2px 0 4px}.vxbar .vxmic,.vxbar .vxai{display:none}body.has-mic .vxbar .vxmic,body.has-ai .vxbar .vxai{display:inline-block}
+.vxbar .vxmic.on{background:#b3261e;color:#fff;border-color:#b3261e}.vxst{font-size:12px;color:var(--mute)}
+.impcard{display:none}body.has-ai .impcard{display:block}
+.imptb{width:100%;border-collapse:collapse;font-size:13px}.imptb td{padding:3px 4px;border-bottom:1px solid var(--line)}.imptb td:nth-child(3){white-space:nowrap}
+input.imp{background:#eaf3ff!important;border-color:#7fb0ef!important}
+.prevb{background:#eef6ff;border:1px solid #b9d4f5;border-radius:8px;padding:8px 10px;font-size:13.5px;line-height:1.5}
+.prevb.on{background:#eefaf3;border-color:#a9dcc0}
+.mcombo{display:flex;flex-direction:column;gap:4px}
+.mcombo .mlab{font-size:12.5px;color:var(--mute)} .mcombo .mlab i{font-weight:400;font-size:11.5px}
+.mcombo textarea{width:100%;box-sizing:border-box;padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:14.5px;resize:vertical;min-height:44px}
+.mcombo .mrow{display:flex;gap:6px} .mcombo .mrow select{flex:1;min-width:0;padding:6px;border:1px solid var(--line);border-radius:7px;font-size:13.5px;background:#fff}
+.mhint .msp{font-size:12.5px;color:#8a5a00;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.mhint .mwarn{font-size:12.5px;color:#b3261e;margin-top:2px}
+.vpr{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.wk{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .wk label{display:flex;flex-direction:column;font-size:11.5px;color:var(--mute)}
 .wk select{padding:6px;border:1px solid var(--line);border-radius:7px;font-size:14px;background:#fff}
 /* v4 */
@@ -377,7 +428,7 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
 .pg .rwcap{font-size:10.17px;color:#333;text-align:center}
 .pg .rwleg{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;font-size:10.17px;margin-top:4px}
 .pg .rwl{display:inline-flex;align-items:center;gap:4px}
-.pg .rwviews{display:flex;justify-content:space-around;align-items:flex-end;gap:6px;margin:10px 0 8px;padding-top:6px;border-top:1px solid #ddd}
+.pg .rwviews{display:flex;justify-content:space-around;align-items:flex-end;gap:6px;margin:2px 0 8px;padding-top:0}
 .pg .rwv{text-align:center}
 .pg .rwt{width:100%;margin-top:4px}
 .pg .rwt td,.pg .rwt th{font-size:10.7px}
@@ -390,7 +441,15 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
 .pg.bw .rwt th{background:none}
 .pg .rwtop{gap:8px}
 .pg .rwside{flex:0 0 auto}
-.pg .rwsl{flex:1;min-width:170px;font-size:10.17px;line-height:1.3;border-left:1px solid #ddd;padding-left:8px}
+.pg .rwsl{flex:1;min-width:170px;font-size:10.17px;line-height:1.25}
+.pg .rwst{border-collapse:collapse;width:100%}
+.pg .rwst th{background:#dfe7ef;text-align:left;padding:2px 4px !important;border:1px solid #8a97a3;font-size:10.5px !important}
+.pg .rwst td{padding:1px 4px !important;border:1px solid #c3ccd5;white-space:nowrap;font-size:10.2px !important;line-height:1.25}
+.pg .rwst td.sw{width:14px;padding:1px 2px;text-align:center}
+.pg .rwst td svg{display:block}
+.pg .rwst tr.ab td{font-weight:700}
+.pg .rwst tr:not(.ab) td{color:#444}
+.pg.bw .rwst tr td{color:#000}
 .pg .rwsr{display:flex;align-items:center;gap:4px;white-space:nowrap}
 .pg .rwsr .n{display:inline-block;width:15px;text-align:right}
 .pg .rwsr.ab{font-weight:700}
@@ -453,6 +512,11 @@ const MM = [
   {q:1, g:'f', id:'fs',   l:'Fractional shortening',   s:'FS',    u:'%',  lo:25, hi:43, calc:1},
   {g:'f', id:'ef',   l:'LVEF (Teichholz)',        s:'LVEF (Teichholz)', u:'%', lo:55, nt:'≥ 55', calc:1, q:1},
   {g:'f', id:'efs',  l:"LVEF (Simpson's biplane)",s:"LVEF (Simpson's)", u:'%', lo:55, nt:'≥ 55'},
+  {q:1, g:'f', id:'lvedv',l:'LV end-diastolic volume (biplane)', s:'LVEDV', u:'ml', lo:{M:62,F:46}, hi:{M:150,F:106}},
+  {q:1, g:'f', id:'lvesv',l:'LV end-systolic volume (biplane)', s:'LVESV', u:'ml', lo:{M:21,F:14}, hi:{M:61,F:42}},
+  {g:'f', id:'lvedvi',l:'LVEDV index', s:'LVEDVi', u:'ml/m²', lo:{M:34,F:29}, hi:{M:74,F:61}, calc:1},
+  {g:'f', id:'lvesvi',l:'LVESV index', s:'LVESVi', u:'ml/m²', lo:{M:11,F:8}, hi:{M:31,F:24}, calc:1},
+  {g:'f', id:'wmsi', l:'Wall motion score index', s:'WMSI', u:'', hi:1.0, nt:'1.00', calc:1, dp:2},
   {g:'f', id:'ivspw',l:'IVS / LVPW ratio',        s:'IVS / LVPW', u:'', lo:1.0, hi:1.3, calc:1, dp:2},
   {g:'f', id:'lvm',  l:'LV mass',                 s:'LV mass', u:'g', lo:{M:96,F:66}, hi:{M:200,F:150}, calc:1},
   {g:'f', id:'lvmi', l:'LV mass index',           s:'LVMI',  u:'g/m²', lo:{M:49,F:43}, hi:{M:115,F:95}, calc:1},
@@ -604,7 +668,12 @@ const VDET = {
     ['jet','Jet',['','Central','Eccentric — anteriorly directed','Eccentric — posteriorly directed']]],
     n:[['vc','Vena contracta','mm'],['eroa','EROA','cm²'],['rvol','Regurgitant volume','ml']]},
   as:{t:'Aortic stenosis — details', f:[
-    ['calc','Calcification',['','No calcification','Mild calcification','Moderate calcification','Severe calcification']],
+    ['cusps','Cusps',['','Trileaflet','Bicuspid (fused RCC–LCC)','Bicuspid (fused RCC–NCC)','Bicuspid (fused LCC–NCC)','Unicuspid','Quadricuspid']],
+    ['rcc','RCC (right coronary cusp)',['','Not calcified','Mildly calcified','Moderately calcified','Severely calcified']],
+    ['lcc','LCC (left coronary cusp)',['','Not calcified','Mildly calcified','Moderately calcified','Severely calcified']],
+    ['ncc','NCC (non-coronary cusp)',['','Not calcified','Mildly calcified','Moderately calcified','Severely calcified']],
+    ['cfus','Commissural fusion',['','None','Present (rheumatic)']],
+    ['calc','Overall calcification',['','No calcification','Mild calcification','Moderate calcification','Severe calcification']],
     ['mob','Cusp mobility',['','Mildly reduced','Reduced','Severely reduced']],
     ['flow','Flow state',['','Normal flow','Low-flow, low-gradient (reduced EF)','Paradoxical low-flow (preserved EF)']]],
     n:[['dvi','Doppler velocity index','']]},
@@ -614,6 +683,10 @@ const VDET = {
     n:[['jw','Jet width / LVOT','%'],['vc','Vena contracta','mm']]}
 };
 const WK = [['m','Mobility'],['t','Thickening'],['c','Calcification'],['s','Subvalvular']];
+const WKD = {m:['','Highly mobile, only leaflet tips restricted','Leaflet mid & base portions normal mobility','Valve moves forward in diastole, mainly from the base','No or minimal forward movement in diastole'],
+  t:['','Leaflets near normal thickness (4–5 mm)','Mid-leaflets normal, marked thickening of margins (5–8 mm)','Thickening of the entire leaflet (5–8 mm)','Marked thickening of all leaflet tissue (>8–10 mm)'],
+  c:['','Single area of increased echo brightness','Scattered bright areas confined to leaflet margins','Brightness extending into mid-portions of leaflets','Extensive brightness throughout most of the leaflet tissue'],
+  s:['','Minimal thickening just below the leaflets','Thickening of chordae up to one-third of chordal length','Thickening extending to the distal third of the chordae','Extensive thickening & shortening of all chordae down to the papillary muscles']};
 const PTMC = ['Auto','Suitable for PTMC','Borderline for PTMC','Not suitable for PTMC'];
 const STATUS_CHIPS = ['S/P PCI','S/P CABG','S/P ASD device closure','S/P surgical closure of ASD','S/P VSD closure','S/P PDA device closure','S/P MVR','S/P AVR','S/P DVR','S/P PTMC','S/P mitral valve repair','S/P PPM implantation'];
 /* ---- EF bands (BSE terminology for 50–55) ---- */
@@ -696,12 +769,12 @@ function newVD(){ const o={}; Object.keys(VDET).forEach(k=>{ o[k]={}; VDET[k].f.
 function newReport(){
   const v={}; VALVES.forEach(x=>v[x.k]={morph:x.morph[0],coap:'Normal',st:'None',rg:'None',c:''});
   const f={}; FIND.forEach(x=>f[x.k]={o:x.o[0],c:''});
-  return {uid:'',inst:(()=>{ try{ return settings.lastInst||''; }catch(e){ return ''; } })(),pid:'',mrno:'',refno:'',name:'',age:'',sex:'',recv:today(),rdate:today(),ref:'',clin:'',
+  return {uid:'',inst:(()=>{ try{ return settings.lastInst||''; }catch(e){ return ''; } })(),pid:'',mob:'',mrno:'',refno:'',name:'',age:'',sex:'',recv:today(),rdate:today(),ref:'',clin:'',
     ward:'',bed:'',performer:'',prep:'',status:'',vunit:'',dx:'',ivcCol:'',
     desc:{pos:DESC.pos[0],av:DESC.av[0],va:DESC.va[0],ven:DESC.ven[0]},
     proc:PROC_DEFAULT, situs:'Solitus', ht:'',wt:'',bp:'',hr:'',rhythm:'Sinus rhythm',iq:'Good',
     m:{}, v, f, wm:Array(17).fill(0), vd:newVD(), cg:newCG(), efBand:'', ageN:'', ageU:'Years', final:false, tpl:'', wmTxt:'', rvwm:RVWM[0],
-    ddAuto:true, autoC:true, comments:'', autoI:true, impression:'', advice:'', note:'', layout:'auto', blanks:false, rwPage:true};
+    ddAuto:true, autoC:true, comments:'', autoI:true, impression:'', advice:'', note:'', layout:'auto', blanks:false, rwPage:true, rwTable:true};
 }
 let rep = newReport();
 let settings = {clinic:'',addr:'',contact:'',logo:'',doc:DOC_DEFAULT,entered:'',performer:'',vunit:'m/s'};
@@ -729,6 +802,8 @@ function ageYears(){
 const isPed = ()=>{ const a=ageYears(); return a!=null && a<18; };
 function ageTxt(){ const n=String(rep.ageN||'').trim(); if(n) return `${n} ${rep.ageU==='Years'?(+n===1?'Year':'Years'):rep.ageU==='Months'?(+n===1?'Month':'Months'):(+n===1?'Day':'Days')}`; return rep.age||''; }
 function bsaHow(){ const h=pnum(rep.ht), w=pnum(rep.wt); if(!w) return ''; if(isPed()) return h?'Haycock':'Costeff (weight only)'; return h?'Mosteller':''; }
+function bmi(){ const h=pnum(rep.ht), w=pnum(rep.wt); return (h&&w)?w/Math.pow(h/100,2):null; }
+const bmiTxt=()=>{ const v=bmi(); return v==null?'':v.toFixed(1)+' kg/m²'; };
 function bsa(){ const h=pnum(rep.ht), w=pnum(rep.wt); if(!w) return null;
   if(isPed()) return h?0.024265*Math.pow(w,0.5378)*Math.pow(h,0.3964):(4*w+7)/(w+90);
   return h?Math.sqrt(h*w/3600):null; }
@@ -753,6 +828,8 @@ function calcAll(){
   o.lvm = (d&&iv&&pw)?0.8*1.04*(Math.pow((iv+d+pw)/10,3)-Math.pow(d/10,3))+0.6:null;
   const b=bsa(); o.lvmi = (o.lvm&&b)?o.lvm/b:null;
   o.rwt = (d&&pw)?2*pw/d:null;
+  o.lvedvi = (o.lvedv&&b)?o.lvedv/b:null; o.lvesvi = (o.lvesv&&b)?o.lvesv/b:null;
+  o.wmsi = wmAbn()?wmsi():null;
   o.ea = (o.mve&&o.mva_)?o.mve/o.mva_:null;
   const ep = (o.esep&&o.elat)?(o.esep+o.elat)/2:(o.esep||o.elat||null);
   o.eep = (o.mve&&ep)?o.mve*100/ep:null;
@@ -766,12 +843,14 @@ function calcAll(){
   o.rvsp = o.paspIn!=null ? o.paspIn : (o.trpg!=null?o.trpg+(o.rap!=null?o.rap:3):null);
   // MVA from PHT
   if(o.mvapht==null && o.mvpht){ o.mvapht=220/o.mvpht; o.mvaphtAuto=true; }
+  else if(o.mvpht==null && o.mvapht){ o.mvpht=220/o.mvapht; o.mvphtAuto=true; }
   // LVOT → SV, SVi, AVA (continuity), DVI
   if(o.lvotd && o.lvotvti){ o.sv=Math.PI*Math.pow(o.lvotd/20,2)*o.lvotvti; const bb=bsa(); o.svi=bb?o.sv/bb:null; } else { o.sv=null; o.svi=null; }
   if(o.avarea==null && o.sv && o.avvti){ o.avarea=o.sv/o.avvti; o.avareaAuto=true; }
   o.dvi = (o.lvotvti&&o.avvti)?o.lvotvti/o.avvti:((o.lvot_v&&o.av_v)?o.lvot_v/o.av_v:null);
   // LAVI from LA volume
   if(o.lavi==null && o.lavol){ const bb=bsa(); if(bb){ o.lavi=o.lavol/bb; o.laviAuto=true; } }
+  else if(o.lavol==null && o.lavi){ const bb=bsa(); if(bb){ o.lavol=o.lavi*bb; o.lavolAuto=true; } }
   if(o.gls!=null) o.gls=-Math.abs(o.gls);
   C=o; return o;
 }
@@ -789,8 +868,10 @@ const DPS={rap:0,mvapht:2,avarea:2,lavi:0,gls:0};
 const isAuto = id=>!!C[id+'Auto'] || (id==='rap'&&C.rapAuto);
 const valTxt = d=>{ const v=C[d.id]; if(v==null) return ''; if(d.calc) return v.toFixed(d.dp||0); if(VEL_IDS.has(d.id) && !String(rep.m[d.id]||'').trim()) return autoVal(d.id); const t=String(rep.m[d.id]==null?'':rep.m[d.id]).trim(); return t||v.toFixed(DPS[d.id]!=null?DPS[d.id]:(d.dp||0)); };
 const VEL_IDS = new Set([...VD.map(x=>x.k+'_v'), ...ALLM.filter(d=>d.vel).map(d=>d.id)]);
-const PAIR = Object.assign({trv:'trpgIn', trpgIn:'trv'}, ...VD.map(x=>({[x.k+'_v']:x.k+'_pgIn', [x.k+'_pgIn']:x.k+'_v'})));
-function autoVal(id){ // computed display for the un-entered half of a velocity/PG pair
+const PAIR = Object.assign({trv:'trpgIn', trpgIn:'trv', mvpht:'mvapht', mvapht:'mvpht', lavol:'lavi', lavi:'lavol'}, ...VD.map(x=>({[x.k+'_v']:x.k+'_pgIn', [x.k+'_pgIn']:x.k+'_v'})));
+function autoVal(id){ // computed display for the un-entered half of a linked pair
+  if(id==='mvpht') return C.mvpht==null?'':String(Math.round(C.mvpht)); if(id==='mvapht') return C.mvapht==null?'':C.mvapht.toFixed(2);
+  if(id==='lavi') return C.lavi==null?'':String(Math.round(C.lavi)); if(id==='lavol') return C.lavol==null?'':String(Math.round(C.lavol));
   if(VEL_IDS.has(id)){ const v=C[id]; if(v==null) return ''; return isCm()?String(Math.round(v*100)):v.toFixed(2); }
   const pg = id==='trpgIn'?C.trpg:C[id.replace('_pgIn','_pg')]; return pg==null?'':pg.toFixed(1); }
 const dispVal = id=>{ const t=String(rep.m[id]||'').trim(); return t||autoVal(id); };
@@ -837,7 +918,7 @@ function wmText(){
 function ddSuggest(){
   const o=C, V=rep.v;
   if(/fibrillation/.test(rep.rhythm)) return {na:'Atrial fibrillation — the standard algorithm does not apply.'};
-  if(V.mv.st!=='None' || /Prosthetic|Repaired|annular calcification/.test(V.mv.morph) || SIG(V.mv.rg)) return {na:'Mitral valve disease / MAC / prosthesis — the standard algorithm does not apply.'};
+  if(V.mv.st!=='None' || /prosthe|repair|annular calcification/i.test(V.mv.morph) || SIG(V.mv.rg)) return {na:'Mitral valve disease / MAC / prosthesis — the standard algorithm does not apply.'};
   if(o.esep==null && o.elat==null) return null;
   const v1 = (o.esep!=null&&o.esep<=6)||(o.elat!=null&&o.elat<=7)||(o.esep!=null&&o.elat!=null&&(o.esep+o.elat)/2<=6.5);
   const es=o.esep&&o.mve?o.mve*100/o.esep:null, el=o.elat&&o.mve?o.mve*100/o.elat:null;
@@ -864,8 +945,10 @@ function ddSugHTML(){
 }
 /* stenosis suggestions from numbers */
 const SEVN=['None','Mild','Moderate','Severe'];
+function asDisc(){ const P=stenParts('av'), ava=P.find(p=>p[0]==='AVA'), fl=P.filter(p=>p[0]!=='AVA'); if(!ava||!fl.length) return 0;
+  const fg=Math.max(...fl.map(p=>p[1])); return ava[1]===3&&fg<3?1:(fg===3&&ava[1]<3?2:0); }
 function stenParts(k){ // per-parameter grades (1 mild, 2 moderate, 3 severe; 0 = none)
-  const o=C, P=[];
+  const o=C, P=[]; if(isPros(k)) return P;
   if(k==='av'){
     if(o.av_v!=null) P.push(['Vmax',o.av_v>=4?3:o.av_v>=3?2:o.av_v>=2.6?1:0,`Vmax ${mtxt('av_v')} ${vu()}`]);
     if(o.av_mg!=null) P.push(['mean PG',o.av_mg>=40?3:o.av_mg>=20?2:o.av_mg>=10?1:0,`mean PG ${mtxt('av_mg')} mmHg`]);
@@ -937,16 +1020,20 @@ function mvaTxt(){
 }
 function nv(k,id,u){ const v=String(rep.vd[k][id]||'').trim(); return v?`${v}${u?' '+u:''}`:''; }
 function msDetail(){
-  const d=rep.vd.ms, p=[];
-  if(d.aml&&d.aml===d.pml) p.push(`both AML & PML ${d.aml.toLowerCase()}`);
-  else { if(d.aml) p.push(`AML ${d.aml.toLowerCase()}`); if(d.pml) p.push(`PML ${d.pml.toLowerCase()}`); }
-  if(d.mob) p.push(lc(d.mob)); if(d.comm) p.push(`commissures ${lc(d.comm)}`); if(d.subv) p.push(`subvalvular apparatus: ${lc(d.subv)}`);
+  const d=rep.vd.ms, p=[], own=String(rep.v.mv.morph||'').toLowerCase(), has=re=>re.test(own) && !VALVES[0].morph.includes(rep.v.mv.morph);
+  if(!has(/\b(aml|pml|anterior mitral leaflet|posterior mitral leaflet)\b/)){ if(d.aml&&d.aml===d.pml) p.push(`both AML & PML ${d.aml.toLowerCase()}`);
+  else { if(d.aml) p.push(`AML ${d.aml.toLowerCase()}`); if(d.pml) p.push(`PML ${d.pml.toLowerCase()}`); } }
+  if(d.mob && !has(/doming|restrict|rigid|immobile|mobility/)) p.push(lc(d.mob)); if(d.comm && !has(/commissur/)) p.push(`commissures ${lc(d.comm)}`); if(has(/subvalvular|chord/)){} else if(d.wk&&d.wk.s) p.push(`subvalvular involvement stage ${d.wk.s} (${WKD.s[d.wk.s].charAt(0).toLowerCase()+WKD.s[d.wk.s].slice(1)})`); else if(d.subv) p.push(`subvalvular apparatus: ${lc(d.subv)}`);
   const t=wkTotal(), w=d.wk; if(t!=null) p.push(`Wilkins score ${t}/16 (M${w.m} T${w.t} C${w.c} S${w.s})`);
   return p.join('; ');
 }
 function mrDetail(){ const d=rep.vd.mr, p=[]; if(d.mech) p.push(lc(d.mech)); if(d.carp) p.push('Carpentier '+d.carp.replace(/\s*\(.*\)/,'')); if(d.jet) p.push(lc(d.jet)+' jet');
   [['vc','VC','mm'],['eroa','EROA','cm²'],['rvol','RVol','ml']].forEach(([id,n,u])=>{ const v=nv('mr',id,u); if(v) p.push(`${n} ${v}`); }); return p.join(', '); }
-function asDetail(){ const d=rep.vd.as, p=[]; if(d.calc) p.push(lc(d.calc)); if(d.mob) p.push(`${lc(d.mob)} cusp mobility`);
+function cuspTxt(){ const d=rep.vd.as, cc=[['RCC',d.rcc],['LCC',d.lcc],['NCC',d.ncc]].filter(x=>x[1]);
+  if(!cc.length) return ''; if(cc.length===3 && cc.every(x=>x[1]===cc[0][1])) return `all three cusps ${cc[0][1].toLowerCase()}`;
+  return cc.map(x=>`${x[0]} ${x[1].toLowerCase()}`).join(', '); }
+function asDetail(){ const d=rep.vd.as, p=[], own=String(rep.v.av.morph||'').toLowerCase(), free=!VALVES[1].morph.includes(rep.v.av.morph);
+  if(d.cusps && !(free&&/cusp|leaflet|bicuspid/.test(own))) p.push(lc(d.cusps)); const ct=cuspTxt(); if(ct && !(free&&/calcif/.test(own))) p.push(ct); if(d.cfus==='Present (rheumatic)' && !(free&&/commissur|fus/.test(own))) p.push('commissural fusion'); if(d.calc) p.push(lc(d.calc)); if(d.mob) p.push(`${lc(d.mob)} cusp mobility`);
   const ex=[]; if(C.av_v!=null) ex.push('Vmax '+mtxt('av_v')+' '+vu()); if(C.av_mg!=null) ex.push('mean PG '+mtxt('av_mg')+' mmHg'); if(C.avarea!=null) ex.push('AVA '+mtxt('avarea')+' cm²'); const dv=nv('as','dvi','')||(C.dvi!=null?C.dvi.toFixed(2):''); if(dv) ex.push('DVI '+dv); if(C.svi!=null) ex.push('SVi '+C.svi.toFixed(0)+' ml/m²');
   if(d.flow&&d.flow!=='Normal flow') ex.push(lc(d.flow)); return [p.join(', '),ex.join(', ')].filter(Boolean).join('; '); }
 function arDetail(){ const d=rep.vd.ar, p=[]; if(d.mech) p.push(lc(d.mech)); const jw=nv('ar','jw','%'), vc=nv('ar','vc','mm'); if(jw) p.push('jet width '+jw+' of LVOT'); if(vc) p.push('VC '+vc);
@@ -956,11 +1043,12 @@ function valveLine(x){
   if(x.k==='mv' && detOn('ms')){
     const md=msDetail(); p.push(`Mitral valve: ${lc(V.morph)}${md?'; '+md:''}`);
     if(V.st!=='None'){ const ex=[mvaTxt(), C.mv_mg!=null?'mean PG '+mtxt('mv_mg')+' mmHg':''].filter(Boolean); p.push(`${V.st.toLowerCase()} MS${ex.length?' ('+ex.join('; ')+')':''}`); const pt=ptmcText(); if(pt) p.push(pt.charAt(0).toLowerCase()+pt.slice(1)); }
-  } else p.push(`${x.n}: ${lc(V.morph)}`);
+  } else p.push(`${x.n}: ${isPros(x.k)?prDesc(x.k):lc(V.morph)}`);
   if(coapTxt(x.k)) p.push(coapTxt(x.k));
   if(x.k==='av' && V.st!=='None'){ const ad=asDetail(); p.push(`${V.st.toLowerCase()} AS${ad?' ('+ad+')':''}`); }
   else if(V.st!=='None' && x.k!=='mv') p.push(`${V.st.toLowerCase()} ${x.ab}S`);
-  if(V.rg==='None') p.push(`no ${x.ab}R`);
+  if(isPros(x.k)){}
+  else if(V.rg==='None') p.push(`no ${x.ab}R`);
   else { let r=`${rgL(V.rg)} ${x.ab}R`;
     if(x.k==='mv'&&detOn('mr')){ const t=mrDetail(); if(t) r+=` (${t})`; }
     if(x.k==='av'&&detOn('ar')){ const t=arDetail(); if(t) r+=` (${t})`; }
@@ -1051,7 +1139,7 @@ function genComments(){
   const pa=[]; ['mpa','lpa','rpa'].forEach(id=>{ if(C[id]!=null) pa.push(`${id.toUpperCase()} ${mtxt(id)} mm${flag(MM.find(d=>d.id===id))?' ↑':''}`); });
   if(pa.length) L.push(`Pulmonary arteries: ${pa.join(', ')}.`);
   L.push('# Others');
-  L.push(`Pericardium: ${lc(F.peri.o.replace('Pericardium is normal','normal, no pericardial effusion'))}${F.peri.c?' — '+F.peri.c:''}.`);
+  L.push(`Pericardium: ${periText(true)?lc(periText(true)):lc(F.peri.o.replace('Pericardium is normal','normal, no pericardial effusion'))}${F.peri.c?' — '+F.peri.c:''}.`);
   L.push(`Thrombus / vegetation / other mass: ${F.mass.o==='Absent'?'not seen':lc(F.mass.o)}${F.mass.c?' — '+F.mass.c:''}.`);
   { const it=ivcTxt(); L.push(`IVC: ${it!=null?it:lc(F.ivc.o)}${F.ivc.c?' — '+F.ivc.c:''}.`); }
   if(C.papm!=null) L.push(`Mean PA pressure ${mtxt('papm')} mmHg.`);
@@ -1077,12 +1165,14 @@ function phLine(){
   const g=p<50?'Mild':p<70?'Moderate':'Severe';
   return `${g} pulmonary hypertension (PASP ${p} mmHg)`;
 }
-function genImpression(){
+function genImpression(){ const t=genImpression0(), c=cmpLine(); return c?t+'\n'+c:t; }
+function genImpression0(){
   const F=rep.f, D=rep.desc, V=rep.v;
   const crit=[], prim=[], rw=[], rhy=[], ch=[], wt=[], dia=[], minor=[], oth=[];
   // critical
   if(F.mass.o!=='Absent') crit.push(F.mass.o+(F.mass.c?' — '+F.mass.c:''));
-  if(/Large/.test(F.peri.o)) crit.push(F.peri.o+(F.peri.c?' — '+F.peri.c:''));
+  if(periText(false) && (tpLevel()>0 || periSize(pnum(rep.m.peri_d))==='large')) crit.push(periText(false));
+  else if(!periText(false) && /Large/.test(F.peri.o)) crit.push(F.peri.o+(F.peri.c?' — '+F.peri.c:''));
   if(/dissection/i.test(F.aorta.o)) crit.push(F.aorta.o);
   if((rep.dx||'').trim()) prim.push(rep.dx.trim());
   // primary: congenital / position
@@ -1121,7 +1211,7 @@ function genImpression(){
   if(SIG(V.av.rg) && !usedR.av){ const d=rep.vd.ar; const ex=[]; if(d.mech) ex.push(lc(d.mech)); if(C.arpht!=null) ex.push('PHT '+mtxt('arpht')+' ms'); const vc=nv('ar','vc','mm'); if(vc) ex.push('VC '+vc);
     vl.push([rgN(V.av.rg)*0.75+0.2,`${V.av.rg} aortic regurgitation${ex.length?' ('+ex.join(', ')+')':''}`]); usedR.av=1; }
   ['tv','pv'].forEach(k=>{ const x=VALVES.find(z=>z.k===k); if(V[k].st!=='None'){ const P=stenParts(k); vl.push([sevN[V[k].st],`${V[k].st} ${x.n.split(' ')[0].toLowerCase()} stenosis${P.length?' ('+P.map(p=>p[2]).join(', ')+')':''}`]); } if(SIG(V[k].rg)){ vl.push([rgN(V[k].rg)*0.75,`${V[k].rg} ${x.ab}R${coapTxt(k)?' ('+coapTxt(k)+')':''}`]); usedR[k]=1; } });
-  VALVES.forEach(x=>{ if(/Prosthetic/.test(V[x.k].morph)) vl.push([0.1,`Normally functioning prosthetic ${x.n.toLowerCase()}`]); if(/Bicuspid/.test(V[x.k].morph)) vl.push([0.15,'Bicuspid aortic valve']); });
+  VALVES.forEach(x=>{ if(/prosthe/i.test(V[x.k].morph)) vl.push([prFunc(x.k)?0.9:0.1, isPros(x.k)?prImp(x.k):`Normally functioning prosthetic ${x.n.toLowerCase()}`]); if(/bicuspid/i.test(V[x.k].morph)) vl.push([0.15,'Bicuspid aortic valve']); });
   vl.sort((a,b)=>b[0]-a[0]);
   if(vl.length){ if(rheum) prim.push('Rheumatic heart disease: '+lc(vl[0][1])); else prim.push(vl[0][1]); vl.slice(1).forEach(x=>prim.push(x[1])); }
   else if(rheum) prim.push('Rheumatic involvement of the valves');
@@ -1159,15 +1249,16 @@ function genImpression(){
   const mg=[]; VALVES.forEach(x=>{ const g=V[x.k].rg, n=rgN(g); if(!usedR[x.k] && n>0 && n<2){ let e=mg.find(z=>z.g===g); if(!e){ e={g,v:[]}; mg.push(e); } e.v.push(x.ab+'R'); } });
   mg.sort((a,b)=>rgN(b.g)-rgN(a.g));
   if(mg.length) minor.push(mg.map(e=>`${rgL(e.g)} ${andJoin(e.v)}`).join('; ').replace(/^./,c=>c.toUpperCase()));
-  if(/Sclerotic/.test(V.av.morph) && V.av.st==='None') minor.push('Aortic valve sclerosis');
-  if(/annular calcification/.test(V.mv.morph)) minor.push('Mitral annular calcification');
+  if(/scleros|sclerotic/i.test(V.av.morph) && V.av.st==='None') minor.push('Aortic valve sclerosis');
+  if(/annular calcification/i.test(V.mv.morph)) minor.push('Mitral annular calcification');
   if(/prolapse/i.test(V.mv.morph) && !SIG(V.mv.rg)) minor.push('Mitral valve prolapse');
-  if(/Prolapse/.test(V.tv.morph)) minor.push('Tricuspid valve prolapse');
+  if(/prolaps/i.test(V.tv.morph)) minor.push('Tricuspid valve prolapse');
   const valveAny = vl.length || minor.length || rheum || VALVES.some(x=>V[x.k].morph!==x.morph[0]);
   if(!valveAny) minor.push('Normal cardiac valves');
   // others
   { const pl=phLine(); if(pl) oth.push(pl); }
-  if(F.peri.o!=='Pericardium is normal' && !/Large/.test(F.peri.o)) oth.push(F.peri.o);
+  if(periText(false)){ if(!(tpLevel()>0 || periSize(pnum(rep.m.peri_d))==='large')) oth.push(periText(false)); }
+  else if(F.peri.o!=='Pericardium is normal' && !/Large/.test(F.peri.o)) oth.push(F.peri.o);
   if(ivcTxt()!=null){ if(C.rapIVC===15) oth.push(`Dilated IVC with <50% collapse (raised RA pressure, ~15 mmHg)`); }
   else if(/^Dilated/.test(F.ivc.o)) oth.push('Dilated IVC with reduced collapse (raised RA pressure)');
   // final systolic line
@@ -1185,7 +1276,7 @@ function genImpression(){
   const body=[...crit,...prim,...rw,...rhy,...ch,...wt,...dia,...minor,...oth];
   const abnormal = [...crit,...prim,...rw,...rhy,...ch,...wt,...dia,...oth, ...minor.filter(x=>x!=='Normal cardiac valves'), ...(bl?['bl']:[])];
   if(!abnormal.length) return ['Normal echocardiographic study','No regional wall motion abnormality at rest','Normal cardiac chambers & valves',last||'Normal LV & RV systolic function'].filter(Boolean).join('\n');
-  if(!wmAbn() && (rep.status||'').trim()) body.splice(crit.length+prim.length,0,'No regional wall motion abnormality at rest');
+  if(!wmAbn() && (rep.status||'').trim() && !body.some(x=>/^No regional wall motion abnormality/.test(x))) body.splice(crit.length+prim.length,0,'No regional wall motion abnormality at rest');
   return [...body,last].filter(Boolean).join('\n');
 }
 function ddAutoVal(){
@@ -1206,9 +1297,10 @@ function tplMeasure(){ // a template's LV / LA wording never overrides measureme
   if(T.la && C.la!=null && rep.f.la.o===T.la) rep.f.la.o='Normal size';
 }
 function syncAuto(){
-  calcAll(); tplMeasure(); autoSten(); applyDdAuto();
+  calcAll(); tplMeasure(); autoSten(); applyDdAuto(); periSync();
   if(rep.autoC) rep.comments=genComments();
   if(rep.autoI) rep.impression=genImpression();
+  if(typeof periRefresh==='function' && document.getElementById('periOut')) periRefresh();
   const tc=$('#taC'), ti=$('#taI');
   if(tc && rep.autoC && document.activeElement!==tc) tc.value=rep.comments;
   if(ti && rep.autoI && document.activeElement!==ti) ti.value=rep.impression;
@@ -1236,7 +1328,7 @@ function wmPat(id,i){
   return `<pattern id="${id}${i}" width="${sz}" height="${sz}" patternUnits="userSpaceOnUse"><rect width="${sz}" height="${sz}" fill="#fff"/>${P[i]}</pattern>`;
 }
 const BW = ()=>!!settings.bw;
-function bullseye(interactive){
+function bullseye(interactive,num){
   const cx=210, cy=210; let s='';
   const bw = !interactive && BW();
   if(bw) s+=`<defs>${[1,2,3,4,5,6,7].map(i=>wmPat('bwp',i)).join('')}</defs>`;
@@ -1253,10 +1345,12 @@ function bullseye(interactive){
     const col=dark?'#fff':'#111';
     const halo=bw&&g>0&&g<7?' stroke="#fff" stroke-width="3.2" paint-order="stroke" stroke-linejoin="round"':'';
     const xf=interactive?9:14;
+    if(ring==='x'&&num){ const o=xf*0.55; s+=`<text x="${cx}" y="${cy-xf-3+o}" font-size="${xf+3}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">17</text><text x="${cx}" y="${cy-2+o+2}" font-size="${xf}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">TRUE</text><text x="${cx}" y="${cy+xf+2.5+o}" font-size="${xf}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">APEX</text>`; return; }
     if(ring==='x'){ s+=`<text x="${cx}" y="${cy-2}" font-size="${xf}" font-weight="700" text-anchor="middle" fill="${col}"${halo} pointer-events="none" font-family="Arial">TRUE</text><text x="${cx}" y="${cy+xf+0.5}" font-size="${xf}" font-weight="700" text-anchor="middle" fill="${col}"${halo} pointer-events="none" font-family="Arial">APEX</text>`; return; }
     const rMid=(R[ring][0]+R[ring][1])/2, [x,y]=pt(cx,cy,rMid,ang);
     let rot=90-ang; while(rot>90) rot-=180; while(rot<-90) rot+=180;
     const fs=interactive?(ring==='b'?9.5:ring==='m'?9:8):(ring==='b'?14.5:13.8);
+    if(num){ const fs=ring==='b'?12.5:ring==='m'?(words.join('').length>11?10.3:11.5):10, o=fs*0.55; s+=`<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot})"><text y="${(-fs-2+o).toFixed(1)}" font-size="${fs+1.5}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">${n}</text><text y="${(-1+o).toFixed(1)}" font-size="${fs}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">${words[0]}</text><text y="${(fs+1+o).toFixed(1)}" font-size="${fs}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">${words.slice(1).join(' ')}</text></g>`; return; }
     s+=`<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot})" pointer-events="none"><text y="-2" font-size="${fs}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">${words[0]}</text><text y="${fs+0.5}" font-size="${fs}" font-weight="700" text-anchor="middle" fill="${col}"${halo} font-family="Arial">${words.slice(1).join(' ')}</text>${interactive?`<text y="${2*fs+2}" font-size="${fs-1}" text-anchor="middle" fill="${col}" opacity=".55" font-family="Arial">${n}</text>`:''}</g>`;
   });
   return `<svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">${s}</svg>`;
@@ -1310,11 +1404,11 @@ function refreshM(){
   });
   VD.forEach(x=>{ const row=document.querySelector(`[data-vdr="${x.k}"]`); if(!row) return;
     row.classList.toggle('abn',!!(flagV(C[x.k+'_v'],x.vlo,x.vhi)||flagV(C[x.k+'_mg'],null,x.mgHi))); });
-  const b=bsa(); const bi=$('#bsaOut'); if(bi) bi.value=b?b.toFixed(2)+' m² — '+bsaHow():'';
+  const b=bsa(); const bi=$('#bsaOut'); if(bi) bi.value=b?b.toFixed(2)+' m² — '+bsaHow():''; const mi=$('#bmiOut'); if(mi) mi.value=bmiTxt();
   const dsg=$('#ddSug'); if(dsg) dsg.innerHTML=ddSugHTML();
   const dxs=$('#dxSug'); if(dxs) dxs.innerHTML=dxSugHTML();
   const eo=$('#efOut'); if(eo){ const e=efInfo(); eo.textContent=e?`${e.g} LV systolic function — LVEF ${e.ef}% (${e.how})`:'No EF yet — tap a band, or enter LVIDd/LVIDs (Teichholz) or Simpson\'s.'; }
-  pairRefresh();
+  pairRefresh(); periRefresh(); { const mc=$('#mvaCalc'); if(mc) mc.textContent=mvaCalcTxt(); ['mv','av'].forEach(k=>{ const o=$('#prOut_'+k); if(o) o.textContent=prOutTxt(k); }); }
   VALVES.forEach(x=>{ const el=document.querySelector(`[data-sug="${x.k}"]`); if(el) el.innerHTML=sugHTML(x.k); const pk=document.querySelector(`[data-pk="${x.k}"]`); if(pk) pk.textContent=C[x.k+'_pg']!=null?`Peak PG ${C[x.k+'_pg'].toFixed(0)} mmHg (auto)`:'Peak PG auto from Vmax'; });
 }
 function sugHTML(k){
@@ -1325,12 +1419,16 @@ function sugHTML(k){
 }
 const TR_CHAIN=['trv','ivcd','rap','trpg','rvsp','trpgIn','paspIn'];
 function ivcCtl(){ return `<div class="ivcc"><b>IVC collapse (sniff)</b>${['>50%','<50%'].map(v=>`<button class="mini${rep.ivcCol===v?' pri':''}" data-ivc="${v}">${v}</button>`).join('')}<span class="hint" style="margin:0">${C.rapIVC!=null?`→ RAP ${C.rapIVC} mmHg${C.rapGuess?' (add collapse to confirm)':''}`:(isPed()?'Child: collapse → RAP 3 / 8 (size cut-off not used)':'IVC diameter + collapse → RAP 3 / 8 / 15')}</span></div>`; }
+function mvaCalcTxt(){ if(C.mvpht==null||C.mvapht==null) return 'Enter PHT or MVA (PHT) — the other is calculated: MVA = 220 / PHT.';
+  const fromA=C.mvphtAuto; const s=fromA?`PHT = 220 / MVA = 220 / ${C.mvapht.toFixed(2)} = ${Math.round(C.mvpht)} ms`:`MVA (PHT) = 220 / PHT = 220 / ${Math.round(C.mvpht)} = ${C.mvapht.toFixed(2)} cm²`;
+  const pl=C.mvarea!=null?` · Planimetry ${C.mvarea.toFixed(2)} cm²${Math.abs(C.mvarea-C.mvapht)>0.3?' — differs from PHT by >0.3 cm²; planimetry is the reference (PHT is unreliable after PTMC, with AR, or abnormal LV compliance)':''}`:'';
+  const g=C.mvapht<1?'severe':C.mvapht<=1.5?'moderate':C.mvapht<2?'mild':'not significant'; return `${s} → ${g} MS by PHT${pl}`; }
 function stenFields(k){
   const f=(id,lab)=>`<label>${lab}<input type="text" inputmode="decimal" data-m="${id}" value="${esc(PAIR[id]?dispVal(id):(rep.m[id]||''))}"${PAIR[id]?pairCls(id):''}></label>`;
   const pk=f(k+'_pgIn','Peak PG (mmHg)');
   let h='';
   if(k==='av') h=f('av_v',`Vmax (${vu()})`)+pk+f('av_mg','Mean PG (mmHg)')+f('avarea','AVA (cm²)');
-  if(k==='mv') h=f('mvarea','MVA planimetry (cm²)')+f('mvpht','PHT (ms)')+f('mv_mg','Mean PG (mmHg)');
+  if(k==='mv') h=f('mvpht','MV PHT (ms)')+f('mvapht','MVA by PHT (cm²)')+f('mvarea','MVA planimetry (cm²)')+f('mv_mg','Mean PG (mmHg)')+`<div class="full hint" id="mvaCalc">${mvaCalcTxt()}</div>`;
   if(k==='tv') h=f('tv_v',`Vmax (${vu()})`)+pk+f('tv_mg','Mean PG (mmHg)');
   if(k==='pv') h=f('pv_v',`Vmax (${vu()})`)+pk;
   return `<div class="g3 pas" style="margin-top:6px">${h}</div>`;
@@ -1342,11 +1440,15 @@ function valveCard(x){
   const V=rep.v[x.k];
   const isAb = V.morph!==x.morph[0] || V.st!=='None' || ANYR(V.rg) || (V.coap&&V.coap!=='Normal');
   return `<div class="vcard${isAb?' abn':''}" data-vc="${x.k}"><div class="vt0">${esc(x.n)}</div>
-   <div class="g3"><label class="full">Morphology${sel(`data-v="${x.k}.morph"`,x.morph,V.morph)}</label>
+   <div class="g3"><div class="full mcombo"><span class="mlab">Morphology <i>— pick, then edit or add your own words</i></span>
+     <textarea rows="${Math.max(2,Math.ceil(String(V.morph||'').length/38))}" data-ac data-vm="${x.k}" spellcheck="false">${esc(V.morph)}</textarea>
+     ${vxBar(`textarea[data-vm='${x.k}']`)}<div class="mrow"><select data-mpick="${x.k}"><option value="">▾ Pick a description…</option><optgroup label="Standard">${x.morph.map(o=>`<option>${esc(o)}</option>`).join('')}</optgroup>${vphr(x.k).length?`<optgroup label="My saved descriptions">${vphr(x.k).map(o=>`<option>${esc(o)}</option>`).join('')}</optgroup>`:''}</select>
+     <button class="mini" data-act="msave" data-k="${x.k}">⭐ Save</button></div>
+     <div class="mhint" data-mh="${x.k}">${morphHintHTML(x.k)}</div></div>
    <label class="full">Coaptation${sel(`data-v="${x.k}.coap"`,COAP,V.coap||'Normal')}</label>
    <label>${x.ab}S (stenosis)${sel(`data-v="${x.k}.st"`,STG,V.st)}</label>
    <label>${x.ab}R (regurgitation)${sel(`data-v="${x.k}.rg"`,GR,V.rg)}</label>
-   <label class="full">Comment (optional)<input type="text" data-ac data-v="${x.k}.c" value="${esc(V.c)}" placeholder="e.g. eccentric jet, commissural fusion"></label></div>
+   ${V.c?`<label class="full">Comment (old reports)<input type="text" data-ac data-v="${x.k}.c" value="${esc(V.c)}"></label>`:''}</div>
    ${x.k==='tv'&&V.rg!=='None'?`<div class="g3 pas" style="margin-top:6px"><label>TR peak velocity (${vu()})<input type="text" inputmode="decimal" data-m="trv" value="${esc(dispVal('trv'))}"${pairCls('trv')}></label>
      <label>TR peak gradient (mmHg)<input type="text" inputmode="decimal" data-m="trpgIn" value="${esc(dispVal('trpgIn'))}"${pairCls('trpgIn')}></label>
      <label>IVC diameter (mm)<input type="text" inputmode="decimal" data-m="ivcd" value="${esc(rep.m.ivcd||'')}"></label>
@@ -1354,7 +1456,7 @@ function valveCard(x){
      <label>RAP override (mmHg)<input type="text" inputmode="decimal" data-m="rap" value="${esc(rep.m.rap||'')}"></label>
      <label>PASP direct (mmHg)<input type="text" inputmode="decimal" data-m="paspIn" value="${esc(rep.m.paspIn||'')}"></label>
      <div class="full hint" id="pasOut">${esc(pasTxt())}</div></div>`:''}
-   ${V.st!=='None'?stenFields(x.k):''}
+   ${isPros(x.k)?prHTML(x.k):V.st!=='None'?stenFields(x.k):''}
    <div data-sug="${x.k}">${sugHTML(x.k)}</div>
    ${(x.k==='mv'?['ms','mr']:x.k==='av'?['as','ar']:[]).filter(detOn).map(detHTML).join('')}</div>`;
 }
@@ -1366,7 +1468,7 @@ function detHTML(k){
   h+='</div>';
   if(k==='ms'){
     const t=wkTotal();
-    h+=`<div class="dt" style="margin-top:8px">Wilkins score <span class="wkt" id="wkTot">${t!=null?t+' / 16':'—'}</span></div><div class="wk">${WK.map(([id,n])=>`<label>${n}<select data-wk="${id}">${[0,1,2,3,4].map(v=>`<option value="${v}"${d.wk[id]===v?' selected':''}>${v||'—'}</option>`).join('')}</select></label>`).join('')}</div>
+    h+=`<div class="dt" style="margin-top:8px">Wilkins score <span class="wkt" id="wkTot">${t!=null?t+' / 16':'—'}</span></div><div class="wk">${WK.map(([id,n])=>`<label>${n}<select data-wk="${id}">${[0,1,2,3,4].map(v=>`<option value="${v}"${d.wk[id]===v?' selected':''}>${v?v+' — '+WKD[id][v]:'—'}</option>`).join('')}</select></label>`).join('')}</div>
      <div class="g3" style="margin-top:6px"><label class="full">PTMC suitability<select data-vd="ms.ptmc">${PTMC.map(o=>`<option${d.ptmc===o?' selected':''}>${o}</option>`).join('')}</select></label></div>
      <p class="hint" id="ptmcAuto">${esc(ptmcText()||'Fill all four Wilkins scores for an automatic suggestion (≤ 8 suitable, 9–10 borderline, > 10 not suitable; moderate/severe MR or LA clot = not suitable).')}</p>
      <p class="hint">MVA by planimetry and PHT, and the mean gradient, are entered here or in the "Doppler" card.</p>`;
@@ -1384,11 +1486,12 @@ function wmCard(){
    <label class="f" style="margin-top:6px">Extra note on LV wall motion (optional)<input type="text" data-ac data-g="wmTxt" value="${esc(rep.wmTxt)}" placeholder="e.g. paradoxical septal motion"></label>
    <label class="f" style="margin-top:6px">RV wall motion<select data-g="rvwm">${RVWM.map(o=>`<option${rep.rvwm===o?' selected':''}>${esc(o)}</option>`).join('')}</select></label>
    <label class="chk" style="display:flex;gap:6px;font-size:14px;margin-top:10px"><input type="checkbox" data-g="rwPage"${rep.rwPage!==false?' checked':''}> Add RWMA diagram page</label>
-   <p class="hint" style="margin-top:2px">Bull's-eye, coronary territory, 4 echo views and summary — added as the last page automatically when any segment is abnormal (adults). Untick if this report does not need the diagram.</p>
+   <label class="chk" style="display:flex;gap:6px;font-size:14px;margin-top:6px"><input type="checkbox" data-g="rwTable"${rep.rwTable!==false?' checked':''}> 17-segment table on RWMA page</label>
+   <p class="hint" style="margin-top:2px">Bull's-eye, coronary territory, 4 echo views and summary — added as page 2 automatically when any segment is abnormal (adults). Untick if this report does not need the diagram.</p>
   </div>`;
 }
 const frowHTML = x=>{ const F=rep.f[x.k]; return `<div class="frow${F.o!==x.o[0]?' abn':''}" data-fr="${x.k}"><b>${esc(x.n)}</b><div class="fc">${sel(`data-f="${x.k}.o"`,x.o,F.o)}
-     ${F.o!==x.o[0]||F.c?`<input type="text" data-ac data-f="${x.k}.c" value="${esc(F.c)}" placeholder="details (optional)">`:''}</div></div>`; };
+     ${F.o!==x.o[0]||F.c?`<input type="text" data-ac data-f="${x.k}.c" value="${esc(F.c)}" placeholder="details (optional)">`:''}</div></div>${x.k==='peri'?`<div id="periBox">${periHTML()}</div>`:''}`; };
 const GV_KEYS=['aorta','archs','pda'];
 function wmSummary(){ return wmAbn()?`LV: ${wmText()}  ·  WMSI ${wmsi().toFixed(2)}`:'LV: No wall motion abnormality is seen.'; }
 function paintBrushes(){ document.querySelectorAll('.brushes .lgi').forEach(el=>el.classList.toggle('on',+el.dataset.brush===brush)); }
@@ -1444,19 +1547,43 @@ function checks(){
     if(!isPed() && rep.f.la.o==='Dilated' && C.la!=null && !flag(laD) && !T.la) W.push(`LA marked "dilated" but LA ${mtxt('la')} mm is within normal limits. Check the LA finding.`);
     if(rep.ddAuto===false){ const a=ddAutoVal(); if(a && a!==rep.f.dd.o) W.push(`Diastolic function set to "${rep.f.dd.o}" but the measurements suggest "${a}". Check the diastolic grade.`); }
   }
-  VALVES.forEach(x=>{ const P=stenParts(x.k).filter(p=>p[1]>0||stenParts(x.k).some(q=>q[1]>0)); if(P.length>1 && new Set(P.map(p=>p[1])).size>1) W.push(`${x.ab}S grading discordant: ${P.map(p=>`${p[2]} → ${SEVN[p[1]]}`).join('; ')}. Check SVi / low-flow state and measurements.`); });
+  VALVES.forEach(x=>{ if(x.k==='av'&&asDisc()) return; const P=stenParts(x.k).filter(p=>p[1]>0||stenParts(x.k).some(q=>q[1]>0)); if(P.length>1 && new Set(P.map(p=>p[1])).size>1) W.push(`${x.ab}S grading discordant: ${P.map(p=>`${p[2]} → ${SEVN[p[1]]}`).join('; ')}. Check SVi / low-flow state and measurements.`); });
   ['mv','av'].forEach(k=>{ const sg=suggest(k); if(sg && V[k].stAuto===false && V[k].st!==sg.g) W.push(`${k==='mv'?'MS':'AS'} grade "${V[k].st}" differs from the numbers (${sg.why} → ${sg.g}).`); });
   if(V.mv.st!=='None' && C.mvarea==null && C.mvapht==null) W.push('MS selected but MVA is not entered.');
   if(C.trvE!=null && V.tv.rg==='None') W.push('TR velocity is entered but TR is "None".');
   if(V.tv.rg!=='None' && C.rvsp==null) W.push('TR is present — enter TR peak velocity, TR PG or PASP (PASP and PH grade must be reported).');
   if(/LA \/ LAA thrombus/.test(rep.f.mass.o) && /^Suitable/.test(rep.vd.ms.ptmc)) W.push('LA / LAA thrombus with "Suitable for PTMC".');
   { const d=ddSuggest(); if(d&&d.g&&d.g!=='Indeterminate'&&rep.f.dd.o!==d.g) W.push(`Diastolic function "${rep.f.dd.o}" differs from the ASE 2025 suggestion (${d.g}).`); }
-  if(V.av.st!=='None' && C.svi!=null && C.svi<35 && (!rep.vd.as.flow||rep.vd.as.flow==='Normal flow')) W.push(`AS with SVi ${C.svi.toFixed(0)} ml/m² (<35): consider a low-flow state.`);
+  if(V.av.st!=='None' && !asDisc() && C.svi!=null && C.svi<35 && (!rep.vd.as.flow||rep.vd.as.flow==='Normal flow')) W.push(`AS with SVi ${C.svi.toFixed(0)} ml/m² (<35): consider a low-flow state.`);
+  VALVES.forEach(x=>{ morphIssues(x.k).forEach(m=>W.push(m)); const sp=spellIssues(rep.v[x.k].morph); if(sp.length) W.push(`${x.n}: possible spelling mistake — ${sp.map(([w,r])=>w+' → '+r).join(', ')}.`); });
+  { const P=stenParts('av'), ava=P.find(p=>p[0]==='AVA'), fl=P.filter(p=>p[0]!=='AVA');
+    if(ava && fl.length){ const fg=Math.max(...fl.map(p=>p[1])), ef=C.efs!=null?C.efs:(rep.efBand?bandMid(rep.efBand):C.ef), sv=C.svi;
+      const flowTxt=fl.map(p=>p[2]).join(', ');
+      if(ava[1]===3 && fg<3){
+        let t=`Discordant AS grading: ${ava[2]} suggests SEVERE, but ${flowTxt} ${fl.length>1?'are':'is'} not severe. First re-check LVOT diameter and LVOT VTI (small errors change AVA a lot).`;
+        if(sv!=null && sv<35) t+= ef!=null&&ef<50 ? ` SVi ${sv.toFixed(0)} ml/m² with LVEF ${Math.round(ef)}%: classical low-flow, low-gradient AS — consider dobutamine stress echo.` : ` SVi ${sv.toFixed(0)} ml/m² with preserved LVEF: paradoxical low-flow, low-gradient AS — consider CT aortic valve calcium score.`;
+        else if(sv!=null) t+=` SVi ${sv.toFixed(0)} ml/m² (normal flow): likely moderate AS or measurement error — consider CT calcium score.`;
+        else t+=' Measure LVOT VTI (SVi) to check for a low-flow state.';
+        W.push(t); }
+      else if(fg===3 && ava[1]<3) W.push(`Discordant AS grading: ${flowTxt} suggests SEVERE, but ${ava[2]} is not severe. Check for a high-flow state (anaemia, fever, significant AR, AV fistula) or an overestimated LVOT diameter.`);
+    } }
+  if(tpLevel()===2) W.push('Pericardial effusion with echocardiographic features of cardiac TAMPONADE — inform the treating team urgently.');
+  else if(tpLevel()===1) W.push('Pericardial effusion with a single tamponade sign — consider early tamponade physiology and close follow-up.');
+  ['mv','av'].forEach(k=>{ if(!isPros(k)) return; const d=pr(k), f=prFunc(k), nm=k==='mv'?'mitral':'aortic';
+    if(f===2) W.push(`Prosthetic ${nm} valve: Doppler findings suggest significant stenosis / obstruction — check leaflet / disc motion, consider fluoroscopy / TEE for thrombus or pannus.`);
+    else if(f===1) W.push(`Prosthetic ${nm} valve: possible stenosis — compare with the baseline post-operative study; consider PPM vs obstruction.`);
+    if(/Moderate|Severe/.test(d.pvl||'')) W.push(`Prosthetic ${nm} valve: ${d.pvl.toLowerCase()} paravalvular leak.`);
+    if(/Thrombus|Vegetation/.test(d.mass||'')) W.push(`Prosthetic ${nm} valve: ${d.mass.toLowerCase()} — urgent clinical correlation.`);
+    if(/Rocking|Immobile/.test(d.motion||'')) W.push(`Prosthetic ${nm} valve: ${d.motion.toLowerCase()} — urgent clinical correlation.`);
+    if(!d.type) W.push(`Prosthetic ${nm} valve: type (mechanical / bioprosthetic) not selected.`); });
   if(rep.tpl && C.lvidd==null && !rep.efBand) W.push(`Template "${rep.tpl}" applied but measurements are empty.`);
   if(isPed() && pnum(rep.wt) && ageYears()<0.1 && pnum(rep.wt)<2.5) W.push('Low birth weight: PHN z-scores were derived from term babies — interpret with caution.');
   return W;
 }
-function checksHTML(){ const W=checks(); return W.length?`<div class="chk-box"><b>⚠ Check before printing (${W.length})</b><ul>${W.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:`<div class="chk-box ok">✓ No problems found</div>`; }
+const YELLOW_RE=/spelling|Sex is not selected|Age is not entered|^Template|Low birth weight|consider a low-flow state|differs from the ASE|type \(mechanical|single tamponade sign|possible stenosis — compare/i;
+function checksSplit(){ const W=checks(); return {red:W.filter(w=>!YELLOW_RE.test(w)), yel:W.filter(w=>YELLOW_RE.test(w))}; }
+function checksHTML(){ const {red,yel}=checksSplit(); if(!red.length&&!yel.length) return `<div class="chk-box ok">✓ No problems found</div>`;
+  return `<div class="chk-box"><b>Check before printing</b>${red.length?`<div class="chkr"><b>🔴 Must check (${red.length})</b><ul>${red.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}${yel.length?`<div class="chky"><b>🟡 For information (${yel.length})</b><ul>${yel.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}</div>`; }
 function renderForm(){
   calcAll();
   const ped=isPed(), b=bsa();
@@ -1464,6 +1591,8 @@ function renderForm(){
    <button class="mini${pickOn()?' pri':''}" data-act="pick" title="Tap-to-pick numbers">🔢 ${pickOn()?'Tap':'Type'}</button>
    <span class="badge ${rep.final?'fin':'dra'}">${rep.final?'✔ FINAL':'DRAFT'}</span></div>
   ${backupBanner()}
+  <div class="card impcard"><label class="mini pri" style="display:block;text-align:center;padding:10px">📷 Import from machine report (photos / PDF)<input type="file" accept="image/*,application/pdf" multiple hidden id="impIn"></label>
+   <p class="hint" style="margin:6px 0 0">Take clear photos of the report pages — the measurements are read and filled in. Imported values show in blue.</p></div>
   <div class="card"><h3>👤 Patient details</h3>
    <div class="psec">🪪 Identity</div><div class="grid">
    ${fld('Name of patient','name')}
@@ -1471,13 +1600,16 @@ function renderForm(){
      <select data-g="ageU" style="width:auto">${['Years','Months','Days'].map(o=>`<option${rep.ageU===o?' selected':''}>${o}</option>`).join('')}</select></span></label>
    <label class="f">Sex<select data-g="sex">${['','Male','Female'].map(o=>`<option value="${o}"${rep.sex===o?' selected':''}>${o||'—'}</option>`).join('')}</select></label>
    ${fld('Hospital / Patient I.D No.','pid')}
+   ${fld('Mobile No.','mob','tel','inputmode="tel" placeholder="01XXXXXXXXX"')}
+   <div class="full" id="prevBox">${prevBoxHTML()}</div>
    <label class="f">Institution<select data-g="inst"><option value="">—</option>${instList().map(x=>`<option${rep.inst===x?' selected':''}>${esc(x)}</option>`).join('')}</select></label>
    <label class="f">Report No (app, auto)<input readonly tabindex="-1" class="ro" id="rnoBox" value="${esc(rep.rno||'— given on first Save / PDF')}"></label>
    ${FULL()||rep.mrno?fld('MR No','mrno'):''}${FULL()||rep.refno?fld('Ref No','refno'):''}
    </div>
    <div class="psec">📏 Body size</div><div class="grid">
    ${fld('Height / length (cm)','ht','text','inputmode="decimal"')}${fld('Weight (kg)','wt','text','inputmode="decimal"')}
-   <label class="f full">BSA (auto)<input id="bsaOut" readonly value="${b?b.toFixed(2)+' m² — '+bsaHow():''}"></label>
+   <label class="f">BSA (auto)<input id="bsaOut" readonly value="${b?b.toFixed(2)+' m² — '+bsaHow():''}"></label>
+   <label class="f">BMI (auto)<input id="bmiOut" readonly value="${bmiTxt()}"></label>
    <div class="full pedban" id="pedBan"${ped?'':' hidden'}>🧒 Paediatric mode — normal ranges are PHN z-scores from BSA (|z| &gt; 2 flagged). Adult ranges are hidden.</div>
    </div>
    <div class="psec">🩺 Referral & clinical history</div><div class="grid">
@@ -1531,17 +1663,17 @@ function renderForm(){
    ${rep.f.ivc.o!==FIND.find(x=>x.k==='ivc').o[0] && C.ivcd==null && !rep.ivcCol ? frowHTML(FIND.find(x=>x.k==='ivc')) : ''}
   </div>
   <div class="card"><h3>📝 Findings (comments) <span class="sp"></span><label class="chk" style="font-size:13px;font-weight:400;color:var(--ink)"><input type="checkbox" data-g="autoC"${rep.autoC?' checked':''}> Auto</label></h3>
-   <textarea id="taC" data-g="comments" data-ac rows="10" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px"${rep.autoC?' readonly':''}>${esc(rep.comments)}</textarea>
+   ${vxBar('#taC')}<textarea id="taC" data-g="comments" data-ac rows="10" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px"${rep.autoC?' readonly':''}>${esc(rep.comments)}</textarea>
    <p class="hint">With "Auto" on, findings are written from the entries above. Turn "Auto" off to edit by hand. Each line becomes one bullet; a line starting with # prints as a sub-heading.</p></div>
   <div class="card"><h3>🎯 Impression <span class="sp"></span><label class="chk" style="font-size:13px;font-weight:400;color:var(--ink)"><input type="checkbox" data-g="autoI"${rep.autoI?' checked':''}> Auto</label></h3>
    <label class="f" style="margin-bottom:6px">Clinical status (prints beside "Impression")<input type="text" id="stIn" data-g="status" value="${esc(rep.status)}" placeholder="e.g. S/P PCI"></label>
    <div class="chips" style="margin-bottom:8px">${STATUS_CHIPS.map(c=>`<button class="chip${(rep.status||'').includes(c)?' on':''}" data-st="${esc(c)}">${esc(c)}</button>`).join('')}</div>
    <label class="f" style="margin-bottom:6px">Main diagnosis (optional — printed as the first line)<input type="text" id="dxIn" data-g="dx" data-ac value="${esc(rep.dx||'')}" placeholder="e.g. Ischaemic cardiomyopathy"></label>
    <div id="dxSug">${dxSugHTML()}</div>
-   <textarea id="taI" data-g="impression" data-ac rows="5" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px"${rep.autoI?' readonly':''}>${esc(rep.impression)}</textarea>
+   ${vxBar('#taI')}<textarea id="taI" data-g="impression" data-ac rows="5" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px"${rep.autoI?' readonly':''}>${esc(rep.impression)}</textarea>
    <p class="hint">Order: status → critical findings → valvular / congenital disease → RWMA (+ reduced EF) → rhythm → chambers → wall thickness → diastolic function → valves → PH / effusion → LV & RV systolic function.</p></div>
   <div class="card"><h3>💡 Advice</h3>
-   <textarea data-g="advice" data-ac id="taA" rows="2" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px">${esc(rep.advice)}</textarea>
+   ${vxBar('#taA')}<textarea data-g="advice" data-ac id="taA" rows="2" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:14px">${esc(rep.advice)}</textarea>
    <div class="chips" style="margin-top:6px">${ADVICE.map((a,i)=>`<button class="chip" data-adv="${i}">＋ ${esc(a.replace(/\.$/,''))}</button>`).join('')}</div>
    <label class="f" style="margin-top:8px">Others / Note (optional)<input type="text" data-g="note" data-ac value="${esc(rep.note)}"></label></div>
   ${FULL()?`<div class="card"><h3>📐 Page layout</h3>
@@ -1557,7 +1689,9 @@ function renderForm(){
   <datalist id="refl">${refList().map(r=>`<option value="${esc(r)}">`).join('')}</datalist>
   <datalist id="procl"><option value="${PROC_DEFAULT}"><option value="Transthoracic: 2-D, M-Mode, Colour Doppler & TDI"><option value="Transoesophageal echocardiography"><option value="Paediatric transthoracic echocardiography"></datalist>`;
   $('#pForm').innerHTML=h;
-  paintBrushes(); applyPickMode();
+  paintBrushes(); applyPickMode(); if(!rep.cmpPrev) setTimeout(findPrev,50);
+  const ii=$('#impIn'); if(ii) ii.onchange=()=>{ const fs=[...ii.files]; ii.value=''; if(fs.length) impRun(fs); };
+  (rep.imported||[]).forEach(k=>document.querySelectorAll(`input[data-m="${k}"]`).forEach(el=>el.classList.add('imp')));
 }
 
 /* ================= FORM EVENTS ================= */
@@ -1572,19 +1706,27 @@ const form=$('#pForm');
 function onField(t){
   const v=t.type==='checkbox'?t.checked:t.value;
   if(t.dataset.bp!=null){ const p=bpParts(); p[+t.dataset.bp]=t.value; rep.bp=(p[0]||p[1])?`${p[0]||'?'}/${p[1]||'?'}`:''; changed(); return; }
+  if(t.dataset.g==='pid'||t.dataset.g==='mob'){ rep[t.dataset.g]=v; clearTimeout(PREV.t); PREV.t=setTimeout(findPrev,600); }
   if(t.dataset.g==='clin'){ const cc=document.getElementById('clinChips'); if(cc) cc.innerHTML=clinChips(); }
   if(t.dataset.g){
     rep[t.dataset.g]=v;
     if(t.dataset.g==='autoC'||t.dataset.g==='autoI'){ syncAuto(); const ta=$(t.dataset.g==='autoC'?'#taC':'#taI'); ta.readOnly=v; ta.value=rep[t.dataset.g==='autoC'?'comments':'impression']; }
     if(['ht','wt','sex','ageN','ageU'].includes(t.dataset.g)){ const was=document.getElementById('pedBan'); const wasPed=was&&!was.hidden; if(wasPed!==isPed()){ syncAuto(); renderForm(); changed(); return; } refreshM(); }
     if(t.dataset.g==='wmTxt') refreshWM();
-    if(!['comments','impression','advice','note','autoC','autoI','blanks','rwPage'].includes(t.dataset.g)) syncAuto();
-  } else if(t.dataset.m){ rep.m[t.dataset.m]=v; if(PAIR[t.dataset.m] && String(v).trim()) rep.m[PAIR[t.dataset.m]]=''; t.classList.remove('acv'); document.querySelectorAll(`[data-m="${t.dataset.m}"]`).forEach(e=>{ if(e!==t) e.value=v; }); refreshM(); syncAuto(); const po=$('#pasOut'); if(po) po.textContent=pasTxt(); }
+    if(!['comments','impression','advice','note','autoC','autoI','blanks','rwPage','rwTable'].includes(t.dataset.g)) syncAuto();
+  } else if(t.dataset.m){ rep.m[t.dataset.m]=v; if(rep.imported&&rep.imported.includes(t.dataset.m)){ rep.imported=rep.imported.filter(x=>x!==t.dataset.m); t.classList.remove('imp'); } if(PAIR[t.dataset.m] && String(v).trim()) rep.m[PAIR[t.dataset.m]]=''; t.classList.remove('acv'); document.querySelectorAll(`[data-m="${t.dataset.m}"]`).forEach(e=>{ if(e!==t) e.value=v; }); refreshM(); syncAuto(); const po=$('#pasOut'); if(po) po.textContent=pasTxt(); }
   else if(t.dataset.d){ rep.desc[t.dataset.d]=v; const row=document.querySelector(`[data-dr="${t.dataset.d}"]`); row.classList.toggle('abn',v!==DESC[t.dataset.d][0]); syncAuto(); }
   else if(t.dataset.cg){ const [k,f]=t.dataset.cg.split('.'); rep.cg[k][f]=v; const hn=t.closest('.det').querySelector('.hint'); if(hn) hn.textContent=cgLine(k); syncAuto(); }
   else if(t.dataset.vd){ const [k,f]=t.dataset.vd.split('.'); rep.vd[k][f]=v;
     if(k==='mr'&&f==='mech'&&/^Secondary/.test(v)&&(rep.v.mv.coap||'Normal')==='Normal'){ rep.v.mv.coap='Incomplete coaptation'; const c=document.querySelector('[data-v="mv.coap"]'); if(c) c.value='Incomplete coaptation'; toast('Coaptation set to "Incomplete coaptation" (secondary MR)'); } const pa=$('#ptmcAuto'); if(pa&&ptmcText()) pa.textContent=ptmcText(); syncAuto(); }
   else if(t.dataset.wk){ rep.vd.ms.wk[t.dataset.wk]=+v; const tt=wkTotal(); $('#wkTot').textContent=tt!=null?tt+' / 16':'—'; const pa=$('#ptmcAuto'); if(pa&&ptmcText()) pa.textContent=ptmcText(); syncAuto(); }
+  else if(t.dataset.pe){ rep[t.dataset.pe]=v; syncAuto(); const o=$('#periOut'); if(o) o.textContent=periOut(); }
+  else if(t.dataset.pr){ const [k,f]=t.dataset.pr.split('.'); pr(k)[f]=v; const o=$('#prOut_'+k); if(o) o.textContent=prOutTxt(k); syncAuto(); }
+  else if(t.dataset.vm){ t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'; const k=t.dataset.vm, x=VALVES.find(z=>z.k===k), V=rep.v[k]; const was=detOn('ms')+'|'+detOn('as'); V.morph=v;
+    const c=document.querySelector(`[data-vc="${k}"]`); if(c) c.classList.toggle('abn', V.morph!==x.morph[0]||V.st!=='None'||ANYR(V.rg)||(V.coap&&V.coap!=='Normal'));
+    const mh=document.querySelector(`[data-mh="${k}"]`); if(mh) mh.innerHTML=morphHintHTML(k);
+    syncAuto(); if(was!==detOn('ms')+'|'+detOn('as')) rep._rerV=k; }
+  else if(t.dataset.mpick){ const k=t.dataset.mpick; if(!v) return; rep.v[k].morph=v; rerVC(k); syncAuto(); changed(); return; }
   else if(t.dataset.v){ const [k,f]=t.dataset.v.split('.'); rep.v[k][f]=v;
     if(f==='coap') rep.v[k].coapAuto=false;
     if(f==='st') rep.v[k].stAuto=false;
@@ -1595,12 +1737,14 @@ function onField(t){
     const sg=document.querySelector(`[data-sug="${k}"]`); if(sg) sg.innerHTML=sugHTML(k); syncAuto(); }
   else if(t.dataset.f){ const [k,f]=t.dataset.f.split('.'); rep.f[k][f]=v; if(rep.tplSet&&f==='o') delete rep.tplSet[k]; if(k==='dd'&&f==='o'){ rep.ddAuto=false; const ab=$('#ddAutoBtn'); if(ab) ab.outerHTML=ddAutoBtn(); } if(['dd','ivc'].includes(k)) setTimeout(refreshM,0);
     if(f==='o'){ const x=FIND.find(z=>z.k===k); const row=document.querySelector(`[data-fr="${k}"]`); row.classList.toggle('abn',v!==x.o[0]);
+      if(k==='peri'){ rep.periAuto=false; const pb=$('#periBox'); if(pb) pb.innerHTML=periHTML(); }
       const fc=row.querySelector('.fc'); if(v!==x.o[0] && !fc.querySelector('input')) fc.insertAdjacentHTML('beforeend',`<input type="text" data-ac data-f="${k}.c" value="${esc(rep.f[k].c)}" placeholder="details (optional)">`); }
     syncAuto(); }
   changed();
 }
 form.addEventListener('input',e=>onField(e.target));
-form.addEventListener('change',e=>{ const t=e.target; if(t.dataset&&t.dataset.g==='ref') saveRef(t.value); if(t.tagName==='SELECT'&&t.dataset.bp!=null) onField(t); });
+function rerVC(k){ const c=document.querySelector(`[data-vc="${k}"]`); if(!c) return; const tmp=document.createElement('div'); tmp.innerHTML=valveCard(VALVES.find(z=>z.k===k)); c.replaceWith(tmp.firstElementChild); applyPickMode(); }
+form.addEventListener('change',e=>{ const t=e.target; if(t.dataset&&t.dataset.vm&&rep._rerV){ const k=rep._rerV; delete rep._rerV; rerVC(k); return; } if(t.dataset&&t.dataset.g==='ref') saveRef(t.value); if(t.tagName==='SELECT'&&t.dataset.bp!=null) onField(t); });
 form.addEventListener('click',e=>{
   const cc=e.target.closest('[data-clin]');
   if(cc){ const o=cc.dataset.clin; let p=clinParts(); const i=p.findIndex(x=>x.toLowerCase()===o.toLowerCase()); if(i>=0) p.splice(i,1); else p.push(o); rep.clin=p.join(', ');
@@ -1629,13 +1773,24 @@ form.addEventListener('click',e=>{
     if(cur.includes(c)) cur=cur.filter(x=>x!==c); else cur.push(c); rep.status=cur.join(', '); $('#stIn').value=rep.status; b.classList.toggle('on'); syncAuto(); changed(); return; }
   if(b.dataset.adv){ const a=ADVICE[+b.dataset.adv]; rep.advice=(rep.advice.trim()?rep.advice.trim()+'\n':'')+a; $('#taA').value=rep.advice; changed(); return; }
   if(b.dataset.apply){ rep.v[b.dataset.apply].stAuto=false; rep.v[b.dataset.apply].st=b.dataset.g2; renderForm(); syncAuto(); changed(); toast('Applied'); return; }
+  if(b.dataset.tp){ rep.tp=rep.tp||{}; rep.tp[b.dataset.tp]=!rep.tp[b.dataset.tp]; b.classList.toggle('on'); syncAuto(); periRefresh(); changed(); return; }
   const act=b.dataset.act;
+  if(act==='cmpOn'){ const d=(PREV.list||[]).find(x=>x.id===b.dataset.id); if(!d) return; const m=keyMetrics(migrate(d.data||{})); rep.cmpPrev={id:d.id,date:d.rdate||'',rno:d.rno||'',m}; $('#prevBox').innerHTML=prevBoxHTML(); syncAuto(); changed(); return; }
+  if(act==='cmpOff'){ delete rep.cmpPrev; PREV.key=''; $('#prevBox').innerHTML=''; findPrev(); syncAuto(); changed(); return; }
+  if(act==='prevLoad'){ const d=(PREV.list||[]).find(x=>x.id===b.dataset.id); if(!d) return; if(b.dataset.arm!=='1'){ b.dataset.arm='1'; b.textContent='Tap again to open (current report is saved first)'; setTimeout(()=>{ if(b.isConnected){ b.dataset.arm=''; b.textContent='Open previous report'; } },4000); return; }
+    saveReport(true).finally(()=>{ rep=migrate(d.data); rep.uid=d.id; PREV.key=''; renderForm(); syncAuto(); changed(); toast('Opened previous report'); }); return; }
+  if(act==='msave'){ const k=b.dataset.k, txt=(rep.v[k].morph||'').trim(), x=VALVES.find(z=>z.k===k);
+    if(!txt) return toast('Nothing to save'); if(x.morph.includes(txt)||vphr(k).includes(txt)) return toast('Already in the list');
+    if(spellIssues(txt).length) return toast('Please fix the spelling first (tap the suggestion), then save');
+    settings.vphr=settings.vphr||{}; settings.vphr[k]=[txt,...vphr(k)].slice(0,60); saveSettings(); rerVC(k); toast('Saved to "My saved descriptions" ✓'); return; }
+  if(act==='mfix'){ const k=b.dataset.k; rep.v[k].morph=rep.v[k].morph.replace(new RegExp('\\b'+b.dataset.w+'\\b','g'),b.dataset.r); rerVC(k); syncAuto(); changed(); return; }
   if(act==='wmGlobal'){ rep.wm=Array(17).fill(1); refreshWM(); syncAuto(); changed(); return; }
   if(act==='wmClear'){ rep.wm=Array(17).fill(0); refreshWM(); syncAuto(); changed(); return; }
   if(act==='fillN'){ const velIds=new Set([...VD.map(x=>x.k+'_v'),...ALLM.filter(d=>d.vel).map(d=>d.id)]);
     Object.entries(NORMAL_VALUES).forEach(([k,v])=>{ if(rep.m[k]==null||rep.m[k]==='') rep.m[k]=String(velIds.has(k)&&isCm()?Math.round(v*100):v); }); syncAuto(); renderForm(); changed(); toast('Typical normal values filled in empty boxes'); }
   if(act==='resetN'){ const n=newReport(); rep.v=n.v; rep.f=n.f; rep.vd=n.vd; rep.desc=n.desc; rep.situs='Solitus'; rep.wm=n.wm; rep.wmTxt=''; rep.rvwm=RVWM[0]; syncAuto(); renderForm(); changed(); toast('Findings reset to normal'); }
   if(act==='pick'){ settings.pick=!pickOn(); saveSettings(); pickClose(); renderForm(); toast(pickOn()?'Tap-to-pick numbers ON':'Keyboard typing ON'); return; }
+  if(act==='final' && !rep.final){ const r=checksSplit().red; if(r.length && b.dataset.arm!=='1'){ b.dataset.arm='1'; b.textContent=`🔴 ${r.length} item(s) to check — tap again to finalise`; document.getElementById('chkCard').scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>{ if(b.isConnected&&!rep.final){ b.dataset.arm=''; b.textContent='✔ Mark as Final'; } },6000); return; } }
   if(act==='final'){ finalizing=true; rep.final=!rep.final; renderForm(); changed(); finalizing=false; toast(rep.final?'Marked as FINAL':'Back to Draft'); return; }
   if(act==='save') saveReport();
   if(act==='pdf') askPdf();
@@ -1654,7 +1809,7 @@ function headerHTML(){
 }
 function patientHTML(){
   const b=bsa();
-  const vit=[rep.ht?`Ht ${esc(rep.ht)} cm`:'',rep.wt?`Wt ${esc(rep.wt)} kg`:'',b?`BSA ${b.toFixed(2)} m²`:'',rep.bp?`BP ${esc(rep.bp)} mmHg`:'',rep.hr?`HR ${esc(rep.hr)} bpm`:'',rep.rhythm?esc(rep.rhythm):''].filter(Boolean).join(' &nbsp;·&nbsp; ');
+  const vit=[rep.ht?`Ht ${esc(rep.ht)} cm`:'',rep.wt?`Wt ${esc(rep.wt)} kg`:'',b?`BSA ${b.toFixed(2)} m²`:'',bmi()!=null?`BMI ${bmiTxt()}`:'',rep.bp?`BP ${esc(rep.bp)} mmHg`:'',rep.hr?`HR ${esc(rep.hr)} bpm`:'',rep.rhythm?esc(rep.rhythm):''].filter(Boolean).map(x=>`<span style="white-space:nowrap">${x}</span>`).join(' &nbsp;·&nbsp; ');
   return `<div class="rt">ECHOCARDIOGRAPHY REPORT</div>
   <table class="pt ptb">
   <tr><td class="k">Patient ID No</td><td>: ${esc(rep.pid)}</td>${rep.mrno||rep.blanks?`<td class="k">MR No</td><td>: ${esc(rep.mrno)}</td>`:'<td></td><td></td>'}${rep.refno||rep.blanks?`<td class="k">Ref No</td><td>: ${esc(rep.refno)}</td>`:rep.rno?`<td class="k">Report No</td><td>: ${esc(rep.rno)}</td>`:'<td></td><td></td>'}</tr>
@@ -1672,12 +1827,12 @@ function smallHead(){
 }
 // rows printed in the report: core ones when measured, others only when abnormal (or when "print empty rows" is on)
 const PRINT_CORE = new Set(['ao','la','acs','rvd','rvid','ivsd','ivss','lvidd','lvids','lvpwd','lvpws',
-  'fs','ef','efs','lvm','lvmi','rwt','tapse','gls','rvs','fac','avann','ascao','arch','mpa','lpa','rpa']);
+  'fs','ef','efs','lvedv','lvesv','lvedvi','lvesvi','wmsi','lvotd','lvotvti','sv','svi','lvm','lvmi','rwt','tapse','gls','rvs','fac','avann','ascao','arch','mpa','lpa','rpa']);
 function printRow(d){ if(d.id==='ef' && rep.efBand) return false; if(d.id==='paspIn'||d.id==='trpgIn') return false;
   if(['mvpht','mvapht','mvarea'].includes(d.id) && rep.v.mv.st==='None') return false;
   if(rep.blanks) return true; if(C[d.id]==null) return false;
   if(isAuto(d.id) && COND[d.id] && !COND[d.id]()) return false;
-  if(['sv','svi','dvi'].includes(d.id)) return rep.v.av.st!=='None';
+  if(d.id==='dvi') return rep.v.av.st!=='None';
   if(d.id==='mvarea') return rep.v.mv.st!=='None' || !!flag(d);
   if(flag(d)) return true;
   if(DD.includes(d)) return true;
@@ -1692,8 +1847,21 @@ function mTable(title,defs,extra){
 }
 // two balanced columns: sections flow left→right and may continue in the next column
 function measTables(){
+  if(rwOn()){ // LV-study reports: narrow left (M-mode, LV function, diastolic) · wide right (great vessels, haemodynamics, valves)
+    const T=(t,rows)=>rows.length?`<table class="mtb"><tr><td colspan="3" class="cap1">${t}</td></tr><tr><th>Parameter</th><th style="text-align:right">Value</th><th>Normal</th></tr>${rows.join('')}</table>`:'';
+    const V=window.P1V||'B', MASS=['lvm','lvmi','rwt','tapse','rvs','fac','gls'];
+    const fRows=MM.filter(d=>d.g==='f').filter(printRow);
+    const L=[T('M-MODE & 2D MEASUREMENTS',MM.filter(d=>d.g==='m').filter(printRow).map(rowHTML)),
+             T('LV FUNCTION',[efRow(),...fRows.filter(d=>V!=='A'||!MASS.includes(d.id)).map(rowHTML)].filter(Boolean)),
+             T('DIASTOLIC FUNCTION',DD.filter(d=>d.g==='d').filter(printRow).map(rowHTML))].join('');
+    const Rt=[V==='A'?T('LV MASS & RV FUNCTION',fRows.filter(d=>MASS.includes(d.id)).map(rowHTML)):'',
+             T('GREAT VESSELS',MM.filter(d=>d.g==='v').filter(printRow).map(rowHTML)),
+             T('HAEMODYNAMICS',DD.filter(d=>d.g==='h').filter(printRow).map(rowHTML)), valveTable(), V==='B'?dopplerHTML('flowN'):''].join('');
+    return `<div class="cols4060 sec"><div>${L}</div><div>${Rt}</div></div>`;
+  }
   const secs=[['M-MODE & 2D MEASUREMENTS',MM.filter(d=>d.g==='m').filter(printRow).map(rowHTML)],
               ['LV FUNCTION',[efRow(),...MM.filter(d=>d.g==='f').filter(printRow).map(rowHTML)].filter(Boolean)],
+              ...(window.NFC?[['DIASTOLIC FUNCTION',DD.filter(d=>d.g==='d').filter(printRow).map(rowHTML)]]:[]),
               ['GREAT VESSELS',MM.filter(d=>d.g==='v').filter(printRow).map(rowHTML)],
               ['HAEMODYNAMICS',DD.filter(d=>d.g==='h').filter(printRow).map(rowHTML)]].filter(x=>x[1].length);
   if(!secs.length) return '';
@@ -1713,33 +1881,43 @@ function measTables(){
   return `<div class="cols2 sec"><div>${cols[0].join('')}</div><div>${cols[1].join('')}</div></div>`;
 }
 // bull's-eye on the left; legend, wall-motion text and the valve table fill the right side
-function wallMotionHTML(){
+const rwOn=()=>wmAbn() && !isPed() && rep.rwPage!==false;
+function wallMotionHTML(cmp){
+  const dd=mTable('DIASTOLIC FUNCTION',DD.filter(d=>d.g==='d'));
+  const wmt=`<table class="pt"><tr><td class="k">LV wall motion</td><td>: ${esc(wmText())}${wmAbn()?` <b>WMSI ${wmsi().toFixed(2)}</b>`:''}</td></tr>
+     <tr><td class="k">RV wall motion</td><td>: ${esc(rep.rvwm)}</td></tr></table>`;
+  // LV study page follows: no small bull's-eye here; valves and diastolic side by side
+  if(rwOn()) return `${(window.P1V||'B')==='A'?dopplerHTML('flow'):''}<div class="rwref" style="text-align:right;margin-top:2px">Wall motion &amp; 17-segment LV study: see next page</div>`;
   return `<div class="sh">WALL MOTION & VALVES</div>
    <div class="wmr">
     <div class="wmi">
      <table class="pt"><tr><td class="k">LV wall motion</td><td>: ${esc(wmText())}${wmAbn()?` <b>WMSI ${wmsi().toFixed(2)}</b>`:''}</td></tr>
      <tr><td class="k">RV wall motion</td><td>: ${esc(rep.rvwm)}</td></tr></table>
-     ${valveTable()}${(()=>{ const t=mTable('DIASTOLIC FUNCTION',DD.filter(d=>d.g==='d')); return t?`<div class="sec">${t}</div>`:''; })()}</div>
-    <div class="wmd">${legendHTML('lgd2 lgdB lgdT')}${bullseye(false)}</div></div>`;
+     ${valveTable()}${window.NFC?dopplerHTML('flowN'):(dd?`<div class="sec">${dd}</div>`:'')}</div>
+    <div class="wmd"${window.NFC?' style="width:248px"':''}>${legendHTML('lgd2 lgdB lgdT')}${bullseye(false)}</div></div>`;
 }
 function dopplerHTML(part){
-  const rows=part==='other'?[]:VD.filter(x=>rep.blanks||C[x.k+'_v']!=null||C[x.k+'_mg']!=null);
+  const rows=(part==='other'?[]:VD.filter(x=>rep.blanks||C[x.k+'_v']!=null||C[x.k+'_mg']!=null)).map(x=>isPros(x.k)?Object.assign({},x,x.k==='av'?{n:'AoV (prosth.)',vlo:0,vhi:3,pg:'< 36',pgHi:36,mg:'< 20',mgHi:20}:{n:'MV (prosth.)',vlo:0,vhi:1.9,pg:'< 14.4',pgHi:14.4,mg:'≤ 5',mgHi:5}):x);
   let h='';
+  const showMG = rep.blanks || VD.some(x=>C[x.k+'_mg']!=null) || ['av','mv','pv','tv'].some(k=>rep.v[k]&&rep.v[k].st&&rep.v[k].st!=='None');
   if(rows.length){
     const cell=(v,txt,f)=>`<td class="v${f?' a':''}">${v!=null?txt+(f?' '+f:''):''}</td>`;
-    h+=`<table class="mtb dvt"><tr><td colspan="7" class="cap1">DOPPLER, COLOUR FLOW</td></tr>
-     <tr><th></th><th style="text-align:right">Peak velocity (${vu()})</th><th>Normal (${vu()})</th><th style="text-align:right">Peak gradient (mmHg)</th><th>Normal (mmHg)</th><th style="text-align:right">Mean gradient (mmHg)</th><th>Normal (mmHg)</th></tr>
-     ${rows.map(x=>`<tr><td><b>${x.n}</b></td>${cell(C[x.k+'_v'],esc(mtxt(x.k+'_v')),isPed()?'':flagV(C[x.k+'_v'],x.vlo,x.vhi))}<td class="nr">${isPed()?'—':vfmt(x.vlo)+'–'+vfmt(x.vhi)}</td>${cell(C[x.k+'_pg'],C[x.k+'_pg']!=null?C[x.k+'_pg'].toFixed(2):'',isPed()?'':flagV(C[x.k+'_pg'],null,x.pgHi))}<td class="nr">${isPed()?'—':x.pg}</td>${cell(C[x.k+'_mg'],esc(mtxt(x.k+'_mg')),isPed()?'':flagV(C[x.k+'_mg'],null,x.mgHi))}<td class="nr">${isPed()?'—':x.mg}</td></tr>`).join('')}</table>`;
+    h+=`<table class="mtb dvt"><tr><td colspan="${showMG?7:5}" class="cap1">DOPPLER, COLOUR FLOW</td></tr>
+     ${part==='flowN'?`<tr><th></th><th style="text-align:right">Vmax (${vu()})</th><th>Normal</th><th style="text-align:right">Peak PG (mmHg)</th><th>Normal</th>${showMG?`<th style="text-align:right">Mean PG (mmHg)</th><th>Normal</th>`:''}</tr>`:`<tr><th></th><th style="text-align:right">Peak velocity (${vu()})</th><th>Normal (${vu()})</th><th style="text-align:right">Peak gradient (mmHg)</th><th>Normal (mmHg)</th>${showMG?`<th style="text-align:right">Mean gradient (mmHg)</th><th>Normal (mmHg)</th>`:''}</tr>`}
+     ${rows.map(x=>`<tr><td><b>${x.n}</b></td>${cell(C[x.k+'_v'],esc(mtxt(x.k+'_v')),isPed()?'':flagV(C[x.k+'_v'],x.vlo,x.vhi))}<td class="nr">${isPed()?'—':vfmt(x.vlo)+'–'+vfmt(x.vhi)}</td>${cell(C[x.k+'_pg'],C[x.k+'_pg']!=null?C[x.k+'_pg'].toFixed(2):'',isPed()?'':flagV(C[x.k+'_pg'],null,x.pgHi))}<td class="nr">${isPed()?'—':x.pg}</td>${showMG?`${cell(C[x.k+'_mg'],esc(mtxt(x.k+'_mg')),isPed()?'':flagV(C[x.k+'_mg'],null,x.mgHi))}<td class="nr">${isPed()?'—':x.mg}</td>`:''}</tr>`).join('')}</table>`;
   }
   const hm=mTable('HAEMODYNAMICS',DD.filter(d=>d.g==='h')), dd=mTable('DIASTOLIC FUNCTION',DD.filter(d=>d.g==='d'));
-  if(part==='flow') return h?`<div class="sec">${h}</div>`:'';
+  if(part==='flow'||part==='flowN') return h?`<div class="sec">${h}</div>`:'';
   if(hm||dd) h+=`<div class="cols2" style="margin-top:4px">${hm?`<div>${hm}</div>`:''}${dd?`<div>${dd}</div>`:''}</div>`;
   return h?`<div class="sec">${h}</div>`:'';
 }
 function valveTable(){
   const c=(abn,t)=>`<td class="${abn?'a':''}">${esc(t)}</td>`;
-  return `<div class="sec"><table class="vlt"><tr><th style="width:15%">Native valves</th><th>Morphology</th><th style="width:12%">Stenosis</th><th style="width:14%">Regurgitation</th></tr>
-   ${VALVES.map(x=>{ const V=rep.v[x.k]; return `<tr><td class="n">${esc(x.n.replace(' valve',''))}</td>${c(V.morph!==x.morph[0]||(V.coap&&V.coap!=='Normal'),V.morph+(coapTxt(x.k)?'; '+coapTxt(x.k):'')+(V.c?' — '+V.c:''))}${c(V.st!=='None',V.st==='None'?'Nil':V.st)}${c(ANYR(V.rg),V.rg==='None'?'Nil':V.rg)}</tr>`; }).join('')}</table></div>`;
+  return `<div class="sec"><table class="vlt"><tr><th style="width:15%">${VALVES.some(x=>isPros(x.k))?'Valves':'Native valves'}</th><th>Morphology</th><th style="width:12%">Stenosis</th><th style="width:14%">Regurgitation</th></tr>
+   ${VALVES.map(x=>{ const V=rep.v[x.k];
+     if(isPros(x.k)){ const d=pr(x.k), f=prFunc(x.k), lk=[d.tr&&!['None','Physiological (washing jets)'].includes(d.tr)?d.tr+' transvalvular':'', d.pvl&&d.pvl!=='None'?d.pvl+' PVL':''].filter(Boolean).join(', ');
+       return `<tr><td class="n">${esc(x.n.replace(' valve',''))}</td>${c(false,morphShort(x.k))}${c(!!f,f==null?'—':f===2?'Significant':f===1?'Possible':'Normal')}${c(!!lk,lk||'Nil')}</tr>`; }
+     return `<tr><td class="n">${esc(x.n.replace(' valve',''))}</td>${c(V.morph!==x.morph[0]||(V.coap&&V.coap!=='Normal'),morphShort(x.k)+(coapTxt(x.k)?'; '+coapTxt(x.k):''))}${c(V.st!=='None',V.st==='None'?'Nil':V.st)}${c(ANYR(V.rg),V.rg==='None'?'Nil':V.rg)}</tr>`; }).join('')}</table></div>`;
 }
 // highlight abnormal clauses in a findings line (red in colour print, bold in B&W)
 const ABN_RE=/dilat|hypertroph|remodel|hypokine|akine|dyskine|aneurysm|reduced|impaired|borderline|\bgrade (i|ii|iii|iv)\b|\b(mild|moderate|severe)(ly)?\b|stenos|thicken|calcif|prolaps|flail|tether|tenting|incomplete|non-coaptation|effusion|thrombus|vegetation|defect|shunt|\bPDA\b|coarct|raised|elevated|hypertension|scleros|sclerot|restrict|regurgit|abnormal|obstruct|\bSAM\b|paradox|transposition|overrid|\b(PFO|ASD|VSD|AVSD)\b|↑|↓/i;
@@ -1791,18 +1969,21 @@ function sigHTML(){
   return `<div class="sig" style="justify-content:space-between;align-items:flex-end"><div class="ent">${prepOf()?`Report prepared by: ${esc(prepOf())}<br>`:''}Printed: ${esc(ts)}</div><div class="sb"><div class="line"></div><div class="dn" style="font-size:${ns.toFixed(1)}px;white-space:nowrap">${esc(n)}</div><div class="dd" style="font-size:${DEG}px">${esc(ls.join('\n'))}</div></div></div>`;
 }
 function abbrHTML(){
-  return `<div class="abbr">ARD-aortic root diameter, LAs-left atrium (systole), ACS-aortic cusp separation, RVDd/RVID-right ventricular dimension, RVOT-RV outflow tract, IVS-interventricular septum, LVID-LV internal dimension, LVPW-LV posterior wall (d-diastole, s-systole), FS-fractional shortening, LVEF-LV ejection fraction, LVMI-LV mass index, RWT-relative wall thickness, TAPSE-tricuspid annular plane systolic excursion, EPSS-E-point septal separation, MPA/LPA/RPA-main/left/right pulmonary artery, PG-pressure gradient, PHT-pressure half-time, MVA/AVA-mitral/aortic valve area, PASP-pulmonary artery systolic pressure, RAP-right atrial pressure, DT-deceleration time, WMSI-wall motion score index, MS/MR, AS/AR, TS/TR, PS/PR-stenosis/regurgitation of mitral, aortic, tricuspid and pulmonary valves. Reference ranges: ASE/EACVI recommendations; LVEF wording per British Society of Echocardiography (normal ≥55%, borderline low 50–54%; ASE sex-specific lower limits 52% men, 54% women).${isPed()?` Paediatric normal ranges: Pediatric Heart Network z-scores (Lopez 2017), BSA ${bsa()?bsa().toFixed(2)+' m² ('+bsaHow()+')':'not available'}; |z| > 2 flagged.`:''}</div>`;
+  return `<div class="abbr">ARD-aortic root diameter, LAs-left atrium (systole), ACS-aortic cusp separation, RVDd/RVID-right ventricular dimension, RVOT-RV outflow tract, IVS-interventricular septum, LVID-LV internal dimension, LVPW-LV posterior wall (d-diastole, s-systole), FS-fractional shortening, LVEF-LV ejection fraction, LVMI-LV mass index, LVEDV/LVESV(i)-LV end-diastolic/end-systolic volume (index), LVOT VTI-LV outflow tract velocity-time integral, SV(i)-stroke volume (index), RWT-relative wall thickness, TAPSE-tricuspid annular plane systolic excursion, EPSS-E-point septal separation, MPA/LPA/RPA-main/left/right pulmonary artery, PG-pressure gradient, PHT-pressure half-time, MVA/AVA-mitral/aortic valve area, PASP-pulmonary artery systolic pressure, RAP-right atrial pressure, DT-deceleration time, WMSI-wall motion score index, MS/MR, AS/AR, TS/TR, PS/PR-stenosis/regurgitation of mitral, aortic, tricuspid and pulmonary valves. Reference ranges: ASE/EACVI recommendations; LVEF wording per British Society of Echocardiography (normal ≥55%, borderline low 50–54%; ASE sex-specific lower limits 52% men, 54% women).${isPed()?` Paediatric normal ranges: Pediatric Heart Network z-scores (Lopez 2017), BSA ${bsa()?bsa().toFixed(2)+' m² ('+bsaHow()+')':'not available'}; |z| > 2 flagged.`:''}</div>`;
 }
 const MM2PX=96/25.4;
 const MDEF={plain:{t:12,b:12,l:12,r:12}, pad:{t:50,b:20,l:25,r:12}};
 function marg(){ const s=settings, d=s.pad?MDEF.pad:MDEF.plain; const v=(k,dk)=>{ const x=pnum(s[k]); return (x!=null?x:d[dk])*MM2PX; };
   return {t:v('mTop','t'), b:v('mBot','b'), l:v('mLeft','l'), r:v('mRight','r')}; }
 function pageInnerH(){ const m=marg(); return 1123-m.t-m.b; }
-function pageHTML(inner,i,n,scale){ const m=marg(); return `<div class="pg${BW()?' bw':''}" style="padding:${m.t.toFixed(1)}px ${m.r.toFixed(1)}px ${m.b.toFixed(1)}px ${m.l.toFixed(1)}px">${rep.final?'':'<div class="wmk">DRAFT</div>'}<div class="pgc"${scale&&scale<1?` style="transform:scale(${scale});transform-origin:0 0;width:${(100/scale).toFixed(3)}%"`:''}>${inner}</div>${n>1?`<div class="pn" style="right:${m.r.toFixed(1)}px;bottom:${(6*MM2PX).toFixed(1)}px">Page ${i+1} of ${n}</div>`:''}</div>`; }
+function pageHTML(inner,i,n,scale){ const m=marg(); return `<div class="pg${BW()?' bw':''}" style="padding:${m.t.toFixed(1)}px ${m.r.toFixed(1)}px ${m.b.toFixed(1)}px ${m.l.toFixed(1)}px">${rep.final?'':'<div class="wmk">DRAFT</div>'}<div class="pgc"${scale&&scale<1?` style="transform:scale(${scale});transform-origin:0 0;width:${(100/scale).toFixed(3)}%"`:''}>${inner}</div>${n>1?`<div class="pn" style="right:${m.r.toFixed(1)}px;bottom:${(6*MM2PX).toFixed(1)}px">Page ${i+1} of ${n}</div>`:''}${n>1&&i<n-1?`<div class="pto" style="bottom:${(6*MM2PX).toFixed(1)}px">P.T.O. &mdash; Please turn over &#10140;</div>`:''}</div>`; }
 function measure(inner){ const m=$('#measure'); m.innerHTML=pageHTML(inner,0,1); return m.querySelector('.pgc').offsetHeight; }
 function buildPages(){
-  const a=buildPages1('roomy'); if(a.core<=2) return a;
-  const b=buildPages1('roomy tight'); return b.core<a.core?b:a;
+  const a=buildPages1('roomy'); if(a.core<=2 && !a.p1scale) return a;
+  const b=buildPages1('roomy tight');
+  if(b.core<a.core) return b;
+  if(a.p1scale && (!b.p1scale || b.p1scale>a.p1scale) && b.core<=a.core) return b;
+  return a;
 }
 /* ================= RWMA PAGE (only when RWMA present) ================= */
 // territory per segment (shared segments have two possible arteries)
@@ -1845,6 +2026,21 @@ function rwPatientBE(size){
   s+=rwTxt(cx,9,'ANTERIOR',11,'#333',false,true)+rwTxt(cx,361,'INFERIOR',11,'#333',false,true);
   s+=rwTxt(10,cy,'SEPTAL',11,'#333',false,true,-90)+rwTxt(360,cy,'LATERAL',11,'#333',false,true,90);
   return s+'</svg>'; }
+const RW_WALL={1:'Anterior',2:'Antero-|septal',3:'Infero-|septal',4:'Inferior',5:'Infero-|lateral',6:'Antero-|lateral',7:'Anterior',8:'Antero-|septal',9:'Infero-|septal',10:'Inferior',11:'Infero-|lateral',12:'Antero-|lateral',13:'Anterior',14:'Septal',15:'Inferior',16:'Lateral',17:'Apex'};
+function rwUnifiedBE(size){
+  const R=170, M=46, W=2*(R+M), cx=W/2, cy=W/2, pid='ube';
+  let s=`<svg viewBox="0 0 ${W} ${W}" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${rwDefs(pid)}${rwTerrDefs()}`;
+  SEG.filter(x=>x[2]==='b').forEach(x=>{ s+=`<path d="${rwSector(cx,cy,R+5,R+21,x[3]-30,x[3]+30)}" fill="${rwTerrFill(TERR2[x[0]])}" stroke="#555" stroke-width=".7"/>`;
+    const [lx,ly]=rwPt(cx,cy,R+13,x[3]); let rot=90-x[3]; if(x[3]>180&&x[3]<360) rot+=180; s+=rwTxt(lx,ly,TERR2[x[0]].join(' / '),9,'#111',BW(),true,rot); });
+  for(let n=1;n<=17;n++){ const g=rwSeg(n,cx,cy,R), f=rwWmFill(n,pid), L=RW_WALL[n].split('|'), fs=n>12?9.5:10, lh=fs*1.08;
+    s+=`<path d="${g.d}" fill="${f.f}" stroke="#222" stroke-width="1.3"/>`;
+    const top=g.ly-(L.length*lh)/2-9;
+    s+=rwTxt(g.lx,top,n,14,f.tc,!!f.halo,true);
+    L.forEach((t,i)=>s+=rwTxt(g.lx,top+13+i*lh,t,fs,f.tc,!!f.halo,false));
+    s+=rwTxt(g.lx,top+15+L.length*lh,TERR2[n].join('/'),TERR2[n].length>1&&SEG[n-1][2]!=='a'?7.2:8,f.tc,!!f.halo,true); }
+  s+=rwTxt(cx,13,'ANTERIOR',12,'#333',false,true)+rwTxt(cx,W-11,'INFERIOR',12,'#333',false,true);
+  s+=rwTxt(12,cy,'SEPTAL',12,'#333',false,true,-90)+rwTxt(W-12,cy,'LATERAL',12,'#333',false,true,90);
+  return s+'</svg>'; }
 function rwRefBE(size){
   const R=95, cx=100, cy=100;
   let s=`<svg viewBox="0 0 200 200" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${rwTerrDefs()}`;
@@ -1879,7 +2075,7 @@ const RW_CUTS=[0,.16,.31,.43,.57,.69,.84,1];
 function rwLV(segs,order,pid,thick,pap){
   const C=rwCurve(segs,80), th=s=>(thick-3*Math.exp(-Math.pow((s-0.5)/0.12,2)))*Math.sqrt(Math.max(0.04,Math.min(1,s/0.035,(1-s)/0.035))); let out='',lab='';
   order.forEach((n,i)=>{ const b=rwBand(C,RW_CUTS[i],RW_CUTS[i+1],th), f=rwWmFill(n,pid);
-    out+=`<path d="${b.d}" fill="${f.f}" stroke="#333" stroke-width="1"/>`; lab+=rwTxt(b.lx,b.ly,n,10,f.tc,true,true); });
+    out+=`<path d="${b.d}" fill="${f.f}" stroke="#333" stroke-width="1"/>`; lab+=rwTxt(b.lx,b.ly,n,10,f.tc,f.tc!=='#fff',true); });
   let pre='';
   if(pap){ const i=order.indexOf(pap.n), sm=(RW_CUTS[i]+RW_CUTS[i+1])/2+(pap.ds||0), p=rwAt(C,sm), q=rwAt(C,sm+.004), o=rwAt(C,sm-.004);
     let tx=q.x-o.x, ty=q.y-o.y; const d=Math.hypot(tx,ty); tx/=d; ty/=d; let nx=-ty, ny=tx;
@@ -1902,7 +2098,7 @@ function rwView(kind){
     g+=rwLeaf(164,38,182,56,-4)+rwLeaf(166,78,182,58,4);
     g+=rwLeaf(160,76,128,104,-4)+rwLeaf(154,124,122,106,5);
     g+=rwLV([[[154,42],[100,32],[30,34],[16,80]],[[16,80],[14,120],[100,134],[154,126]]],[2,8,14,17,16,11,5],pid,19)+rwLbl(80,84,'LV');
-    return {vb:'4 -10 230 154', cap:'PARASTERNAL LONG AXIS', svg:g}; }
+    return {vb:'4 -10 230 166', cap:'PARASTERNAL LONG AXIS', svg:g}; }
   if(kind==='PSAX'){ const cx=100,cy=76,R=48,Ri=R*0.62;
     const ang=n=>SEG[n-1][3], mid=(a,b)=>{ let d=((b-a+540)%360)-180; return a+d/2; };
     let lab=''; const a78=mid(ang(7),ang(8)), a910=mid(ang(9),ang(10)), P=(r,a)=>rwPt(cx,cy,r,a);
@@ -1930,42 +2126,64 @@ function rwView(kind){
 function rwViewSVG(kind,h){ const v=rwView(kind), [,, w, hh]=v.vb.split(' ').map(Number); const W=Math.round(h*w/hh);
   return `<div class="rwv"><svg viewBox="${v.vb}" width="${W}" height="${h}" xmlns="http://www.w3.org/2000/svg">${rwDefs('rv'+kind)}${v.svg}</svg><div class="rwcap">${v.cap}</div></div>`; }
 function rwSegList(){
-  return `<div class="rwsl"><div class="rwcap" style="text-align:left;margin-bottom:3px"><b>17 segments</b></div>${SEG.map(s=>{ const g=rep.wm[s[0]-1]||0, f=rwWmFill(s[0],'rsl');
-    return `<div class="rwsr${g?' ab':''}"><svg width="13" height="11">${g&&BW()?rwDefs('rsl'):''}<rect x=".5" y=".5" width="12" height="10" fill="${f.f}" stroke="#555"/></svg><span class="n">${s[0]}.</span> ${esc(s[1])}${g?` <i>— ${esc(WM[g].n)}</i>`:''}</div>`; }).join('')}</div>`; }
+  return `<div class="rwsl"><table class="rwst"><tr><th colspan="2">Segment</th><th>Wall motion</th></tr>${SEG.map(x=>{ const g=rep.wm[x[0]-1]||0, f=rwWmFill(x[0],'rsl');
+    return `<tr class="${g?'ab':''}"><td class="sw"><svg width="12" height="10">${g&&BW()?rwDefs('rsl'):''}<rect x=".5" y=".5" width="11" height="9" fill="${f.f}" stroke="#555"/></svg></td><td>${x[0]}. ${esc(x[1])}</td><td>${g?esc(WM[g].n):'Normal'}</td></tr>`; }).join('')}</table></div>`; }
 function rwmaPageHTML(){
-  if(!wmAbn() || isPed() || rep.rwPage===false) return '';
+  if(!rwOn()) return '';
   const tl=['LAD','RCA','LCx'].map(k=>`<span class="rwl"><svg width="22" height="12">${rwTerrDefs()}<rect x=".5" y=".5" width="21" height="11" fill="${rwTerrFill([k])}" stroke="#444"/></svg>${k}</span>`).join('')
     +`<span class="rwl"><svg width="22" height="12">${rwTerrDefs()}<rect x=".5" y=".5" width="21" height="11" fill="${rwTerrFill(['RCA','LAD'])}" stroke="#444"/></svg>Shared</span>`;
+  const tab=rep.rwTable!==false;
+  const ref=`<div class="rwref2"><div class="rwcap"><b>Coronary territories</b></div>${rwRefBE(tab?118:165)}<div class="rwleg">${tl}</div></div>`;
+  const big=`<div class="rwbe rwbig"><div class="rwbeW" style="width:${tab?350:370}px">${bullseye(false,true)}</div><div class="rwlegw">${legendHTML('lgd2 lgdB lgdT')}</div></div>`;
+  const right= tab ? `<div class="rwright rwl1">${rwSegList()}${ref}</div>` : `<div class="rwright rwright2">${ref}</div>`;
   return `<div class="sh">REGIONAL WALL MOTION & CORONARY TERRITORY</div>
-   <div class="rwtop">
-    <div class="rwbe">${rwPatientBE(255)}<div class="rwcap">Patient's wall motion · outer ring = coronary territory</div></div>
-    <div class="rwside"><div class="rwcap" style="margin-bottom:3px"><b>Coronary territories</b></div>${rwRefBE(150)}<div class="rwleg">${tl}</div></div>
-    ${rwSegList()}
-   </div>
-   <div class="rwviews">${rwViewSVG('PLAX',134)}${rwViewSVG('PSAX',134)}${rwViewSVG('A4C',200)}${rwViewSVG('A2C',200)}</div>
-   ${rwSummary()}`; }
+   <div class="rwtop2">${tab?right+big:big+right}</div>
+   <div class="rwviews">${rwViewSVG('PLAX',tab?122:132)}${rwViewSVG('PSAX',tab?122:132)}${rwViewSVG('A4C',tab?178:188)}${rwViewSVG('A2C',tab?178:188)}</div>
+   <div class="sh2">WALL MOTION</div><table class="pt rwwm"><tr><td class="k">LV wall motion</td><td>: ${esc(wmText())} <b>WMSI ${wmsi().toFixed(2)}</b></td></tr>
+     <tr><td class="k">RV wall motion</td><td>: ${esc(rep.rvwm)}</td></tr></table>${rwSummary()}`; }
 
 function buildPages1(RC){
   calcAll();
   const inner=pageInnerH();
   const contHead=()=>headerHTML()+smallHead();
   // measurement blocks (page 1), then findings/impression (from page 2)
-  const mBlocks=[headerHTML()+patientHTML(), measTables(), wallMotionHTML(), dopplerHTML('flow')].filter(Boolean);
+  window.NFC=false;
+  let mBlocks=[headerHTML()+patientHTML(), measTables(), wallMotionHTML(), rwOn()?'':dopplerHTML('flow')].filter(Boolean);
   const fBlocks=[...findingsBlocks(), `<div class="sec">${impressionBlock()}</div>${sigHTML()}`, abbrHTML()].filter(Boolean);
-  const pages=[]; let cur='', hasCont=false;
+  const pages=[]; let cur='', hasCont=false; const P1={};
   const fits=h=>measure('<div class="'+RC+'">'+h+'</div>')<=inner;
   const newPage=()=>{ if(cur) pages.push(cur); cur=contHead(); hasCont=true; };
-  mBlocks.forEach((bk,i)=>{ if(i===0){ cur=bk; return; } if(fits(cur+bk)) cur+=bk; else { newPage(); cur+=bk; } });
+  // page 1 = all measurements. Short → stretch row spacing to fill the page; slightly too long → shrink to fit (min 85%)
+  const RC1='roomy tight', WR=(bl,pp)=>`<div class="p1fill" style="--pp:${pp}px">${bl.map(b=>'<div>'+b+'</div>').join('')}</div>`;
+  let all=mBlocks.join(''), hAll=measure('<div class="'+RC1+'">'+WR(mBlocks,0)+'</div>');
+  // normal format too long for 100%: diastolic moves up into the measurement columns, Doppler sits beside the bull's-eye
+  if(hAll>inner && !rwOn()){ window.NFC=true; const mb=[headerHTML()+patientHTML(), measTables(), wallMotionHTML()].filter(Boolean), a=mb.join(''), h=measure('<div class="'+RC1+'">'+WR(mb,0)+'</div>');
+    if(h<hAll){ mBlocks=mb; all=a; hAll=h; } else window.NFC=false; }
+  window.NFC=false;
+  const wrapH=pp=>WR(mBlocks,pp);
+  const measS=(h,sc)=>{ const m=$('#measure'); m.innerHTML=pageHTML('<div class="'+RC1+'">'+h+'</div>',0,1,sc); return m.querySelector('.pgc').offsetHeight; };
+  const fill=sc=>{ let lo=0, hi=9; for(let k=0;k<12;k++){ const m=(lo+hi)/2; if(measS(wrapH(m),sc)<=inner/sc) lo=m; else hi=m; }
+    P1.pp=lo; P1.fill=true; P1.H=inner/sc; cur=wrapH(lo).replace('class="p1fill"',`class="p1fill" data-fill="1"`); };
+  if(hAll<=inner) fill(1);
+  else if(measS(wrapH(0),0.8)<=inner/0.8){ let lo=0.8, hi=1; for(let k=0;k<10;k++){ const m=(lo+hi)/2; if(measS(wrapH(0),m)<=inner/m) lo=m; else hi=m; }
+    P1.scale=lo; fill(lo); }
+  else mBlocks.forEach((bk,i)=>{ if(i===0){ cur=bk; return; } if(fits(cur+bk)) cur+=bk; else { newPage(); cur+=bk; } });
+  // RWMA (LV study) page comes right after the measurements, so it is page 2 and not missed at the end
+  const rw=rwmaPageHTML(); let rwAt=-1;
+  if(rw){ pages.push(cur); rwAt=pages.length; pages.push(contHead()+rw); cur=contHead(); hasCont=true; }
   // findings always start on a fresh page unless page 1 has already overflowed
-  if(!hasCont) newPage(); else cur+='<div class="sec"></div>';
+  else if(!hasCont) newPage(); else cur+='<div class="sec"></div>';
   const abbr=fBlocks.pop();
   fBlocks.forEach(bk=>{ if(fits(cur+bk)) cur+=bk; else { newPage(); cur+=bk; } });
   if(abbr && fits(cur+abbr)) cur+=abbr;
   if(cur) pages.push(cur);
-  const core=pages.length; const rw=rwmaPageHTML(); if(rw) pages.push(contHead()+rw);
+  const core=pages.length-(rw?1:0);
   $('#measure').innerHTML='';
-  const info=`${core} page${core>1?"s":""} — page 1: measurements, wall motion, valves, Doppler; findings & impression from page 2${core>2?' (continued)':''}. No text is shrunk.`;
-  return {core, pages:pages.map((p,i,arr)=>pageHTML('<div class="'+RC+'">'+p+'</div>',i,arr.length,1)),info:info+(rw?' + RWMA diagram page':'')};
+  const tot=pages.length, info=rw?`${tot} pages — page 1: all measurements · page ${rwAt+1}: LV study (RWMA) · page ${rwAt+2}${tot>rwAt+2?'–'+tot:''}: findings & impression.${P1.scale?` Page 1 fitted at ${Math.round(P1.scale*100)}%.`:''}`
+    : `${tot} page${tot>1?'s':''} — page 1: measurements, valves, Doppler & wall motion · page 2${tot>2?'–'+tot:''}: findings & impression.${P1.scale?` Page 1 fitted at ${Math.round(P1.scale*100)}%.`:''}`;
+  return {core, p1scale:P1.scale||0, pages:pages.map((p,i,arr)=>{ let h=p;
+      if(i===0&&P1.fill) h=p.replace('data-fill="1"',`data-fill="1" style="--pp:${P1.pp}px;height:${P1.H.toFixed(1)}px"`).replace(/style="--pp:[\d.]+px" data-fill/,'data-fill');
+      return pageHTML('<div class="'+(i===0&&P1.fill?'roomy tight':RC)+'">'+h+'</div>',i,arr.length,i===0&&P1.scale?P1.scale:1); }),info};
 }
 /* ================= PREVIEW ================= */
 let pvT=null;
@@ -2013,8 +2231,8 @@ let tT=null; function toast(m){ const t=$('#toast'); t.textContent=m; t.classLis
 /* ================= STORAGE ================= */
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}};
 const store={mode:'local',db:null,uid:null,cache:[],web:false,user:''};
-const INST_DEF=['M A Rashid Hospital','Hazrat ShahJamal (R.) General Hospital'];
-function instList(){ const l=String(settings.insts||'').split('\n').map(x=>x.trim()).filter(Boolean); return l.length?l:INST_DEF; }
+const INST_DEF=['Pure Lab and Hospital','M A Rashid Hospital','Hazrat ShahJamal (R.) General Hospital'];
+function instList(){ const l=String(settings.insts||'').split('\n').map(x=>x.trim()).filter(Boolean); if(!l.length) return INST_DEF; return l.some(x=>/^pure lab/i.test(x))?l:['Pure Lab and Hospital',...l]; }
 function setStat(){ const el=$('#stat'); if(store.web){ el.innerHTML=`☁ ${esc(store.user)} · <a href="#" id="soLink" style="color:inherit">Sign out</a>`; const a=$('#soLink'); if(a) a.onclick=e=>{ e.preventDefault(); firebase.auth().signOut().then(()=>location.reload()); }; return; }
   el.textContent= store.mode==='db'?'☁ Reports are saved to your account':'💻 Reports are saved in this browser'; }
 /* ---- standalone web version: Firebase Auth + Firestore (config in config.js) ---- */
@@ -2092,7 +2310,7 @@ async function saveReport(quiet){
   const imp1=(rep.impression||'').split('\n')[0]||'';
   if(rep.inst){ settings.lastInst=rep.inst; saveSettings(); }
   if(store.user){ if(!rep.createdBy) rep.createdBy=store.user; rep.editedBy=store.user; }
-  const doc={savedAt:Date.now(),rno:rep.rno||'',inst:rep.inst||'',by:store.user||'',name:rep.name||'(no name)',pid:rep.pid||'',rdate:rep.rdate||'',imp:imp1.slice(0,80),final:!!rep.final,data:JSON.parse(JSON.stringify(rep))};
+  const doc={savedAt:Date.now(),rno:rep.rno||'',inst:rep.inst||'',by:store.user||'',name:rep.name||'(no name)',pid:rep.pid||'',mob:normMob(rep.mob),rdate:rep.rdate||'',imp:imp1.slice(0,80),final:!!rep.final,data:JSON.parse(JSON.stringify(rep))};
   try{
     if(store.mode==='db'){ await rColl().doc(rep.uid).set(doc); }
     else { const m=LS.get('echo_reports',{}); m[rep.uid]=doc; if(!LS.set('echo_reports',m)) throw {code:'storage'}; }
@@ -2229,7 +2447,7 @@ $('#pSaved').addEventListener('click',e=>{
 });
 
 /* ================= SETTINGS ================= */
-const APP_VER='2026-11-19 · auto-update ✓';
+const APP_VER='2026-11-20 · auto-update ✓';
 function renderSettings(){
   const s=settings;
   $('#pSet').innerHTML=`<div class="card"><h3>🏥 Header (institution) <span class="sp"></span><button class="mini" data-x="close">✕ Close</button></h3>
@@ -2248,6 +2466,7 @@ function renderSettings(){
    <div class="card"><h3>🧾 Footer</h3><div class="grid"><label class="f">Default performer<input data-s="performer" value="${esc(s.performer||'')}" placeholder="e.g. Dr. ..."></label><label class="f">Default "Report prepared by"<input data-s="entered" value="${esc(s.entered||'')}" placeholder="e.g. Miss ..."></label></div><p class="hint">Used when the report's own Performer / Prepared by boxes are left empty.</p></div>
    <div class="card"><h3>✍ Signature</h3><label class="f">First line prints bold, the rest below it<textarea data-s="doc" rows="6">${esc(s.doc)}</textarea></label>
    <button class="mini" style="margin-top:6px" data-x="docdef">Restore default</button></div>
+   <div class="card"><h3>⭐ My saved valve descriptions</h3>${VALVES.map(x=>`<div class="dt" style="margin-top:6px">${esc(x.n)}</div>${vphr(x.k).length?vphr(x.k).map((t,i)=>`<div class="vpr"><span>${esc(t)}</span><button class="mini warn" data-x="vpdel" data-k="${x.k}" data-i="${i}">✕</button></div>`).join(''):'<p class="hint" style="margin:2px 0">None yet — write a description in the valve box and tap ⭐ Save.</p>'}`).join('')}</div>
    <p class="hint" style="padding:0 4px">Settings are saved automatically. ${store.mode==='db'?'Stored in your account — available on any device.':'Stored in this browser.'}</p>`;
   $('#logoIn').onchange=e=>{ const f=e.target.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ const im=new Image(); im.onload=()=>{ const H=180, sc=Math.min(1,H/im.height,400/im.width); const c=document.createElement('canvas'); c.width=Math.round(im.width*sc); c.height=Math.round(im.height*sc); c.getContext('2d').drawImage(im,0,0,c.width,c.height); settings.logo=c.toDataURL('image/png'); saveSettings(); renderSettings(); changed(); toast('Logo added'); }; im.src=rd.result; }; rd.readAsDataURL(f); };
 }
@@ -2255,6 +2474,7 @@ $('#pSet').addEventListener('input',e=>{ const t=e.target; if(t.dataset.s){ sett
 $('#pSet').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.x==='close') showTab('pForm');
   if(b.dataset.x==='rmlogo'){ settings.logo=''; saveSettings(); renderSettings(); changed(); }
+  if(b.dataset.x==='vpdel'){ const k=b.dataset.k; settings.vphr[k]=vphr(k).filter((_,i)=>i!==+b.dataset.i); saveSettings(); renderSettings(); return; }
   if(b.dataset.x==='docdef'){ settings.doc=DOC_DEFAULT; saveSettings(); renderSettings(); changed(); } });
 
 /* ================= CHANGE / DRAFT ================= */
@@ -2420,9 +2640,311 @@ function askPdf(){
   m.classList.add('on');
   m.onclick=e=>{ const b=e.target.closest('button'); if(!b) return; m.classList.remove('on'); if(b.dataset.x==='go') makePdf(); else guideOpen(); };
 }
+
+
+/* ================= PREVIOUS STUDY (same Patient ID or mobile) ================= */
+const normMob=m=>{ const d=String(m||'').replace(/\D/g,''); return d.length>=10?d.slice(-10):''; };
+let PREV={key:'',list:null,busy:false};
+function keyMetrics(r){ const sr=rep, sc=C; rep=r; if(!r||!r.m){ rep=sr; return {}; } let o={};
+  try{ calcAll(); const e=efInfo(); o={date:r.rdate||'', rno:r.rno||'', ef:e?(e.band?bandMid(r.efBand):parseFloat(e.ef)):null, efTxt:e?String(e.ef):'', lvidd:C.lvidd, la:C.la, lavi:C.lavi, pasp:C.rvsp, tapse:C.tapse,
+    mva:C.mvarea!=null?C.mvarea:C.mvapht, avmg:C.av_mg, avv:C.av_v, wmsi:wmAbn()?wmsi():null, peri:pnum(r.m&&r.m.peri_d), mr:r.v&&r.v.mv?r.v.mv.rg:'', ar:r.v&&r.v.av?r.v.av.rg:'', tr:r.v&&r.v.tv?r.v.tv.rg:''}; }
+  catch(e){} rep=sr; C=sc; calcAll(); return o; }
+async function findPrev(){
+  const pid=String(rep.pid||'').trim().toLowerCase(), mob=normMob(rep.mob); const key=pid+'|'+mob;
+  if(!pid && !mob){ PREV={key,list:[],busy:false}; return; } if(PREV.key===key && PREV.list) return;
+  PREV={key,list:null,busy:true};
+  let all=[]; try{ all=await listReports(); }catch(e){}
+  const hit=all.filter(d=>d.id!==rep.uid && ((pid && String(d.pid||'').trim().toLowerCase()===pid) || (mob && (d.mob===mob || normMob(d.data&&d.data.mob)===mob))))
+    .sort((a,b)=>String(b.rdate||'').localeCompare(String(a.rdate||''))||(b.savedAt-a.savedAt));
+  PREV={key,list:hit,busy:false}; const pb=$('#prevBox'); if(pb) pb.innerHTML=prevBoxHTML(); }
+function prevBoxHTML(){
+  if(rep.cmpPrev){ const p=rep.cmpPrev; return `<div class="prevb on">🕘 Compared with previous study <b>${esc(fmtDate(p.date))}</b>${p.rno?' ('+esc(p.rno)+')':''} — a comparison line is added to the impression. <button class="mini" data-act="cmpOff">Remove</button></div>`; }
+  if(!PREV.list || !PREV.list.length) return '';
+  const d=PREV.list[0], m=keyMetrics(migrate(d.data||{}));
+  const bits=[m.efTxt?'LVEF '+m.efTxt+'%':'', m.lvidd!=null?'LVIDd '+Math.round(m.lvidd)+' mm':'', m.pasp!=null?'PASP '+Math.round(m.pasp)+' mmHg':'', m.mva!=null?'MVA '+m.mva.toFixed(2)+' cm²':'', m.avmg!=null?'AV mean PG '+Math.round(m.avmg):'', m.wmsi!=null?'WMSI '+m.wmsi.toFixed(2):''].filter(Boolean).join(' · ');
+  const nm=(d.data&&d.data.name)||d.name||'';
+  return `<div class="prevb">🕘 Previous study found: <b>${esc(nm)}</b>, ${esc(fmtDate(d.rdate||''))}${d.rno?' ('+esc(d.rno)+')':''}${PREV.list.length>1?` — ${PREV.list.length} earlier studies`:''}<br><span class="hint">${esc(bits||'no key measurements')}</span><br>
+    <button class="mini pri" data-act="cmpOn" data-id="${esc(d.id)}">Add comparison to impression</button> <button class="mini" data-act="prevLoad" data-id="${esc(d.id)}">Open previous report</button></div>`; }
+function cmpLine(){ const p=rep.cmpPrev; if(!p) return ''; const n=keyMetrics(rep), o=p.m||{}, out=[];
+  const ch=(lab,a,b,u,dp,better,thr)=>{ if(a==null||b==null||isNaN(a)||isNaN(b)) return; const d=b-a; const f=x=>dp?x.toFixed(dp):Math.round(x);
+    let w=''; if(Math.abs(d)>=thr) w = (better==='up'?d>0:d<0)?' (improved)':' (worsened)'; else w=' (unchanged)'; out.push(`${lab} ${f(a)}${u} → ${f(b)}${u}${w}`); };
+  if(o.ef!=null&&n.ef!=null){ const d=n.ef-o.ef; out.push(`LVEF ${o.efTxt||Math.round(o.ef)}% → ${n.efTxt||Math.round(n.ef)}%${Math.abs(d)>=5?(d>0?' (improved)':' (worsened)'):' (unchanged)'}`); } ch('LVIDd',o.lvidd,n.lvidd,' mm',0,'down',3); ch('PASP',o.pasp,n.pasp,' mmHg',0,'down',8);
+  ch('MVA',o.mva,n.mva,' cm²',2,'up',0.2); ch('AV mean PG',o.avmg,n.avmg,' mmHg',0,'down',5); ch('WMSI',o.wmsi,n.wmsi,'',2,'down',0.15);
+  ch('Pericardial effusion',o.peri,n.peri,' mm',0,'down',3);
+  [['MR',o.mr,n.mr],['AR',o.ar,n.ar],['TR',o.tr,n.tr]].forEach(([k,a,b])=>{ if(a&&b&&a!==b) out.push(`${k} ${rgL(a)} → ${rgL(b)}`); });
+  return `Compared with previous study (${fmtDate(p.date)}): ${out.length?out.join('; '):'no significant interval change in key measurements'}`; }
+
+/* ================= PROSTHETIC VALVES (MVR / AVR / DVR) — ASE prosthetic valve criteria ================= */
+const isPros=k=>(k==='mv'||k==='av') && /prosthe/i.test((rep.v[k]||{}).morph||'');
+const PRF={
+  type:['Type',{av:['','Mechanical — bileaflet','Mechanical — tilting disc','Mechanical — ball & cage','Bioprosthetic — stented','Bioprosthetic — stentless','TAVI (transcatheter)'],mv:['','Mechanical — bileaflet','Mechanical — tilting disc','Mechanical — ball & cage','Bioprosthetic — stented']}],
+  motion:['Leaflet / disc motion',['','Normal','Reduced','Immobile leaflet / disc','Rocking (dehiscence)']],
+  mass:['Thrombus / pannus / vegetation',['','None seen','Thrombus','Pannus','Vegetation']],
+  tr:['Transvalvular regurgitation',['','None','Physiological (washing jets)','Mild','Moderate','Severe']],
+  pvl:['Paravalvular leak',['','None','Mild','Moderate','Severe']]};
+const pr=k=>{ rep.pr=rep.pr||{}; return rep.pr[k]=rep.pr[k]||{}; };
+const mnum=id=>pnum(rep.m[id]);
+function prVals(k){ const sc=isCm()?100:1, b=bsa(), lvd=mnum('lvotd'), lvti=mnum('lvotvti'), sv=(lvd&&lvti)?Math.PI*Math.pow(lvd/20,2)*lvti:null, o={sv};
+  if(k==='av'){ o.v=C.av_v; o.mg=C.av_mg; o.at=mnum('pr_av_at'); const avti=mnum('avvti'); o.eoa=(sv&&avti)?sv/avti:null; o.dvi=(lvti&&avti)?lvti/avti:((C.lvot_v&&C.av_v)?C.lvot_v/C.av_v:null); }
+  else { o.v=C.mv_v; o.mg=C.mv_mg; o.pht=mnum('mvpht'); const mvti=mnum('pr_mv_vti'); o.eoa=(sv&&mvti)?sv/mvti:null; o.ratio=(lvti&&mvti)?mvti/lvti:null; }
+  o.eoai=(o.eoa&&b)?o.eoa/b:null; return o; }
+// grade per parameter: 0 normal, 1 possible stenosis, 2 suggests significant stenosis
+function prParts(k){ const o=prVals(k), P=[], g=(n,v,t,f)=>{ if(v!=null&&!isNaN(v)) P.push([n,f(v),t]); };
+  if(k==='av'){ g('Vmax',o.v,`Vmax ${o.v!=null?o.v.toFixed(1):''} m/s`,v=>v>4?2:v>=3?1:0); g('mean PG',o.mg,`mean PG ${o.mg!=null?Math.round(o.mg):''} mmHg`,v=>v>35?2:v>=20?1:0);
+    g('DVI',o.dvi,`DVI ${o.dvi!=null?o.dvi.toFixed(2):''}`,v=>v<0.25?2:v<0.30?1:0); g('EOA',o.eoa,`EOA ${o.eoa!=null?o.eoa.toFixed(2):''} cm²`,v=>v<0.8?2:v<=1.2?1:0); g('AT',o.at,`AT ${o.at!=null?Math.round(o.at):''} ms`,v=>v>100?2:v>=80?1:0); }
+  else { g('peak E',o.v,`peak E ${o.v!=null?o.v.toFixed(1):''} m/s`,v=>v>=2.5?2:v>=1.9?1:0); g('mean PG',o.mg,`mean PG ${o.mg!=null?Math.round(o.mg):''} mmHg`,v=>v>10?2:v>5?1:0);
+    g('VTI ratio',o.ratio,`VTI(PrMV)/VTI(LVOT) ${o.ratio!=null?o.ratio.toFixed(1):''}`,v=>v>2.5?2:v>=2.2?1:0); g('EOA',o.eoa,`EOA ${o.eoa!=null?o.eoa.toFixed(2):''} cm²`,v=>v<1?2:v<2?1:0); g('PHT',o.pht,`PHT ${o.pht!=null?Math.round(o.pht):''} ms`,v=>v>200?2:v>=130?1:0); }
+  return P; }
+function prFunc(k){ const P=prParts(k); if(!P.length) return null; const n2=P.filter(p=>p[1]===2).length, n1=P.filter(p=>p[1]===1).length;
+  return n2>=2?2:(n2||n1>=2)?1:0; }
+function prPPM(k){ const o=prVals(k); if(o.eoai==null) return ''; const bm=bmi(), ob=bm!=null&&bm>=30;
+  if(k==='av'){ const [m,s]=ob?[0.70,0.55]:[0.85,0.65]; return o.eoai<=s?'severe':o.eoai<=m?'moderate':''; }
+  return o.eoai<=0.9?'severe':o.eoai<=1.2?'moderate':''; }
+const PRFN=['normally functioning','possible prosthetic valve stenosis','findings suggest significant prosthetic valve stenosis / obstruction'];
+function prDesc(k){ const d=pr(k), o=prVals(k), bits=[];
+  const typ=d.type?lc(d.type.replace(' — ',' (')+(d.type.includes(' — ')?')':'')):'prosthetic valve'; bits.push(`${typ}${d.size?`, ${d.size} mm`:''}${d.year?` (implanted ${d.year})`:''}`);
+  if(d.motion) bits.push(`${d.motion.toLowerCase()} leaflet / disc motion`.replace('immobile leaflet / disc leaflet / disc','immobile leaflet / disc').replace('rocking (dehiscence) leaflet / disc motion','rocking motion (suspected dehiscence)'));
+  if(d.mass && d.mass!=='None seen') bits.push(`${d.mass.toLowerCase()} seen`);
+  const P=prParts(k); if(P.length) bits.push(P.map(p=>p[2]).join(', ')+(o.eoai!=null?` (EOAi ${o.eoai.toFixed(2)} cm²/m²)`:''));
+  if(d.tr) bits.push(d.tr==='None'?'no transvalvular regurgitation':d.tr.startsWith('Phys')?'physiological washing jets':`${d.tr.toLowerCase()} transvalvular regurgitation`);
+  if(d.pvl) bits.push(d.pvl==='None'?'no paravalvular leak':`${d.pvl.toLowerCase()} paravalvular leak`);
+  const f=prFunc(k), ppm=f===2?'':prPPM(k); if(f!=null) bits.push(PRFN[f]); if(ppm) bits.push(`${ppm} patient–prosthesis mismatch`);
+  return bits.join('; '); }
+function prImp(k){ const d=pr(k), f=prFunc(k), ppm=f===2?'':prPPM(k), o=prVals(k), pos=k==='mv'?'mitral':'aortic';
+  const typ=d.type?d.type.split(' — ')[0].toLowerCase().replace('tavi (transcatheter)','TAVI'):'';
+  const tag=[typ, d.size?d.size+' mm':''].filter(Boolean).join(', ');
+  let t = f===2?`Prosthetic ${pos} valve: findings suggest significant stenosis / obstruction`:f===1?`Prosthetic ${pos} valve: possible stenosis`:`Normally functioning prosthetic ${pos} valve`;
+  t+=tag?` (${tag})`:''; if(o.mg!=null) t+=`; mean PG ${Math.round(o.mg)} mmHg`;
+  const ex=[]; if(d.pvl&&d.pvl!=='None') ex.push(`${d.pvl.toLowerCase()} paravalvular leak`); if(d.tr&&!['None','Physiological (washing jets)'].includes(d.tr)) ex.push(`${d.tr.toLowerCase()} transvalvular regurgitation`);
+  if(ppm) ex.push(`${ppm} patient–prosthesis mismatch`); if(d.mass&&d.mass!=='None seen') ex.push(`${d.mass.toLowerCase()} on the prosthesis`); if(d.motion&&d.motion!=='Normal') ex.push(`${d.motion.toLowerCase()} leaflet / disc motion`);
+  return t+(ex.length?' with '+ex.join(', '):''); }
+function prHTML(k){ const d=pr(k), o=prVals(k), f=prFunc(k), ppm=prPPM(k);
+  const sel=(id)=>{ const [lab,opts0]=PRF[id], opts=Array.isArray(opts0)?opts0:opts0[k]; return `<label class="${id==='type'||id==='mass'?'full':''}">${lab}<select data-pr="${k}.${id}">${opts.map(x=>`<option value="${esc(x)}"${d[id]===x?' selected':''}>${esc(x||'—')}</option>`).join('')}</select></label>`; };
+  const inp=(lab,attr,val)=>`<label>${lab}<input type="text" inputmode="decimal" ${attr} value="${esc(val||'')}"></label>`;
+  const num=k==='av'?inp(`Vmax (${vu()})`,'data-m="av_v"',dispVal('av_v'))+inp('Mean PG (mmHg)','data-m="av_mg"',rep.m.av_mg)+inp('LVOT diameter (mm)','data-m="lvotd"',rep.m.lvotd)+inp('LVOT VTI (cm)','data-m="lvotvti"',rep.m.lvotvti)+inp('Prosthesis VTI (cm)','data-m="avvti"',rep.m.avvti)+inp('Acceleration time (ms)','data-m="pr_av_at"',rep.m.pr_av_at)
+     : inp(`Peak E (${vu()})`,'data-m="mv_v"',dispVal('mv_v'))+inp('Mean PG (mmHg)','data-m="mv_mg"',rep.m.mv_mg)+inp('PHT (ms)','data-m="mvpht"',rep.m.mvpht)+inp('Prosthesis VTI (cm)','data-m="pr_mv_vti"',rep.m.pr_mv_vti)+inp('LVOT diameter (mm)','data-m="lvotd"',rep.m.lvotd)+inp('LVOT VTI (cm)','data-m="lvotvti"',rep.m.lvotvti);
+  return `<div class="det"><div class="dt">Prosthetic ${k==='mv'?'mitral':'aortic'} valve — details</div><div class="g3">${sel('type')}
+    <label>Size (mm)<input type="text" inputmode="decimal" data-pr="${k}.size" value="${esc(d.size||'')}"></label><label>Year implanted<input type="text" inputmode="numeric" data-pr="${k}.year" value="${esc(d.year||'')}"></label>
+    ${sel('motion')}${sel('mass')}${sel('tr')}${sel('pvl')}${num}</div><div class="hint" id="prOut_${k}">${esc(prOutTxt(k))}</div></div>`; }
+function prOutTxt(k){ const P=prParts(k), o=prVals(k), f=prFunc(k), ppm=prPPM(k); if(!P.length) return 'Enter Vmax / mean PG and LVOT & prosthesis VTI — EOA, EOAi, DVI / VTI ratio and the function grade are calculated.';
+  return `${P.map(p=>p[2]+(p[1]===2?' ⛔':p[1]===1?' ⚠':' ✓')).join(' · ')}${o.eoai!=null?' · EOAi '+o.eoai.toFixed(2):''} → ${PRFN[f]}${ppm?'; '+ppm+' PPM':''}`; }
+
+/* ================= PERICARDIAL EFFUSION & TAMPONADE ================= */
+const periOn=()=>/effusion/i.test(rep.f.peri.o)||pnum(rep.m.peri_d)!=null;
+const TPS=[['ra','RA systolic collapse (> ⅓ of systole)'],['rv','RV diastolic collapse'],['ivc','IVC plethora (≥ 21 mm, < 50% collapse)'],['mvv','Mitral inflow variation > 25%'],['tvv','Tricuspid inflow variation > 40%'],['swing','Swinging heart']];
+const PERI_LOC=['','Circumferential','Posterior (behind LV)','Anterior','Around RA / RV','Loculated'], PERI_NAT=['','Echo-free','With fibrin strands','Organised / echogenic content'];
+function periSize(d){ return d==null?'':d<10?'small':d<=20?'moderate':'large'; }
+function tpSigns(){ const t=rep.tp||{}, s=[]; const d=pnum(rep.m.peri_d);
+  if(t.ra) s.push('RA systolic collapse'); if(t.rv) s.push('RV diastolic collapse');
+  const ivc=t.ivc || (C.ivcd!=null && C.ivcd>=21 && rep.ivcCol==='<50%') || /Dilated with <50%/.test(rep.f.ivc.o); if(ivc && (d!=null||/effusion/i.test(rep.f.peri.o))) s.push('IVC plethora');
+  const mv=pnum(rep.m.peri_mvv), tv=pnum(rep.m.peri_tvv); if(t.mvv || (mv!=null&&mv>25)) s.push(`respiratory mitral inflow variation${mv!=null?' '+Math.round(mv)+'%':' > 25%'}`); if(t.tvv || (tv!=null&&tv>40)) s.push(`tricuspid inflow variation${tv!=null?' '+Math.round(tv)+'%':' > 40%'}`);
+  if(t.swing) s.push('swinging heart'); return s; }
+function tpLevel(){ const s=tpSigns(); if(!s.length || s.every(x=>x==='IVC plethora')) return 0; const strong=s.some(x=>/RV diastolic collapse|swinging/.test(x)); return (strong&&s.length>=2)||s.length>=3?2:1; }
+function periText(full){ const d=pnum(rep.m.peri_d), sz=periSize(d), loc=rep.periLoc||'', nat=rep.periNat||'';
+  if(d==null) return null;
+  let t=`${sz} ${loc?loc.split(' (')[0].toLowerCase()+' ':''}pericardial effusion (${full?'max ':''}${Math.round(d)} mm${full?' in diastole':''}${!full&&loc&&loc.includes('(')?', '+loc.split('(')[1].replace(')',''):''})`;
+  if(full && nat) t+=`, ${nat.toLowerCase()}`; const s=tpSigns(), L=tpLevel();
+  if(L===2) t+=` with echocardiographic features of cardiac tamponade (${s.join(', ')})`; else if(L===1) t+=full?`; ${s.join(', ')} — possible early tamponade physiology`:` with possible early tamponade physiology (${s.join(', ')})`;
+  else if(s.length) t+=full?`; ${s.join(', ')}; no chamber collapse — no echocardiographic features of tamponade`:` with ${s.join(', ')}`;
+  else if(full) t+='; no echocardiographic signs of tamponade';
+  return t.charAt(0).toUpperCase()+t.slice(1); }
+function periHTML(){ if(!periOn()) return ''; const t=rep.tp||{}, d=pnum(rep.m.peri_d);
+  return `<div class="det" style="margin:4px 0 8px"><div class="dt">Pericardial effusion — size & tamponade</div><div class="g3">
+   <label>Max depth in diastole (mm)<input type="text" inputmode="decimal" data-m="peri_d" value="${esc(rep.m.peri_d||'')}"></label>
+   <label>Location<select data-pe="periLoc">${PERI_LOC.map(o=>`<option value="${esc(o)}"${rep.periLoc===o?' selected':''}>${esc(o||'—')}</option>`).join('')}</select></label>
+   <label>Nature<select data-pe="periNat">${PERI_NAT.map(o=>`<option value="${esc(o)}"${rep.periNat===o?' selected':''}>${esc(o||'—')}</option>`).join('')}</select></label>
+   <label>Mitral inflow variation (%)<input type="text" inputmode="decimal" data-m="peri_mvv" value="${esc(rep.m.peri_mvv||'')}"></label>
+   <label>Tricuspid inflow variation (%)<input type="text" inputmode="decimal" data-m="peri_tvv" value="${esc(rep.m.peri_tvv||'')}"></label></div>
+   <div class="dt" style="margin-top:6px">Tamponade signs</div><div class="chips">${TPS.map(([k,n])=>`<button class="chip${t[k]?' on':''}" data-tp="${k}">${esc(n)}</button>`).join('')}</div>
+   <div class="hint" id="periOut">${esc(periOut())}</div></div>`; }
+function periOut(){ const d=pnum(rep.m.peri_d); if(d==null) return 'Enter the maximum depth — size is set automatically: < 10 mm small, 10–20 mm moderate, > 20 mm large. IVC plethora is taken from the IVC entry.';
+  return periText(false)+(tpLevel()===2?' ⛔':''); }
+function periRefresh(){ const o=$('#periOut'); if(o) o.textContent=periOut(); const sel=document.querySelector('[data-f="peri.o"]'); if(sel && sel.value!==rep.f.peri.o){ sel.value=rep.f.peri.o; const row=document.querySelector('[data-fr="peri"]'); if(row) row.classList.toggle('abn',rep.f.peri.o!=='Pericardium is normal'); } if(!$('#periBox')||($('#periBox').innerHTML==='')!==!periOn()){ const pb=$('#periBox'); if(pb) pb.innerHTML=periHTML(); } }
+function periSync(){ const d=pnum(rep.m.peri_d); if(d!==rep._pd){ rep._pd=d; if(d!=null) rep.periAuto=true; } if(d==null || rep.periAuto===false) return; const sz=periSize(d);
+  rep.f.peri.o = tpLevel()===2 && sz==='large' ? 'Large pericardial effusion with tamponade physiology' : sz==='small'?'Mild pericardial effusion':sz==='moderate'?'Moderate pericardial effusion':'Large pericardial effusion'; }
+
+/* ================= VOICE INPUT & AI CORRECTION ================= */
+const AI={sample:null,dict:null,ready:false,undo:{}};
+async function aiInit(){ try{ if(window.claude && typeof window.claude.use==='function'){
+    const [sm,dc]=await Promise.all([window.claude.use('sample').catch(()=>null), window.claude.use('dictation').catch(()=>null)]); AI.sample=sm; AI.dict=dc; } }catch(e){}
+  AI.web = window.SpeechRecognition||window.webkitSpeechRecognition||null; AI.ready=true;
+  document.body.classList.toggle('has-ai',!!AI.sample); document.body.classList.toggle('has-mic',!!(AI.dict||AI.web)); }
+function vxBar(target){ return `<div class="vxbar"><button class="mini vxmic" data-vmic="${target}">🎤 Speak</button><button class="mini vxai" data-vai="${target}">✨ AI fix</button><button class="mini vxundo" data-vundo="${target}" hidden>↶ Undo</button><span class="vxst" data-vst="${target}"></span></div>`; }
+function vxEl(target){ return document.querySelector(target); }
+function vxUnlock(el){ if(el.id==='taC' && rep.autoC){ rep.autoC=false; el.readOnly=false; const cb=document.querySelector('[data-g="autoC"]'); if(cb) cb.checked=false; }
+  if(el.id==='taI' && rep.autoI){ rep.autoI=false; el.readOnly=false; const cb=document.querySelector('[data-g="autoI"]'); if(cb) cb.checked=false; } }
+function vxSet(el,val){ el.value=val; el.dispatchEvent(new Event('input',{bubbles:true})); if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+2)+'px'; } }
+function vxStat(target,t){ const s=document.querySelector(`[data-vst="${target}"]`); if(s) s.textContent=t||''; }
+let VX=null;
+function vxMic(target,btn){ const el=vxEl(target); if(!el) return; vxUnlock(el);
+  if(VX){ const v=VX; VX=null; try{ v.stop(); }catch(e){} return; }
+  const base=el.value.replace(/\s+$/,''), sep=base?(/[.;]$/.test(base)?' ':'; '):''; let fin='';
+  const show=part=>{ vxSet(el,base+(fin||part?sep:'')+fin+(part?(fin?' ':'')+part:'')); };
+  if(AI.dict){ const d=AI.dict; VX=d; btn.classList.add('on'); btn.textContent='⏹ Stop';
+    d.onPartial(({text})=>show(text)); d.onFinal(({text})=>{ fin=(fin?fin+' ':'')+text; show(''); });
+    d.onState(({state})=>{ if(state==='idle'){ VX=null; btn.classList.remove('on'); btn.textContent='🎤 Speak'; vxStat(target,fin?'Tap ✨ AI fix to clean up the wording':''); } });
+    d.start().catch(e=>{ VX=null; btn.classList.remove('on'); btn.textContent='🎤 Speak'; toast(e&&e.code==='not_granted'?'Microphone not allowed':'Voice input unavailable'); });
+    return; }
+  if(AI.web){ const r=new AI.web(); r.lang='en-GB'; r.interimResults=true; r.continuous=true; VX=r; btn.classList.add('on'); btn.textContent='⏹ Stop';
+    r.onresult=e=>{ let part=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript.trim(); if(e.results[i].isFinal) fin=(fin?fin+' ':'')+t; else part+=t+' '; } show(part.trim()); };
+    r.onend=()=>{ VX=null; btn.classList.remove('on'); btn.textContent='🎤 Speak'; };
+    r.onerror=()=>toast('Voice input stopped'); r.start(); return; }
+  toast('Use the 🎤 on your phone keyboard to speak, then tap ✨ AI fix'); }
+async function vxAI(target,btn){ const el=vxEl(target); if(!el) return; const txt=el.value.trim(); if(!txt) return toast('Nothing to correct');
+  if(!AI.sample) return toast('AI correction is available when the app is opened inside Claude');
+  vxUnlock(el); btn.disabled=true; vxStat(target,'✨ correcting…');
+  const vocab=[...Object.values(settings.vphr||{}).flat(), ...(settings.phrases||[])].slice(0,60), learned=(settings.aiLearn||[]).slice(-40);
+  const prompt=`You correct echocardiography report text written or dictated by a cardiologist in Bangladesh.
+Rules:
+- Fix spelling, speech-recognition errors, grammar and medical terminology (e.g. "am el" → "AML", "mitral stenosis" stays, "e prime" → "e′", "tapsy" → "TAPSE").
+- Keep the meaning and every finding and number exactly. Do NOT add, remove or interpret findings. Do not change measurements or units except obvious formatting (e.g. "15 millimetres" → "15 mm").
+- Use standard echocardiography abbreviations (LV, RV, LA, AML, PML, MR, AS, LVEF, PASP, RWMA…) and concise report style.
+- Keep line breaks: one finding per line if the input has several lines.
+${vocab.length?'- The doctor prefers these phrasings when they fit:\n'+vocab.map(v=>'  • '+v).join('\n')+'\n':''}${learned.length?'- Earlier corrections the doctor accepted:\n'+learned.map(l=>'  • "'+l[0]+'" → "'+l[1]+'"').join('\n')+'\n':''}
+Return ONLY the corrected text, nothing else.
+
+TEXT:
+${txt}`;
+  try{ const r=await AI.sample(prompt,{modelTier:'quick',cache:false}); const out=String(r.text||'').trim().replace(/^```\w*\n?|```$/g,'').trim();
+    if(!out) throw {message:'empty'}; AI.undo[target]=el.value; vxSet(el,out);
+    const ub=document.querySelector(`[data-vundo="${target}"]`); if(ub) ub.hidden=false;
+    if(out!==txt){ settings.aiLearn=[...(settings.aiLearn||[]), ...vxDiff(txt,out)].slice(-80); saveSettings(); }
+    vxStat(target,out===txt?'✓ No changes needed':'✓ Corrected — check, or tap ↶ Undo'); }
+  catch(e){ vxStat(target,''); toast(e&&e.code==='rate_limited'?'AI is busy — try again in a minute':e&&e.code==='not_granted'?'AI correction not allowed':'AI correction failed'); }
+  finally{ btn.disabled=false; } }
+// word-level changes, kept as small examples so later corrections follow the doctor's choices
+function vxDiff(a,b){ const A=a.split(/\s+/).slice(0,150), B=b.split(/\s+/).slice(0,150), n=A.length, m=B.length, eq=(x,y)=>x.toLowerCase().replace(/[.,;:]/g,'')===y.toLowerCase().replace(/[.,;:]/g,'');
+  const L=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--) for(let j=m-1;j>=0;j--) L[i][j]=eq(A[i],B[j])?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+  const out=[]; let i=0,j=0, ra=[], rb=[]; const flush=()=>{ if(ra.length&&rb.length&&ra.length<=4&&rb.length<=4) out.push([ra.join(' '),rb.join(' ')]); ra=[]; rb=[]; };
+  while(i<n&&j<m){ if(eq(A[i],B[j])){ flush(); i++; j++; } else if(L[i+1][j]>=L[i][j+1]) ra.push(A[i++]); else rb.push(B[j++]); }
+  while(i<n) ra.push(A[i++]); while(j<m) rb.push(B[j++]); flush(); return out.slice(0,8); }
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-vmic],[data-vai],[data-vundo]'); if(!b) return; e.preventDefault(); e.stopPropagation();
+  if(b.dataset.vmic) return vxMic(b.dataset.vmic,b); if(b.dataset.vai) return vxAI(b.dataset.vai,b);
+  const t=b.dataset.vundo, el=vxEl(t); if(el && AI.undo[t]!=null){ vxSet(el,AI.undo[t]); delete AI.undo[t]; b.hidden=true; vxStat(t,'Undone'); } },true);
+
+/* ================= IMPORT MEASUREMENTS FROM PHOTOS / PDF OF THE MACHINE REPORT ================= */
+function impFields(){ const F=[];
+  ALLM.filter(d=>!d.calc && !['paspIn','trpgIn','rap'].includes(d.id)).forEach(d=>F.push([d.id,d.l,d.vel?'m/s':d.u]));
+  VD.forEach(x=>{ F.push([x.k+'_v',x.k==='mv'?'Mitral valve peak velocity (stenosis jet / prosthesis peak E)':x.ln+' peak velocity (Vmax)','m/s']); F.push([x.k+'_mg',x.ln+' mean gradient','mmHg']); });
+  [['trpgIn','TR peak gradient','mmHg'],['paspIn','PASP / RVSP (if printed)','mmHg'],['avvti','AV VTI','cm'],['mvpht','MV pressure half-time','ms'],['peri_d','Pericardial effusion depth','mm']].forEach(x=>{ if(!F.some(f=>f[0]===x[0])) F.push(x); });
+  return F; }
+async function impImages(files){ const out=[];
+  for(const f of files){
+    if(/pdf/i.test(f.type)){ try{ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'); const lib=window.pdfjsLib; lib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        const doc=await lib.getDocument({data:await f.arrayBuffer()}).promise; for(let i=1;i<=Math.min(doc.numPages,4);i++){ const pg=await doc.getPage(i), vp=pg.getViewport({scale:2}); const c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height; await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise; out.push(await impShrink(c)); } }
+      catch(e){ toast('Could not read the PDF — take photos instead'); } continue; }
+    const img=await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=URL.createObjectURL(f); });
+    const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; c.getContext('2d').drawImage(img,0,0); out.push(await impShrink(c)); }
+  return out; }
+function impShrink(c){ const M=1800, k=Math.min(1,M/Math.max(c.width,c.height)); const d=document.createElement('canvas'); d.width=Math.round(c.width*k); d.height=Math.round(c.height*k); d.getContext('2d').drawImage(c,0,0,d.width,d.height); return new Promise(r=>d.toBlob(r,'image/jpeg',0.85)); }
+async function impRun(files){
+  if(!AI.sample) return toast('Photo import works when the app is opened inside Claude');
+  const dlg=impDlg(`<b>📷 Reading the machine report…</b><p class="hint">This takes 10–30 seconds.</p>`);
+  try{ let lim=null; try{ lim=await AI.sample.limits(); }catch(e){} if(lim && !lim.images) throw {message:'Image reading is not available here'};
+    const imgs=await impImages(files); if(!imgs.length) throw {message:'No pictures'};
+    const F=impFields();
+    const prompt=`These are photos / pages of an echocardiography machine report (Mindray or similar) for ONE patient. Read every measurement and patient detail.
+Return ONLY a JSON object, no other text:
+{"patient":{"name":"","pid":"","age":"","sex":"Male|Female|","ht":"cm","wt":"kg","bp":"","hr":"","date":"YYYY-MM-DD"},
+ "m":{"<field id>":<number>, ...},
+ "unmapped":["label = value unit", ...]}
+Field ids (use ONLY these keys in "m"; convert to the unit shown):
+${F.map(f=>`${f[0]} = ${f[1]}${f[2]?' ['+f[2]+']':''}`).join('\n')}
+Rules:
+- Convert units: cm → mm for dimensions in [mm] (e.g. LVIDd 4.8 cm → 48); velocities in m/s (e.g. 85 cm/s → 0.85) except e′ septal / e′ lateral / RV S′ which stay in cm/s; times in ms.
+- If a value appears several times (several beats), use the average shown by the machine, or the mean of the values.
+- MV peak E velocity → mve; MV A → mva_; "MV Vmax" or "MV peak velocity" in stenosis context → mv_v. TR Vmax → trv. TAPSE in mm.
+- EF: put Teichholz/M-mode EF only if no LVIDd/LVIDs; put Simpson / biplane EF in efs.
+- Leave out anything you cannot read with confidence. Never guess numbers.
+- Do not include calculated indices that are not printed.`;
+    const r=await AI.sample(prompt,{images:imgs,modelTier:'default',cache:false});
+    const t=String(r.text||''); const j=JSON.parse(t.slice(t.indexOf('{'),t.lastIndexOf('}')+1));
+    impPreview(j);
+  }catch(e){ impDlg(`<b>Could not read the report</b><p class="hint">${esc(e&&e.code==='rate_limited'?'AI is busy — try again in a minute.':e&&e.code==='not_granted'?'Permission for AI was not given.':(e&&e.message)||'Unknown error')}</p><button class="mini" data-imp="close">Close</button>`); } }
+function impDlg(html){ let d=document.getElementById('impDlg'); if(!d){ d=document.createElement('div'); d.id='impDlg'; d.className='dlg'; document.body.appendChild(d);
+    d.addEventListener('click',e=>{ const b=e.target.closest('[data-imp]'); if(!b) return; if(b.dataset.imp==='close') d.classList.remove('on'); if(b.dataset.imp==='apply') impApply(); }); }
+  d.innerHTML=`<div class="dlgc" style="max-width:520px;max-height:86vh;overflow:auto">${html}</div>`; d.classList.add('on'); return d; }
+let IMPJ=null;
+function impPreview(j){ IMPJ=j; const F=impFields(), lab=id=>(F.find(f=>f[0]===id)||[id,id])[1], unit=id=>(F.find(f=>f[0]===id)||['','',''])[2];
+  const m=Object.entries(j.m||{}).filter(([k,v])=>F.some(f=>f[0]===k) && v!==null && v!=='' && !isNaN(parseFloat(v)));
+  const P=Object.entries(j.patient||{}).filter(([k,v])=>v&&String(v).trim());
+  const rows=m.map(([k,v])=>{ const cur=String(rep.m[k]||'').trim(); return `<tr><td><input type="checkbox" data-impk="${esc(k)}" checked></td><td>${esc(lab(k))}</td><td><b>${esc(String(v))}</b> ${esc(unit(k))}</td><td class="hint">${cur&&cur!==String(v)?'now: '+esc(cur):''}</td></tr>`; }).join('');
+  impDlg(`<b>📷 Found ${m.length} measurement${m.length===1?'':'s'}</b>${P.length?`<p class="hint" style="margin:4px 0">Patient: ${P.map(([k,v])=>esc(k+': '+v)).join(' · ')}</p>`:''}
+   <table class="imptb">${rows||'<tr><td class="hint">No measurements could be read — try clearer photos.</td></tr>'}</table>
+   ${(j.unmapped||[]).length?`<details style="margin-top:6px"><summary class="hint">Not mapped (${j.unmapped.length})</summary><div class="hint">${j.unmapped.map(esc).join('<br>')}</div></details>`:''}
+   <label class="chk" style="display:flex;gap:6px;margin:8px 0;font-size:13.5px"><input type="checkbox" id="impOver"> Replace values already typed</label>
+   <label class="chk" style="display:flex;gap:6px;margin:0 0 8px;font-size:13.5px"><input type="checkbox" id="impPat" checked> Fill empty patient details</label>
+   <div style="display:flex;gap:8px;justify-content:flex-end"><button class="mini" data-imp="close">Cancel</button><button class="mini pri" data-imp="apply">Apply</button></div>`); }
+function impApply(){ const j=IMPJ||{}, over=$('#impOver')&&$('#impOver').checked, pat=$('#impPat')&&$('#impPat').checked; const got=[];
+  document.querySelectorAll('[data-impk]').forEach(cb=>{ if(!cb.checked) return; const k=cb.dataset.impk, v=String(j.m[k]); if(!over && String(rep.m[k]||'').trim()) return;
+    let val=parseFloat(v); if(VEL_IDS.has(k) && isCm()) val=Math.round(val*100); rep.m[k]=String(val); if(PAIR[k]) rep.m[PAIR[k]]=''; got.push(k); });
+  if(pat){ const P=j.patient||{}, set=(k,v)=>{ if(v && !String(rep[k]||'').trim()) rep[k]=String(v).trim(); };
+    set('name',P.name); set('pid',P.pid); set('ht',P.ht&&String(parseFloat(P.ht))); set('wt',P.wt&&String(parseFloat(P.wt))); set('bp',P.bp); set('hr',P.hr&&String(parseFloat(P.hr)));
+    if(P.age && !rep.ageN){ const a=parseFloat(P.age); if(!isNaN(a)) rep.ageN=String(a); } if(/^(male|female)$/i.test(P.sex||'') && !rep.sex) rep.sex=P.sex[0].toUpperCase()+P.sex.slice(1).toLowerCase();
+    if(/^\d{4}-\d{2}-\d{2}$/.test(P.date||'')) rep.rdate=P.date; }
+  rep.imported=[...new Set([...(rep.imported||[]),...got])];
+  document.getElementById('impDlg').classList.remove('on'); syncAuto(); renderForm(); changed(); toast(`Imported ${got.length} value${got.length===1?'':'s'} — highlighted in blue, please check`); }
+/* ================= VALVE MORPHOLOGY: own text, saved descriptions, spelling & consistency ================= */
+function vphr(k){ return ((settings.vphr||{})[k])||[]; }
+const ECHO_WORDS=`leaflet leaflets cusp cusps valve valves thickened thickening thick thin calcified calcification calcific calcium echogenic echogenicity echobright bright brightness
+restricted restriction restrictive movement movements mobility mobile immobile pliable doming dome commissure commissures commissural fusion fused partial partially subvalvular
+chordae chordal chorda papillary muscle muscles apparatus involvement involved stage grade mild mildly moderate moderately severe severely trivial trace diastolic diastole systolic systole
+coaptation coapting noncoaptation non prolapse prolapsing prolapsed flail flailing vegetation vegetations perforation perforated annulus annular dilated dilatation dilation tethered tethering
+tenting regurgitation regurgitant stenosis stenotic stenosed anterior posterior septal inferior lateral both with without and the all three two one cusp bicuspid trileaflet tricuspid
+quadricuspid unicuspid raphe sclerotic sclerosis degenerative rheumatic myxomatous redundant billowing normal normally functioning prosthetic bioprosthetic mechanical ring repair repaired
+mass thrombus extending extension extends base tip tips margin margins body entire minimal marked extensive shortening shortened seen noted evidence reduced increased good poor adequate
+right left coronary noncoronary opening opens closure closing eccentric central jet jets mitral aortic pulmonary pulmonic tricuspid valvular valve-related nodular nodule nodules
+fibrotic fibrosis fibrous scarred scarring retracted retraction rigid stiff hockey stick appearance anteriorly posteriorly directed towards toward wall walls area segment scallop scallops
+morphology structurally structure structural focal diffuse diffusely irregular irregularity smooth well preserved slightly markedly significantly significant mildly-thickened from into
+over under across through than more less only also no not any there were was are has have had seen visualised visualized visualisation poorly suboptimal obvious apparent features
+consistent suggestive suggest suggests likely possible possibly probably cleft clefts anomaly congenital dysplastic dysplasia ebstein apical apically displaced displacement
+excursion reduced annuloplasty vegetative abscess pseudoaneurysm dehiscence paravalvular leak leakage gradient gradients velocity velocities pressure`.split(/\s+/);
+let SPELL=null;
+function spellDict(){ if(SPELL) return SPELL; const S=new Set(ECHO_WORDS.map(w=>w.toLowerCase()));
+  const add=t=>String(t||'').toLowerCase().split(/[^a-z]+/).forEach(w=>{ if(w.length>2) S.add(w); });
+  VALVES.forEach(x=>x.morph.forEach(add)); Object.values(VDET).forEach(D=>D.f.forEach(f=>f[2].forEach(add))); PHRASES.forEach(add); FIND.forEach(f=>f.o.forEach(add)); Object.values(WKD).forEach(a=>a.forEach(add));
+  return SPELL=S; }
+function lev(a,b){ if(Math.abs(a.length-b.length)>2) return 9; const d=[...Array(b.length+1).keys()];
+  for(let i=1;i<=a.length;i++){ let prev=d[0]; d[0]=i; for(let j=1;j<=b.length;j++){ const t=d[j]; d[j]=Math.min(d[j]+1,d[j-1]+1,prev+(a[i-1]===b[j-1]?0:1)); prev=t; } } return d[b.length]; }
+function spellIssues(txt){ const S=spellDict(), own=new Set();
+  const out=[], seen=new Set();
+  (String(txt||'').match(/[A-Za-z]+/g)||[]).forEach(w=>{ const l=w.toLowerCase(); if(l.length<4||/^[A-Z]{2,}s?$/.test(w)||S.has(l)||own.has(l)||seen.has(l)) return; seen.add(l);
+    let best=null, bd=9; S.forEach(c=>{ const d=lev(l,c); if(d<bd){ bd=d; best=c; } }); if(best && bd<=(l.length<=5?1:2)) out.push([w,best]); });
+  return out; }
+const NEG=t=>new RegExp('\\b(no|non|not|without)[\\s-]+(\\w+\\s+){0,2}'+t,'i');
+function morphIssues(k){ const V=rep.v[k], x=VALVES.find(z=>z.k===k), t=String(V.morph||'').toLowerCase(), W=[], N=x.n;
+  if(!t || x.morph.includes(V.morph)) return W;
+  const ab=x.ab, sev={mild:'Mild',moderate:'Moderate',severe:'Severe'};
+  if(/\b(thin|pliable|normal opening|opens well|normal morphology)\b/.test(t) && V.st!=='None') W.push(`${N}: text says "thin / pliable / normal opening" but ${ab}S is graded ${V.st}.`);
+  if(/\b(restrict|doming|commissural fusion|fused)/.test(t) && !NEG('(restrict|doming|fus)').test(t) && V.st==='None' && k!=='tv') W.push(`${N}: text describes restriction / doming / fusion but ${ab}S is "None".`);
+  const m1=t.match(new RegExp('\\b(mild|moderate|severe)\\s+('+ab.toLowerCase()+'s|stenosis)\\b')); if(m1 && sev[m1[1]]!==V.st) W.push(`${N}: text says "${m1[0]}" but ${ab}S is graded ${V.st}.`);
+  const m2=t.match(new RegExp('\\b(mild|moderate|severe)\\s+('+ab.toLowerCase()+'r|regurgitation)\\b')); if(m2 && rgL(V.rg).toLowerCase().indexOf(m2[1])<0) W.push(`${N}: text says "${m2[0]}" but ${ab}R is graded ${V.rg}.`);
+  if(new RegExp('\\bno\\s+('+ab.toLowerCase()+'r|regurgitation)\\b').test(t) && ANYR(V.rg)) W.push(`${N}: text says "no regurgitation" but ${ab}R is graded ${V.rg}.`);
+  if(/\bnormal (valve|leaflets|cusps|morphology)\b/.test(t) && /thicken|calcif|restrict/.test(t)) W.push(`${N}: text says both "normal" and thickened / calcified / restricted — please check.`);
+  if(k==='av'){ const d=rep.vd.as;
+    if(/bicuspid/.test(t) && /(trileaflet|three cusps|all (the )?(three|3))/.test(t)) W.push('Aortic valve: text mentions both bicuspid and three cusps.');
+    if(/bicuspid/.test(t) && d.cusps==='Trileaflet') W.push('Aortic valve: text says bicuspid but "Cusps" is set to Trileaflet.');
+    if(/(trileaflet|three cusps|all (the )?(three|3))/.test(t) && /^Bicuspid|Unicuspid|Quadricuspid/.test(d.cusps||'')) W.push(`Aortic valve: text says three cusps but "Cusps" is set to ${d.cusps}.`); }
+  if(k==='mv'){ const w=rep.vd.ms.wk||{};
+    const st=t.match(/subvalvular[^;.]*?stage\s*([1-4])/); if(st && w.s && +st[1]!==w.s) W.push(`Mitral valve: text says subvalvular stage ${st[1]} but Wilkins subvalvular score is ${w.s}.`);
+    if(/calcif/.test(t) && !NEG('calcif').test(t) && w.c===1) W.push('Mitral valve: text says calcified but Wilkins calcification is 1.');
+    if(NEG('calcif').test(t) && w.c>=3) W.push(`Mitral valve: text says not calcified but Wilkins calcification is ${w.c}.`); }
+  return W; }
+function morphHintHTML(k){ const sp=spellIssues(rep.v[k].morph), mi=morphIssues(k); if(!sp.length&&!mi.length) return '';
+  return `${sp.length?`<div class="msp">Spelling: ${sp.map(([w,r])=>`<button class="mini" data-act="mfix" data-k="${k}" data-w="${esc(w)}" data-r="${esc(r)}">${esc(w)} → <b>${esc(r)}</b></button>`).join(' ')}</div>`:''}${mi.map(m=>`<div class="mwarn">⚠ ${esc(m)}</div>`).join('')}`; }
+// short text for the page-1 valve table; the full description goes to the findings page
+const MKEY=[[/prosthe/,'Prosthetic'],[/repair|annuloplasty/,'Repaired'],[/bicuspid/,'Bicuspid'],[/unicuspid/,'Unicuspid'],[/quadricuspid/,'Quadricuspid'],[/rheumat/,'Rheumatic'],[/myxomat/,'Myxomatous'],[/thicken/,'Thickened'],[/calcif/,'Calcified'],[/scleros|sclerotic/,'Sclerotic'],[/restrict/,'Restricted'],[/doming/,'Doming'],[/commissural fusion|fused/,'Commissural fusion'],[/prolaps/,'Prolapse'],[/flail/,'Flail'],[/tether/,'Tethered'],[/vegetation/,'Vegetation'],[/perforat/,'Perforation'],[/subvalvular/,'Subvalvular involvement']];
+function morphShort(k){ const V=rep.v[k], x=VALVES.find(z=>z.k===k), m=String(V.morph||'');
+  if(isPros(k)){ const d=pr(k); return 'Prosthetic'+(d.type||d.size?' ('+[d.type?d.type.split(' — ')[0].toLowerCase().replace('tavi (transcatheter)','TAVI'):'',d.size?d.size+' mm':''].filter(Boolean).join(', ')+')':''); }
+  if(x.morph.includes(m)||m.length<=42) return m; const t=m.toLowerCase();
+  const kw=MKEY.filter(([re])=>re.test(t)&&!NEG(re.source.split('|')[0]).test(t)).map(z=>z[1]);
+  let out=kw.length?kw.slice(0,5).join(', ').toLowerCase():m.split(/[;,.]/)[0].slice(0,42)+'…'; out=out.charAt(0).toUpperCase()+out.slice(1);
+  if(k==='mv' && wkTotal()!=null) out+=` (Wilkins ${wkTotal()}/16)`;
+  return out; }
 /* ================= AUTOCOMPLETE ================= */
 const AC={box:null,el:null,start:0,end:0,items:[],sel:0};
-function acLib(){ const own=Array.isArray(settings.phrases)?settings.phrases:[]; return [...own,...PHRASES.filter(p=>!own.includes(p))]; }
+function acLib(){ const own=Array.isArray(settings.phrases)?settings.phrases:[]; const vp=Object.values(settings.vphr||{}).flat(); return [...vp,...own.filter(p=>!vp.includes(p)),...PHRASES.filter(p=>!own.includes(p)&&!vp.includes(p))]; }
 function acFrag(el){ const v=el.value, c=el.selectionStart==null?v.length:el.selectionStart; let i=c; while(i>0 && !/[;,.\n(]/.test(v[i-1])) i--; while(i<c && v[i]===' ') i++; return {start:i,end:c,frag:v.slice(i,c)}; }
 function acShow(el){
   const {start,end,frag}=acFrag(el); const q=frag.trim().toLowerCase();
@@ -2462,7 +2984,7 @@ window.addEventListener('scroll',()=>{ if(AC.box&&AC.box.style.display==='block'
   syncAuto(); renderForm();
   const wide=window.matchMedia('(min-width:1100px)').matches;
   if(wide) showTab('pForm');
-  initStore();
+  initStore(); aiInit();
 })();
 
 </script>
