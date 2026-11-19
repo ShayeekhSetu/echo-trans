@@ -277,6 +277,9 @@ textarea{resize:vertical}
 .det{border-top:1px dashed var(--abnb);margin-top:8px;padding-top:8px}
 .det .dt{font-weight:700;font-size:13px;color:#8a5a00;margin-bottom:6px}
 .det .wkt{background:#fff;border:1px solid var(--abnb);border-radius:6px;padding:1px 8px;margin-left:6px;color:var(--ink)}
+ #backChk{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:110;display:none;padding:10px 16px;border-radius:22px;border:0;background:#b3261e;color:#fff;font-size:14px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.25)}#backChk.on{display:block}
+.chk-box li.go{cursor:pointer}.chk-box .goar{display:inline-block;margin-left:4px;padding:0 7px;border:1px solid #9ab;border-radius:10px;font-size:12px;font-weight:600;color:#1b5a8a;background:#fff;white-space:nowrap}
+@keyframes flashk{0%,100%{box-shadow:0 0 0 0 rgba(255,170,0,0)}30%,70%{box-shadow:0 0 0 4px rgba(255,170,0,.85)}}.flash{animation:flashk 1.6s ease 2;border-radius:8px}
 .chkr{background:#fdecea;border:1px solid #f3b8b2;border-radius:8px;padding:6px 10px;margin-top:6px}.chkr ul,.chky ul{margin:4px 0 0 18px;padding:0}
 .chky{background:#fff8e1;border:1px solid #f1d98a;border-radius:8px;padding:6px 10px;margin-top:6px}
 .vxbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:2px 0 4px}.vxbar .vxmic,.vxbar .vxai{display:none}body.has-mic .vxbar .vxmic,body.has-ai .vxbar .vxai{display:inline-block}
@@ -1582,8 +1585,23 @@ function checks(){
 }
 const YELLOW_RE=/spelling|Sex is not selected|Age is not entered|^Template|Low birth weight|consider a low-flow state|differs from the ASE|type \(mechanical|single tamponade sign|possible stenosis — compare/i;
 function checksSplit(){ const W=checks(); return {red:W.filter(w=>!YELLOW_RE.test(w)), yel:W.filter(w=>YELLOW_RE.test(w))}; }
+// where each warning points to in the form (tap a warning → jump there)
+const GOTO=[[/Sex is not selected/,'[data-g="sex"]'],[/Age is not entered/,'[data-g="ageN"]'],[/weight/i,'[data-g="wt"]'],
+  [/EF band|No LVEF|Teichholz EF/,'.efb'],[/tamponade|Pericardial effusion/i,'#periBox,[data-fr="peri"]'],
+  [/Prosthetic mitral|Mitral valve|^MS |MS selected|MS grade|MVA|PTMC|Wilkins/,'[data-vc="mv"]'],[/Prosthetic aortic|Aortic valve|^AS |AS grade|Discordant AS|AS with SVi/,'[data-vc="av"]'],
+  [/^TR |TR velocity|TR is|Tricuspid valve/,'[data-vc="tv"]'],[/Pulmonary valve|^PS /,'[data-vc="pv"]'],[/Diastolic/,'[data-fr="dd"]'],
+  [/LV marked|"LV |LVH|LV finding/,'[data-fr="lv"]'],[/LA marked|"LA |LA finding/,'[data-fr="la"]'],[/thrombus/i,'[data-fr="mass"]'],[/^Template/,'#tplCard,.tpl']];
+const gotoOf=w=>{ const g=GOTO.find(([re])=>re.test(w)); return g?g[1]:''; };
+function gotoField(sel){ const el=sel.split(',').map(x=>document.querySelector(x.trim())).find(Boolean);
+  if(!el){ toast(FULL()?'This item has no field on the form':'Switch to ☰ Full mode to see this field'); return; }
+  showTab('pForm'); setTimeout(()=>{ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    const f=el.matches('input,select,textarea')?el:el.querySelector('input:not([type=checkbox]),select,textarea'); if(f) setTimeout(()=>{ try{ f.focus({preventScroll:true}); }catch(e){} },450);
+    let bk=document.getElementById('backChk'); if(!bk){ bk=document.createElement('button'); bk.id='backChk'; bk.textContent='↩ Back to checks'; document.body.appendChild(bk);
+      bk.onclick=()=>{ bk.classList.remove('on'); const c=document.getElementById('chkCard'); if(c) c.scrollIntoView({behavior:'smooth',block:'center'}); }; }
+    bk.classList.add('on'); clearTimeout(bk._t); bk._t=setTimeout(()=>bk.classList.remove('on'),20000); },60); }
+document.addEventListener('click',e=>{ const li=e.target.closest('[data-goto]'); if(!li) return; gotoField(li.dataset.goto); });
 function checksHTML(){ const {red,yel}=checksSplit(); if(!red.length&&!yel.length) return `<div class="chk-box ok">✓ No problems found</div>`;
-  return `<div class="chk-box"><b>Check before printing</b>${red.length?`<div class="chkr"><b>🔴 Must check (${red.length})</b><ul>${red.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}${yel.length?`<div class="chky"><b>🟡 For information (${yel.length})</b><ul>${yel.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}</div>`; }
+  return `<div class="chk-box"><b>Check before printing</b>${red.length?`<div class="chkr"><b>🔴 Must check (${red.length})</b><ul>${red.map(w=>{ const g=gotoOf(w); return `<li${g?` data-goto="${esc(g)}" class="go"`:''}>${esc(w)}${g?' <span class="goar">↗ Go</span>':''}</li>`; }).join('')}</ul></div>`:''}${yel.length?`<div class="chky"><b>🟡 For information (${yel.length})</b><ul>${yel.map(w=>{ const g=gotoOf(w); return `<li${g?` data-goto="${esc(g)}" class="go"`:''}>${esc(w)}${g?' <span class="goar">↗ Go</span>':''}</li>`; }).join('')}</ul></div>`:''}</div>`; }
 function renderForm(){
   calcAll();
   const ped=isPed(), b=bsa();
