@@ -840,6 +840,15 @@ function legendHTML(cls){
 
 /* ================= FORM ================= */
 const sel=(attr,opts,v,cls='')=>`<select ${attr} class="${cls}">${opts.map(o=>`<option${o===v?' selected':''}>${esc(o)}</option>`).join('')}</select>`;
+const CLIN_OPTS=['IHD','Hypertension','Diabetes mellitus','Chest pain','Dyspnoea','Palpitation','Syncope','Heart failure','Murmur','S/P PCI','S/P CABG','Old MI','Stroke / TIA','CKD','AF','Rheumatic fever','COPD','Pregnancy','Pre-operative evaluation','Follow-up','Routine check-up','Congenital heart disease'];
+function clinParts(){ return String(rep.clin||'').split(/\s*[,;]\s*/).map(x=>x.trim()).filter(Boolean); }
+function clinChips(){ const have=clinParts().map(x=>x.toLowerCase()); return CLIN_OPTS.map(o=>`<button type="button" class="chip${have.includes(o.toLowerCase())?' on':''}" data-clin="${esc(o)}">${esc(o)}</button>`).join(''); }
+function allRefs(){ const a=[...(Array.isArray(settings.refs)?settings.refs:[]),...refList()]; return [...new Set(a.map(x=>String(x).trim()).filter(Boolean))].slice(0,40); }
+function refChips(){ const r=allRefs(); return r.length?`<div class="full chips">${r.slice(0,12).map(x=>`<button type="button" class="chip${rep.ref===x?' on':''}" data-refpick="${esc(x)}">${esc(x)}</button>`).join('')}</div>`:''; }
+function saveRef(v){ v=String(v||'').trim(); if(!v) return; const r=[v,...allRefs().filter(x=>x!==v)].slice(0,40); settings.refs=r; LS.set('echo_refs',r); saveSettings(); }
+function bpParts(){ const m=String(rep.bp||'').match(/^\s*(\d*|\?)\s*\/\s*(\d*|\?)/); return m?[m[1]==='?'?'':m[1], m[2]==='?'?'':m[2]]:['','']; }
+function bpSel(k){ const cur=bpParts()[k]; const lo=k?40:70, hi=k?140:240, def=k?80:120; let o=[]; for(let v=lo;v<=hi;v+=5) o.push(String(v)); if(cur&&!o.includes(cur)) o.push(cur), o.sort((a,b)=>a-b);
+  return `<select data-bp="${k}" style="flex:1;min-width:0"><option value="">${k?'Dia':'Sys'}</option>${o.map(v=>`<option${v===cur?' selected':''}${!cur&&v===String(def)?' class="bpdef"':''}>${v}</option>`).join('')}</select>`; }
 function fld(lbl,g,type='text',extra=''){ return `<label class="f">${lbl}<input type="${type}" data-g="${g}" value="${esc(rep[g])}" ${extra}></label>`; }
 function nrTxt(d){ const z=zOf(d.id); return normText(d)+(z!=null?' · '+zTxt(z):''); }
 function mRow(d){
@@ -1023,29 +1032,40 @@ function renderForm(){
    <button class="mini${pickOn()?' pri':''}" data-act="pick" title="Tap-to-pick numbers">🔢 ${pickOn()?'Tap':'Type'}</button>
    <span class="badge ${rep.final?'fin':'dra'}">${rep.final?'✔ FINAL':'DRAFT'}</span></div>
   ${backupBanner()}
-  ${tplCard()}
-  <div class="card"><h3>👤 Patient details</h3><div class="grid">
-   <label class="f">Report No (app, auto)<input readonly tabindex="-1" class="ro" id="rnoBox" value="${esc(rep.rno||'— given on first Save / PDF')}"></label>
-   <label class="f">Institution<select data-g="inst"><option value="">—</option>${instList().map(x=>`<option${rep.inst===x?' selected':''}>${esc(x)}</option>`).join('')}</select></label>
-   ${fld('Hospital / Patient I.D No.','pid')}${FULL()||rep.mrno?fld('MR No','mrno'):''}
-   ${FULL()||rep.refno?fld('Ref No','refno'):''}${fld('Name of patient','name')}
+  <div class="card"><h3>👤 Patient details</h3>
+   <div class="psec">🪪 Identity</div><div class="grid">
+   ${fld('Name of patient','name')}
    <label class="f">Age<span style="display:flex;gap:4px"><input type="text" inputmode="decimal" data-g="ageN" value="${esc(rep.ageN)}" placeholder="${esc(rep.age||'')}" style="flex:1;min-width:0">
      <select data-g="ageU" style="width:auto">${['Years','Months','Days'].map(o=>`<option${rep.ageU===o?' selected':''}>${o}</option>`).join('')}</select></span></label>
    <label class="f">Sex<select data-g="sex">${['','Male','Female'].map(o=>`<option value="${o}"${rep.sex===o?' selected':''}>${o||'—'}</option>`).join('')}</select></label>
+   ${fld('Hospital / Patient I.D No.','pid')}
+   <label class="f">Institution<select data-g="inst"><option value="">—</option>${instList().map(x=>`<option${rep.inst===x?' selected':''}>${esc(x)}</option>`).join('')}</select></label>
+   <label class="f">Report No (app, auto)<input readonly tabindex="-1" class="ro" id="rnoBox" value="${esc(rep.rno||'— given on first Save / PDF')}"></label>
+   ${FULL()||rep.mrno?fld('MR No','mrno'):''}${FULL()||rep.refno?fld('Ref No','refno'):''}
+   </div>
+   <div class="psec">📏 Body size</div><div class="grid">
    ${fld('Height / length (cm)','ht','text','inputmode="decimal"')}${fld('Weight (kg)','wt','text','inputmode="decimal"')}
    <label class="f full">BSA (auto)<input id="bsaOut" readonly value="${b?b.toFixed(2)+' m² — '+bsaHow():''}"></label>
    <div class="full pedban" id="pedBan"${ped?'':' hidden'}>🧒 Paediatric mode — normal ranges are PHN z-scores from BSA (|z| &gt; 2 flagged). Adult ranges are hidden.</div>
+   </div>
+   <div class="psec">🩺 Referral & clinical history</div><div class="grid">
+   <label class="f full">Referred by / Consultant<input type="text" data-g="ref" value="${esc(rep.ref)}" list="refl" placeholder="type a name — it is remembered for next time"></label>
+   ${refChips()}
+   <label class="f full">Clinical history / Indication<input type="text" data-g="clin" data-ac value="${esc(rep.clin)}" placeholder="tap below or type"></label>
+   <div class="full chips" id="clinChips">${clinChips()}</div>
+   ${FULL()?`<label class="f full">Procedure<input type="text" data-g="proc" value="${esc(rep.proc)}" list="procl"></label>`:''}
+   </div>
+   <div class="psec">❤️ Vitals & study</div><div class="grid">
+   <label class="f">BP (mmHg)<span style="display:flex;gap:4px;align-items:center">${bpSel(0)}<b>/</b>${bpSel(1)}</span></label>
+   ${fld('Heart rate (bpm)','hr','text','inputmode="numeric"')}
+   <label class="f">Rhythm<select data-g="rhythm">${RHYTHMS.map(o=>`<option${rep.rhythm===o?' selected':''}>${o}</option>`).join('')}</select></label>
+   <label class="f">Echo window<select data-g="iq">${['Good','Fair','Suboptimal'].map(o=>`<option${rep.iq===o?' selected':''}>${o}</option>`).join('')}</select></label>
    ${fld('Received date','recv','date')}${fld('Report date','rdate','date')}
    ${FULL()||rep.ward?fld('Ward / Unit','ward'):''}${FULL()||rep.bed?fld('Bed','bed'):''}
-   <label class="f full">Referred by / Consultant<input type="text" data-g="ref" value="${esc(rep.ref)}" list="refl"></label>
    ${FULL()?`<label class="f">Performer<input type="text" data-g="performer" value="${esc(rep.performer)}" placeholder="${esc(settings.performer||'set default in Settings')}"></label>
    <label class="f">Report prepared by<input type="text" data-g="prep" value="${esc(rep.prep)}" placeholder="${esc(settings.entered||'set default in Settings')}"></label>`:''}
-   <label class="f full">Clinical diagnosis / Indication<input type="text" data-g="clin" data-ac value="${esc(rep.clin)}" placeholder="e.g. IHD, HTN, DM; chest pain"></label>
-   ${FULL()?`<label class="f full">Procedure<input type="text" data-g="proc" value="${esc(rep.proc)}" list="procl"></label>`:''}
-   <label class="f">Echo window<select data-g="iq">${['Good','Fair','Suboptimal'].map(o=>`<option${rep.iq===o?' selected':''}>${o}</option>`).join('')}</select></label>
-   ${fld('BP (mmHg)','bp')}${FULL()?fld('Heart rate (bpm)','hr','text','inputmode="numeric"'):''}
-   <label class="f full">Rhythm<select data-g="rhythm">${RHYTHMS.map(o=>`<option${rep.rhythm===o?' selected':''}>${o}</option>`).join('')}</select></label>
   </div></div>
+  ${tplCard()}
   <div class="card" style="padding:8px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
    <span style="flex:1;font-size:13px;color:var(--mute)">Measurements in mm. Ratios, EF, LV mass, gradients, E/A, E/e′ and PASP are calculated.</span>
    <button class="mini" data-act="fillN">Fill typical adult values</button>
@@ -1119,6 +1139,8 @@ function applyTpl(t){
 const form=$('#pForm');
 function onField(t){
   const v=t.type==='checkbox'?t.checked:t.value;
+  if(t.dataset.bp!=null){ const p=bpParts(); p[+t.dataset.bp]=t.value; rep.bp=(p[0]||p[1])?`${p[0]||'?'}/${p[1]||'?'}`:''; changed(); return; }
+  if(t.dataset.g==='clin'){ const cc=document.getElementById('clinChips'); if(cc) cc.innerHTML=clinChips(); }
   if(t.dataset.g){
     rep[t.dataset.g]=v;
     if(t.dataset.g==='autoC'||t.dataset.g==='autoI'){ syncAuto(); const ta=$(t.dataset.g==='autoC'?'#taC':'#taI'); ta.readOnly=v; ta.value=rep[t.dataset.g==='autoC'?'comments':'impression']; }
@@ -1146,7 +1168,13 @@ function onField(t){
   changed();
 }
 form.addEventListener('input',e=>onField(e.target));
+form.addEventListener('change',e=>{ const t=e.target; if(t.dataset&&t.dataset.g==='ref') saveRef(t.value); if(t.tagName==='SELECT'&&t.dataset.bp!=null) onField(t); });
 form.addEventListener('click',e=>{
+  const cc=e.target.closest('[data-clin]');
+  if(cc){ const o=cc.dataset.clin; let p=clinParts(); const i=p.findIndex(x=>x.toLowerCase()===o.toLowerCase()); if(i>=0) p.splice(i,1); else p.push(o); rep.clin=p.join(', ');
+    const inp=form.querySelector('[data-g="clin"]'); if(inp) inp.value=rep.clin; cc.classList.toggle('on',i<0); changed(); return; }
+  const rp=e.target.closest('[data-refpick]');
+  if(rp){ rep.ref=rp.dataset.refpick; const inp=form.querySelector('[data-g="ref"]'); if(inp) inp.value=rep.ref; form.querySelectorAll('[data-refpick]').forEach(b=>b.classList.toggle('on',b===rp)); saveRef(rep.ref); changed(); return; }
   const seg=e.target.closest('[data-seg]');
   if(seg){ const i=+seg.dataset.seg-1; rep.wm[i]=(rep.wm[i]===brush)?0:brush; refreshWM(); syncAuto(); changed(); return; }
   const lg=e.target.closest('.brushes .lgi');
@@ -1397,9 +1425,12 @@ $('#bSet').onclick=()=>showTab('pSet');
 $('#bSave').onclick=()=>saveReport();
 $('#bPdf').onclick=()=>askPdf();
 let newArm=0;
-$('#bNew').onclick=()=>{
-  if(Date.now()-newArm>4000){ newArm=Date.now(); toast('Tap "＋ New" again to start a new report (unsaved entries will be cleared)'); return; }
-  newArm=0; rep=newReport(); syncAuto(); renderForm(); changed(); showTab('pForm'); toast('New report');
+$('#bNew').onclick=async()=>{
+  const has=(rep.name||'').trim() || Object.values(rep.m||{}).some(v=>String(v||'').trim());
+  if(has){ try{ await saveReport(); }catch(e){} }
+  rep=newReport(); syncAuto(); renderForm(); changed(); showTab('pForm'); window.scrollTo(0,0);
+  const n=form.querySelector('[data-g="name"]'); if(n) setTimeout(()=>n.focus(),50);
+  toast(has?'Previous report saved ✓ — new report started':'New report');
 };
 
 /* ================= TOAST ================= */
@@ -1501,7 +1532,7 @@ async function deleteReport(id){
   renderSaved();
 }
 function refList(){ const r=LS.get('echo_refs',[]); return Array.isArray(r)?r:[]; }
-function rememberRef(){ const v=(rep.ref||'').trim(); if(!v) return; let r=refList().filter(x=>x!==v); r.unshift(v); LS.set('echo_refs',r.slice(0,30)); }
+function rememberRef(){ saveRef(rep.ref); }
 function migrate(d){
   const n=newReport(); const r=Object.assign(n,d||{});
   r.m=Object.assign({},(d&&d.m)||{});

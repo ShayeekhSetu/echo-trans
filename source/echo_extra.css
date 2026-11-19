@@ -199,3 +199,9 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
 #gBar .gB{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .gFlash{animation:gF 1.6s ease 2;outline:3px solid #e0a106;outline-offset:3px;border-radius:8px}
 @keyframes gF{0%,100%{outline-color:#e0a106}50%{outline-color:transparent}}
+/* patient details sections & chips */
+.psec{font-weight:700;font-size:13px;color:var(--pri,#0b5c8a);margin:12px 0 6px;padding-top:8px;border-top:1px solid #e3e8ee}
+.psec:first-of-type{border-top:none;padding-top:0;margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid #c9d3de;background:#fff;border-radius:16px;padding:5px 11px;font-size:13px;cursor:pointer;color:#234}
+.chip.on{background:#0b5c8a;border-color:#0b5c8a;color:#fff}
