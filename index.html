@@ -2019,9 +2019,11 @@ $('#pSaved').addEventListener('click',e=>{
 });
 
 /* ================= SETTINGS ================= */
+const APP_VER='2026-11-19 · auto-update test';
 function renderSettings(){
   const s=settings;
   $('#pSet').innerHTML=`<div class="card"><h3>🏥 Header (institution) <span class="sp"></span><button class="mini" data-x="close">✕ Close</button></h3>
+   <p class="hint" style="margin:-4px 0 8px">App version: <b>${APP_VER}</b></p>
    <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><div class="logoPrev" id="lp">${s.logo?`<img src="${s.logo}">`:'No logo'}</div>
     <div style="display:flex;flex-direction:column;gap:6px"><label class="mini pri" style="text-align:center">Upload logo<input type="file" accept="image/*" id="logoIn" hidden></label>${s.logo?'<button class="mini warn" data-x="rmlogo">Remove logo</button>':''}</div></div>
    <label class="f full">Institutions for the "Institution" tag (one per line)<textarea data-s="insts" rows="3" placeholder="${esc(INST_DEF.join('\n'))}">${esc(s.insts||'')}</textarea></label>
