@@ -8,3 +8,7 @@ Live site: https://echo-trans007.netlify.app  (Netlify deploys automatically fro
 - `source/` — editable source: `echo.js`, `base.css`, `echo_extra.css`, `build.py`
 
 Reports live in Firebase (Firestore), not in this repository — updating the app never touches them.
+
+## Licence
+
+© 2026 Dr. Md. Shayeekh Mahbub Setu. All rights reserved. Not open source — see `LICENSE`. Copying or reuse without written permission is not allowed.
