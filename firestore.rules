@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only these e-mail addresses can open the reports. Add your assistant's e-mail here.
+    function staff() {
+      return request.auth != null
+        && request.auth.token.email in ['mahbub.setu34@gmail.com', 'shayeekhsetu@gmail.com'];
+    }
+    match /data/users/practice/{rest=**} {
+      allow read, write: if staff();
+    }
+  }
+}
