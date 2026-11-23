@@ -12,6 +12,8 @@
   --pri:#0b5c8a; --pri2:#e6f1f8; --abn:#fff4e5; --abnb:#f0a43a; --red:#c62828; --ok:#2e7d32;
 }
 *{box-sizing:border-box}
+#printArea{display:none}
+@media print{@page{size:A4;margin:0} html,body{background:#fff!important;margin:0!important} body>*:not(#printArea){display:none!important} #printArea{display:block!important} #printArea .pg{page-break-after:always;break-after:page;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact} #printArea .pg:last-child{page-break-after:auto;break-after:auto}}
 html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%;margin:0;background:var(--bg);color:var(--ink);font-family:"Hind Siliguri",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -30,6 +32,7 @@ button{cursor:pointer}
 .cmdplan ul{margin:4px 0 8px;padding-left:4px;list-style:none}.cmdplan li{margin:3px 0;font-size:14px}.cmdplan input{margin-right:6px}
 .wm4v{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;margin:4px 0 8px;padding:8px;border:1px solid var(--line);border-radius:10px;background:#fff}
 .wm4v .rwv{text-align:center}.wm4v svg{width:100%;height:auto;max-height:230px}.wm4v .rwcap{font-size:11px;color:#555;margin-top:2px}
+.wmsl table{width:100%;border-collapse:collapse;font-size:14px;margin:4px 0 10px}.wmsl td{border:1px solid #d5dde5;padding:6px 8px}.wmsl tr{cursor:pointer}.wmsl tr:hover{background:#f2f6fa}.wmsl tr.ab td{font-weight:700}.wmsl td.sw{width:30px;text-align:center}.wmsl td.sw span{display:inline-block;width:20px;height:16px;border:1.5px solid #555;border-radius:2px;vertical-align:middle}
 .wm4v [data-seg]{cursor:pointer}.wm4v [data-seg]:hover{opacity:.75}
 #pvBar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:6px;padding:6px 10px;background:#eef1f5;border-bottom:1px solid #c9d1db}
 #pvBar select{width:auto;padding:4px 6px}
@@ -490,6 +493,7 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
   <button class="tb" id="bNew">＋ New</button>
   <button class="tb" id="bSave">💾 Save</button>
   <button class="tb hl" id="bPdf">⬇ PDF</button>
+  <button class="tb" id="bPrint" style="display:none">🖨 Print</button>
   <button class="tb" id="bSaved">📂 Saved</button>
   <button class="tb" id="bSet">⚙</button>
 </div>
@@ -508,6 +512,7 @@ input.acv{color:#0b7a55;font-style:italic;background:#f1faf5}
 </div>
 <div id="measure"></div>
 <div id="cap" class="cap"></div>
+<div id="printArea"></div>
 <div class="busy" id="busy">Creating PDF…</div>
 <div class="toast" id="toast"></div>
 <script>
@@ -518,7 +523,7 @@ const SELF_HTML='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
 // lo/hi can be {M,F}; nt = custom normal text; calc = computed; g = form/report group
 const MM = [
   // M-mode & 2D dimensions
-  {q:1, g:'m', id:'ao',   l:'Aortic root (AO)',        s:'Aortic root (ARD)', u:'mm', lo:20, hi:37},
+  {q:1, g:'m', id:'ao',   l:'Aortic root (AO)',        s:'Aortic root (ARD)', u:'mm', lo:20, hi:{M:40,F:36}},
   {q:1, g:'m', id:'la',   l:'Left atrium (LA)',        s:'Left atrium (LAs)', u:'mm', lo:19, hi:40},
   {g:'m', id:'laao', l:'LA / AO ratio',           s:'LA / AO ratio', u:'', hi:1.5, nt:'≤ 1.5', calc:1, dp:2},
   {q:1, g:'m', id:'acs',  l:'AV cusp separation',      s:'ACS',   u:'mm', lo:15, hi:26},
@@ -925,8 +930,12 @@ function normText(d){
   if(d.vel&&isCm()){ lo=lo!=null?Math.round(lo*100):lo; hi=hi!=null?Math.round(hi*100):hi; }
   if(lo!=null&&hi!=null) return lo+'–'+hi; if(lo!=null) return '≥ '+lo; if(hi!=null) return '≤ '+hi; return '—'; }
 function flagV(v,lo,hi){ if(v==null) return ''; if(lo!=null&&v<lo) return '↓'; if(hi!=null&&v>hi) return '↑'; return ''; }
+// Borderline rule (Dr Setu): adult size measurements up to 5% above the upper limit are not called abnormal — shown as "borderline" only
+const TOL=0.05, TOL_IDS=new Set(['la','rvd','rvid','lvidd','ivsd','lvpwd','sinus','stj','ascao','arch','mpa','lpa','rpa']);
+function bord(d){ if(!d||isPed()||!TOL_IDS.has(d.id)) return false; const v=C[d.id], hi=rng(d.hi); return v!=null&&hi!=null&&v>hi&&v<=hi*(1+TOL); }
 function flag(d){
   if(isPed()){ if(hasZ(d.id)){ const z=zOf(d.id); return z==null?'':z>2?'↑':z<-2?'↓':''; } if(!PED_KEEP.includes(d.id)) return ''; }
+  if(bord(d)) return '';
   return flagV(C[d.id],rng(d.lo),rng(d.hi)); }
 const DPS={rap:0,mvapht:2,avarea:2,lavi:0,gls:0};
 const isAuto = id=>!!C[id+'Auto'] || (id==='rap'&&C.rapAuto);
@@ -1128,7 +1137,7 @@ function geom(){
     if(zw>2) g.push(`Increased LV wall thickness (${zi!=null&&zi>=(zp==null?-9:zp)?`IVSd ${mtxt('ivsd')} mm, ${zTxt(zi)}`:`LVPWd ${mtxt('lvpwd')} mm, ${zTxt(zp)}`})`);
     if(zl!=null&&zl>2) g.push(`dilated LV (LVIDd ${mtxt('lvidd')} mm, ${zTxt(zl)})`);
     const t=g.join('; '); return t?t.charAt(0).toUpperCase()+t.slice(1):''; }
-  const M_=sexK()==='M', dil=C.lvidd!=null&&C.lvidd>rng(MM.find(d=>d.id==='lvidd').hi);
+  const M_=sexK()==='M', dil=C.lvidd!=null&&flag(MM.find(d=>d.id==='lvidd'))==='↑';
   const rwtT=C.rwt!=null?`RWT ${C.rwt.toFixed(2)}`:'';
   const conc=C.rwt!=null&&C.rwt>0.42;
   let g='';
@@ -1143,7 +1152,7 @@ function geom(){
   } else {
     const wt=Math.max(C.ivsd||0,C.lvpwd||0);
     const cut=M_?[10,13,16]:[9,12,15];
-    const gr=wt>cut[2]?'Severe':wt>cut[1]?'Moderate':wt>cut[0]?'Mild':'';
+    const gr=wt>cut[2]?'Severe':wt>cut[1]?'Moderate':wt>cut[0]*(1+TOL)?'Mild':'';
     const which=(C.ivsd||0)>=(C.lvpwd||0)?`IVSd ${mtxt('ivsd')} mm`:`LVPWd ${mtxt('lvpwd')} mm`;
     if(gr) g=`${gr} ${conc?'concentric ':''}LVH by wall thickness (${which}${rwtT?', '+rwtT:''})`;
     else if(conc) g=`Concentric LV remodelling (${rwtT})`;
@@ -1312,7 +1321,7 @@ function genImpression0(){
   // chambers
   const gm=geom(), chs=[];
   if(F.lv.o==='Dilated' || /dilated/i.test(gm)) chs.push(['Dilated',`LV${C.lvidd!=null?` (LVIDd ${mtxt('lvidd')} mm${isPed()&&zOf('lvidd')!=null?', '+zTxt(zOf('lvidd')):''})`:''}`]);
-  if(F.la.o!=='Normal size' || (!isPed() && (C.la||0)>40)) chs.push([F.la.o==='Normal size'?'Dilated':F.la.o, `LA${C.la!=null?` (${mtxt('la')} mm)`:''}`]);
+  if(F.la.o!=='Normal size' || (!isPed() && (C.la||0)>40*(1+TOL))) chs.push([F.la.o==='Normal size'?'Dilated':F.la.o, `LA${C.la!=null?` (${mtxt('la')} mm)`:''}`]);
   if(/^Dilated/.test(F.rv.o)) chs.push(['Dilated',`RV${C.rvid!=null?` (RVID ${mtxt('rvid')} mm)`:''}`]);
   if(F.ra.o!=='Normal size') chs.push(['Dilated','RA']);
   { const adj=[]; chs.forEach(([a,t])=>{ let g=adj.find(x=>x.a===a); if(!g){ g={a,t:[]}; adj.push(g); } g.t.push(t); }); adj.forEach(g=>ch.push(`${g.a} ${andJoin(g.t)}`)); }
@@ -1371,7 +1380,7 @@ function ddAutoVal(){
   if(sg && sg.g && sg.g!=='Indeterminate') return sg.g;
   if(C.ea!=null){ const e=efInfo();
     if(C.ea<=0.8) return 'Grade I (impaired relaxation)';
-    if(C.ea>=2 && ((e&&/reduced/.test(e.g)) || rep.f.la.o!=='Normal size' || (C.la||0)>40)) return 'Grade III (restrictive)';
+    if(C.ea>=2 && ((e&&/reduced/.test(e.g)) || rep.f.la.o!=='Normal size' || (C.la||0)>40*(1+TOL))) return 'Grade III (restrictive)';
     return 'Normal'; }
   return null;
 }
@@ -1569,7 +1578,8 @@ function wmCard(){
     <button class="mini" data-act="wmGlobal">Global hypokinesia</button><button class="mini warn" data-act="wmClear">All normal</button></h3>
    <div class="vg" style="margin-top:0">1 · Pick a grade</div>
    ${legendHTML('brushes')}
-   <div class="vg">2 · Tap segments to colour them (tap again to clear)</div>
+   <div class="vg">2 · Tap a segment in the chart (or on the bull's-eye) to colour it — tap again to clear</div>
+   <div class="wmsl" id="wmSl">${wmSegListHTML()}</div>
    <div class="bewrap" id="bePane">${bullseye(true)}</div>
    <div class="vg">3 · Check in the four echo views (tap a wall here too)</div>
    <div class="wm4v" id="wm4v">${wm4vHTML()}</div>
@@ -1596,7 +1606,9 @@ function mmGrp(g){ const L=MM.filter(d=>d.g===g); if(!isPed()) return L;
   if(g==='m'){ const i=L.findIndex(d=>d.id==='acs'), add=PED_AO.map(id=>MM.find(d=>d.id===id)).filter(Boolean); return [...L.slice(0,i+1),...add,...L.slice(i+1)]; }
   return L; }
 function wm4vHTML(){ try{ return ['PLAX','PSAX','A4C','A2C'].map(k=>rwViewSVG(k,150)).join(''); }catch(e){ return ''; } }
-function refreshWM(){ const p=$('#bePane'); if(p) p.innerHTML=bullseye(true); const v=$('#wm4v'); if(v) v.innerHTML=wm4vHTML(); const s=$('#wmSum'); if(s) s.textContent=wmSummary(); }
+function wmSegListHTML(){ return `<table>${SEG.map(x=>{ const n=x[0], g=rep.wm[n-1]||0, c=g?WM[g].c:'#fff';
+  return `<tr data-seg="${n}" class="${g?'ab':''}"><td class="sw"><span style="background:${c}"></span></td><td>${n}. ${esc(x[1])}</td><td>${g?esc(WM[g].n):'Normal'}</td></tr>`; }).join('')}</table>`; }
+function refreshWM(){ const sl=$('#wmSl'); if(sl) sl.innerHTML=wmSegListHTML(); const p=$('#bePane'); if(p) p.innerHTML=bullseye(true); const v=$('#wm4v'); if(v) v.innerHTML=wm4vHTML(); const s=$('#wmSum'); if(s) s.textContent=wmSummary(); }
 
 const FULL = ()=>settings.mode!=='quick';
 const COND = {mvpht:()=>rep.v.mv.st!=='None', mvapht:()=>rep.v.mv.st!=='None', mvarea:()=>rep.v.mv.st!=='None', lvotd:()=>rep.v.av.st!=='None', lvotvti:()=>rep.v.av.st!=='None', avvti:()=>rep.v.av.st!=='None', sv:()=>rep.v.av.st!=='None', svi:()=>rep.v.av.st!=='None', avarea:()=>rep.v.av.st!=='None', dvi:()=>rep.v.av.st!=='None'};
@@ -1640,6 +1652,9 @@ function checks(){
   if(ageYears()==null) W.push('Age is not entered.');
   if(isPed() && !pnum(rep.wt)) W.push('Child: weight is needed for z-score normal ranges.');
   if(!efInfo()) W.push('No LVEF — tap an EF band or enter LVIDd/LVIDs.');
+  if(!isPed()){ const BG={la:'LA',lvidd:'LV',ivsd:'LV',lvpwd:'LV',rvd:'RV',rvid:'RV',sinus:'aorta',stj:'aorta',ascao:'aorta',arch:'aorta',mpa:'PA',lpa:'PA',rpa:'PA'};
+    const FK={LA:'la',LV:'lv',RV:'rv',aorta:'aorta'}, chg=g=>FK[g]&&rep.f[FK[g]].o!==FIND.find(x=>x.k===FK[g]).o[0];
+    ALLM.filter(d=>TOL_IDS.has(d.id)&&bord(d)&&!chg(BG[d.id])).forEach(d=>W.push(`Borderline ${BG[d.id]}: ${d.s} ${mtxt(d.id)} mm is ≤5% above the upper limit (${rng(d.hi)} mm) — reported as normal. If you consider it abnormal, change the ${BG[d.id]} finding.`)); }
   if(wmAbn() && !rep.efBand && C.efs==null) W.push('RWMA present: Teichholz EF is unreliable — tap an EF band (visual / biplane).');
   { const lvM=C.lvmi!=null||C.rwt!=null||C.lvidd!=null, g=lvM?geom():'', lo=rep.f.lv.o, T=rep.tplSet||{};
     const laD=MM.find(d=>d.id==='la');
@@ -1648,7 +1663,7 @@ function checks(){
     if(lvM && !isPed() && /hypertrophy/.test(lo) && !/hypertroph/i.test(g)) W.push(`LV marked "${lo.toLowerCase()}" but measurements do not show LVH (${g||`IVSd ${mtxt('ivsd')}, LVPWd ${mtxt('lvpwd')} mm`}). Check the LV finding or the wall measurements.`);
     if(lvM && !isPed() && lo==='Dilated' && C.lvidd!=null && C.lvidd<=rng(MM.find(d=>d.id==='lvidd').hi)) W.push(`LV marked "dilated" but LVIDd ${mtxt('lvidd')} mm is within normal limits. Check the LV finding.`);
     if(T.la && C.la!=null && rep.f.la.o==='Normal size' && !flag(laD)) W.push(`Template said "LA dilated", but LA ${mtxt('la')} mm is normal — the measurement is used.`);
-    if(!isPed() && rep.f.la.o==='Dilated' && C.la!=null && !flag(laD) && !T.la) W.push(`LA marked "dilated" but LA ${mtxt('la')} mm is within normal limits. Check the LA finding.`);
+    if(!isPed() && rep.f.la.o==='Dilated' && C.la!=null && !flag(laD) && !bord(laD) && !T.la) W.push(`LA marked "dilated" but LA ${mtxt('la')} mm is within normal limits. Check the LA finding.`);
     if(rep.ddAuto===false){ const a=ddAutoVal(); if(a && a!==rep.f.dd.o) W.push(`Diastolic function set to "${rep.f.dd.o}" but the measurements suggest "${a}". Check the diastolic grade.`); }
   }
   VALVES.forEach(x=>{ if(x.k==='av'&&asDisc()) return; const P=stenParts(x.k).filter(p=>p[1]>0||stenParts(x.k).some(q=>q[1]>0)); if(P.length>1 && new Set(P.map(p=>p[1])).size>1) W.push(`${x.ab}S grading discordant: ${P.map(p=>`${p[2]} → ${SEVN[p[1]]}`).join('; ')}. Check SVi / low-flow state and measurements.`); });
@@ -1696,10 +1711,10 @@ function checks(){
   if(isPed() && pnum(rep.wt) && ageYears()<0.1 && pnum(rep.wt)<2.5) W.push('Low birth weight: z-scores were derived from term babies — interpret with caution.');
   return W;
 }
-const YELLOW_RE=/spelling|Sex is not selected|Age is not entered|^Template|Low birth weight|consider a low-flow state|differs from the ASE|type \(mechanical|single tamponade sign|possible stenosis — compare/i;
+const YELLOW_RE=/spelling|^Borderline |Sex is not selected|Age is not entered|^Template|Low birth weight|consider a low-flow state|differs from the ASE|type \(mechanical|single tamponade sign|possible stenosis — compare/i;
 function checksSplit(){ const W=checks(); return {red:W.filter(w=>!YELLOW_RE.test(w)), yel:W.filter(w=>YELLOW_RE.test(w))}; }
 // where each warning points to in the form (tap a warning → jump there)
-const GOTO=[[/Sex is not selected/,'[data-g="sex"]'],[/Age is not entered/,'[data-g="ageN"]'],[/weight/i,'[data-g="wt"]'],
+const GOTO=[[/^Borderline LA/,'[data-fr="la"]'],[/^Borderline LV/,'[data-fr="lv"]'],[/^Borderline RV/,'[data-fr="rv"]'],[/^Borderline aorta/,'[data-fr="aorta"]'],[/Sex is not selected/,'[data-g="sex"]'],[/Age is not entered/,'[data-g="ageN"]'],[/weight/i,'[data-g="wt"]'],
   [/EF band|No LVEF|Teichholz EF/,'.efb'],[/tamponade|Pericardial effusion/i,'#periBox,[data-fr="peri"]'],
   [/Prosthetic mitral|Mitral valve|^MS |MS selected|MS grade|MVA|PTMC|Wilkins/,'[data-vc="mv"]'],[/Prosthetic aortic|Aortic valve|^AS |AS grade|Discordant AS|AS with SVi/,'[data-vc="av"]'],
   [/^TR |TR velocity|TR is|Tricuspid valve/,'[data-vc="tv"]'],[/Pulmonary valve|^PS /,'[data-vc="pv"]'],[/Diastolic/,'[data-fr="dd"]'],
@@ -2025,7 +2040,7 @@ function printRow(d){ if(d.id==='ef' && rep.efBand) return false; if(d.id==='pas
   return PRINT_CORE.has(d.id); }
 const volLbl=d=>{ const k=/^lved/.test(d.id)?'lvedv':/^lves/.test(d.id)?'lvesv':null; return k&&C[k+'Auto']?' (Teichholz)':''; };
 function rowHTML(d){ const f=flag(d), nt=normText(d), u=unitOf(d), z=zOf(d.id);
-  return `<tr><td>${esc(d.s)}${volLbl(d)}</td><td class="v${f?' a':''}">${C[d.id]!=null?esc(valTxt(d))+(u?' '+esc(u):'')+(f?' '+f:'')+(z!=null?`<br><small>${zTxt(z)}</small>`:''):''}</td><td class="nr">${esc(nt)}${u&&nt!=='—'?' '+esc(u):''}</td></tr>`; }
+  return `<tr><td>${esc(d.s)}${volLbl(d)}</td><td class="v${f?' a':''}">${C[d.id]!=null?esc(valTxt(d))+(u?' '+esc(u):'')+(f?' '+f:'')+(bord(d)?'<br><small>borderline</small>':'')+(z!=null?`<br><small>${zTxt(z)}</small>`:''):''}</td><td class="nr">${esc(nt)}${u&&nt!=='—'?' '+esc(u):''}</td></tr>`; }
 function efRow(){ return rep.efBand?`<tr><td><b>LVEF (visual / biplane)</b></td><td class="v${efGrade(bandMid(rep.efBand))!=='Normal'?' a':''}">${esc(rep.efBand)} %</td><td class="nr">≥ 55 %</td></tr>`:''; }
 function mTable(title,defs,extra){
   const rows=defs.filter(printRow);
@@ -2259,7 +2274,7 @@ function rwRefBE(size){
 function rwSummary(){
   const ab=[]; rep.wm.forEach((g,i)=>{ if(g>0) ab.push(i+1); });
   const T=['LAD','RCA','LCx'].map(k=>{ const all=Object.keys(TERR2).map(Number).filter(n=>TERR2[n].includes(k)); const hit=all.filter(n=>ab.includes(n));
-    const score=hit.reduce((a,n)=>a+1/TERR2[n].length,0); return {k,all,hit,score}; }).sort((a,b)=>b.score-a.score);
+    const score=hit.reduce((a,n)=>a+1/TERR2[n].length,0); return {k,all,hit,score}; }).sort((a,b)=>(b.score-a.score)||(b.hit.length/b.all.length-a.hit.length/a.all.length));
   const top=T[0], sec=T[1];
   let interp = !ab.length?'':(sec.score>=1.5 && sec.score>=0.6*top.score)?`Pattern suggests ${top.k} and ${sec.k} territories (possible multivessel involvement).`:`Pattern most consistent with ${top.k} territory.`;
   const rows=['LAD','RCA','LCx'].map(k=>T.find(x=>x.k===k)).map(x=>`<tr><td><b style="color:${BW()?'#000':TCOL_D[x.k]}">${x.k}</b></td><td>${x.all.filter(n=>TERR2[n].length===1).join(', ')||'—'}</td><td>${x.all.filter(n=>TERR2[n].length>1).join(', ')}</td><td class="${x.hit.length?'a':''}">${x.hit.length?x.hit.join(', '):'—'}</td><td>${x.hit.length} / ${x.all.length}</td></tr>`).join('');
@@ -2391,12 +2406,15 @@ function buildPages1(RC){
   if(!abbr){} else if(fits(cur+abbr)) cur+=abbr; else { const sm=abbr.replace('class="abbr"','class="abbr sm"'); if(fits(cur+sm)) cur+=sm; }
   if(cur) pages.push(cur);
   const core=pages.length-(rw?1:0);
+  // a page wider than the printable width (e.g. wide pad margins) is scaled down so nothing is cut at the right edge
+  const fitW=(h,sc)=>{ const m=$('#measure'); m.innerHTML=pageHTML(h,0,1,sc); const el=m.querySelector('.pgc'); const cw=el.clientWidth, sw=el.scrollWidth; return (sc===1 && sw>cw+1)?Math.max(0.6,cw/sw):sc; };
+  const SC=pages.map((p,i)=>{ const sc=i===0&&P1.scale?P1.scale:1; const h='<div class="'+(i===0&&P1.fill?'roomy tight':RC)+'">'+p+'</div>'; return fitW(h,sc); });
   $('#measure').innerHTML='';
   const tot=pages.length, info=rw?`${tot} pages — page 1: all measurements · page ${rwAt+1}: LV study (RWMA) · page ${rwAt+2}${tot>rwAt+2?'–'+tot:''}: findings & impression.${P1.scale?` Page 1 fitted at ${Math.round(P1.scale*100)}%.`:''}`
     : `${tot} page${tot>1?'s':''} — page 1: measurements, valves, Doppler & wall motion · page 2${tot>2?'–'+tot:''}: findings & impression.${P1.scale?` Page 1 fitted at ${Math.round(P1.scale*100)}%.`:''}`;
   return {core, p1scale:P1.scale||0, pages:pages.map((p,i,arr)=>{ let h=p;
       if(i===0&&P1.fill) h=p.replace('data-fill="1"',`data-fill="1" style="--pp:${P1.pp}px;height:${P1.H.toFixed(1)}px"`).replace(/style="--pp:[\d.]+px" data-fill/,'data-fill');
-      return pageHTML('<div class="'+(i===0&&P1.fill?'roomy tight':RC)+'">'+h+'</div>',i,arr.length,i===0&&P1.scale?P1.scale:1); }),info};
+      return pageHTML('<div class="'+(i===0&&P1.fill?'roomy tight':RC)+'">'+h+'</div>',i,arr.length,SC[i]); }),info};
 }
 /* ================= PREVIEW ================= */
 let pvT=null;
@@ -2451,6 +2469,23 @@ $('#bSaved').onclick=()=>showTab('pSaved');
 $('#bSet').onclick=()=>showTab('pSet');
 $('#bSave').onclick=()=>saveReport();
 $('#bPdf').onclick=()=>askPdf();
+// direct printing (web version only — the Claude viewer blocks window.print): colour or black & white
+const canPrint=()=>!(window.claude&&typeof window.claude.use==='function');
+setTimeout(()=>{ if(canPrint()) $('#bPrint').style.display=''; },0);
+$('#bPrint').onclick=()=>{ let m=document.getElementById('prAsk'); if(!m){ m=document.createElement('div'); m.id='prAsk'; m.className='dlg'; document.body.appendChild(m); }
+  const W=checks();
+  m.innerHTML=`<div class="dlgc"><b>🖨 Print report</b>${W.length?`<div style="margin:6px 0;color:#8a5a00">⚠ ${W.length} item${W.length>1?'s':''} to check — see the checks panel.</div>`:''}
+   <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px"><button class="mini" data-x="x">Cancel</button><button class="mini pri" data-x="c">🎨 Colour</button><button class="mini pri" data-x="b">⚫ Black &amp; white</button></div></div>`;
+  m.classList.add('on'); m.onclick=e=>{ const b=e.target.closest('button'); if(!b) return; m.classList.remove('on'); if(b.dataset.x!=='x') printNow(b.dataset.x==='b'); }; };
+async function printNow(bw){
+  try{ await saveReport(); }catch(e){}
+  const old=settings.bw; settings.bw=bw; rememberRef();
+  const pa=$('#printArea'); pa.innerHTML=buildPages().pages.join('');
+  settings.bw=old;
+  await Promise.all([...pa.querySelectorAll('img')].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r;})));
+  const done=()=>{ pa.innerHTML=''; window.removeEventListener('afterprint',done); }; window.addEventListener('afterprint',done);
+  setTimeout(()=>window.print(),60);
+}
 let newArm=0;
 $('#bNew').onclick=async()=>{
   if(rep.sample){ // keep the sample's description; clear patient details and every measurement
